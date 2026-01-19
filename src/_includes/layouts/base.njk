@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    {% include "partials/head.njk" %}
+  </head>
+
+  <body>
+    {% if headerType == "doc" %}
+      {% include "partials/header-doc.njk" %}
+    {% else %}
+      {% include "partials/header-home.njk" %}
+    {% endif %}
+
+    <div class="portal__layout">
+      {% if asideType == "doc" %}
+        {% include "partials/aside-doc.njk" %}
+      {% else %}
+        {% include "partials/aside-home.njk" %}
+      {% endif %}
+
+      <main id="main-content" class="portal__main">
+        {{ content | safe }}
+      </main>
+    </div>
+
+    {% include "partials/footer.njk" %}
+  </body>
+</html>

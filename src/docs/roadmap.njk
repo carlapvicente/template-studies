@@ -1,0 +1,178 @@
+---
+layout: layouts/base.njk
+pageTitle: Linux Studies — Roadmap do Curso
+title: Roadmap do Curso
+subtitle: Veja a progressão completa da trilha e entenda como estudar de forma eficaz.
+headerType: doc
+asideType: doc
+permalink: /docs/roadmap/
+---
+
+      <section aria-labelledby="roadmap-intro">
+        <h2 id="roadmap-intro" class="portal__section-title">Visão geral</h2>
+
+        <p class="portal__introduction-text">
+          O Linux Studies é dividido em níveis progressivos. Cada nível segue o mesmo formato:
+        </p>
+
+        <ul class="portal__features-list">
+          <li><strong>Explicações</strong> dos conceitos fundamentais</li>
+          <li><strong>Exercícios práticos</strong> para consolidar o aprendizado</li>
+          <li><strong>Desafios</strong> para testar seus conhecimentos</li>
+          <li><strong>Checklist</strong> para rastrear seu progresso</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="levels-title">
+        <h2 id="levels-title" class="portal__section-title" style="margin-top:16px;">Níveis da trilha</h2>
+
+        <!-- Reaproveita o layout de cards do index -->
+        <ul class="portal__modules-list" aria-label="Lista de níveis do Roadmap">
+
+          <li>
+            <article class="module__card">
+              <div class="module__header">
+                <p class="module__level">Level 00</p>
+                <h3 class="module__title">Onboarding</h3>
+              </div>
+              <p class="module__description">
+                Entenda o que é Linux, como o curso funciona e como você vai evoluir dentro da trilha.
+              </p>
+              <ul class="portal__features-list">
+                <li>O que é Linux e onde é usado</li>
+                <li>Como funciona o terminal</li>
+                <li>Como usar a trilha e os níveis</li>
+              </ul>
+            </article>
+          </li>
+
+          <li>
+            <article class="module__card">
+              <div class="module__header">
+                <p class="module__level">Level 01</p>
+                <h3 class="module__title">Terminal Basics</h3>
+              </div>
+              <p class="module__description">
+                Domine os fundamentos do terminal: navegação, comandos essenciais e leitura de ajuda.
+              </p>
+              <ul class="portal__features-list">
+                <li>Navegação: <code>pwd</code>, <code>cd</code>, <code>ls</code></li>
+                <li>Arquivos: <code>touch</code>, <code>cat</code>, <code>cp</code>, <code>mv</code>, <code>rm</code></li>
+                <li>Ajuda: <code>man</code>, <code>--help</code></li>
+              </ul>
+            </article>
+          </li>
+
+          <li>
+            <article class="module__card">
+              <div class="module__header">
+                <p class="module__level">Level 02</p>
+                <h3 class="module__title">Filesystem</h3>
+              </div>
+              <p class="module__description">
+                Entenda a hierarquia do sistema de arquivos e como organizar e inspecionar diretórios.
+              </p>
+              <ul class="portal__features-list">
+                <li>Diretórios especiais: <code>/etc</code>, <code>/home</code>, <code>/var</code>, <code>/tmp</code></li>
+                <li>Links simbólicos e hard links</li>
+                <li>Noções de estrutura e organização</li>
+              </ul>
+            </article>
+          </li>
+
+          <li>
+            <article class="module__card">
+              <div class="module__header">
+                <p class="module__level">Level 03</p>
+                <h3 class="module__title">Permissions</h3>
+              </div>
+              <p class="module__description">
+                Aprenda controle de acesso, permissões e como trabalhar com usuários e grupos.
+              </p>
+              <ul class="portal__features-list">
+                <li><code>chmod</code>, <code>chown</code>, <code>chgrp</code></li>
+                <li>Usuários e grupos</li>
+                <li><code>sudo</code> e boas práticas básicas</li>
+              </ul>
+            </article>
+          </li>
+
+          <li>
+            <article class="module__card">
+              <div class="module__header">
+                <p class="module__level">Level 04</p>
+                <h3 class="module__title">Processes</h3>
+              </div>
+              <p class="module__description">
+                Entenda processos, como monitorar recursos e finalizar o que estiver travando.
+              </p>
+              <ul class="portal__features-list">
+                <li>Listagem: <code>ps</code>, <code>top</code>, <code>htop</code></li>
+                <li>Encerrar: <code>kill</code>, <code>pkill</code></li>
+                <li>Jobs e noções de PID</li>
+              </ul>
+            </article>
+          </li>
+
+          <li>
+            <article class="module__card">
+              <div class="module__header">
+                <p class="module__level">Level 05</p>
+                <h3 class="module__title">Networking</h3>
+              </div>
+              <p class="module__description">
+                Configure e diagnostique rede no Linux: IP, DNS e ferramentas essenciais.
+              </p>
+              <ul class="portal__features-list">
+                <li>Rede: <code>ip</code>, <code>ping</code>, <code>curl</code>, <code>wget</code></li>
+                <li>DNS e resolução de nomes</li>
+                <li>Diagnóstico e troubleshooting</li>
+              </ul>
+            </article>
+          </li>
+
+          <li>
+            <article class="module__card">
+              <div class="module__header">
+                <p class="module__level">Level 06</p>
+                <h3 class="module__title">Systemd & Logs</h3>
+              </div>
+              <p class="module__description">
+                Entenda serviços e logs para operar e investigar problemas no sistema.
+              </p>
+              <ul class="portal__features-list">
+                <li>Serviços: <code>systemctl</code></li>
+                <li>Logs: <code>journalctl</code>, <code>/var/log</code></li>
+                <li>Monitoramento básico</li>
+              </ul>
+            </article>
+          </li>
+
+          <li>
+            <article class="module__card">
+              <div class="module__header">
+                <p class="module__level">Level 07</p>
+                <h3 class="module__title">Linux Admin Essentials</h3>
+              </div>
+              <p class="module__description">
+                Consolidar o aprendizado com rotinas comuns de administração e automação.
+              </p>
+              <ul class="portal__features-list">
+                <li>Pacotes: <code>apt</code>, <code>yum</code> (dependendo da distro)</li>
+                <li>Agendamentos: <code>cron</code></li>
+                <li>Variáveis de ambiente</li>
+              </ul>
+            </article>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- (restante do conteúdo do roadmap igual ao seu HTML, sem o head/header/aside/footer) -->
+    <br>
+      <section class="doc-cta" aria-label="Chamada para ação">
+        <h2 class="portal__section-title">🚀 Pronto para começar?</h2>
+        <p class="doc-cta__text">
+          Volta para a <a href="{{ '/' | url }}">trilha principal</a> e escolha o Level 00 para começar sua jornada!
+        </p>
+      </section>

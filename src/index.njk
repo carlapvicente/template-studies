@@ -1,0 +1,124 @@
+---
+layout: layouts/base.njk
+pageTitle: Linux Studies
+headerType: home
+asideType: home
+---
+
+<section class="portal__introduction">
+  <h2 class="portal__section-title">Trilha de Estudos</h2>
+  <p class="portal__introduction-text">
+    Cada módulo é estruturado para oferecer uma experiência de aprendizado completa. Você encontrará:
+  </p>
+
+  <ul class="portal__features-list">
+    <li><strong>Explicações</strong> dos conceitos fundamentais</li>
+    <li><strong>Exercícios práticos</strong> para consolidar o aprendizado</li>
+    <li><strong>Desafios</strong> para testar seus conhecimentos</li>
+    <li><strong>Checklist</strong> para rastrear seu progresso</li>
+  </ul>
+</section>
+
+<section class="portal__track">
+  <ol class="portal__modules-list" aria-label="Lista de módulos da trilha Linux">
+
+    <li>
+      <article class="module__card">
+        <div class="module__header">
+          <p class="module__level">Level 00</p>
+          <h3 class="module__title">Onboarding</h3>
+        </div>
+        <p class="module__description">
+          Prepare-se para a jornada! Neste módulo de boas-vindas, você aprenderá como navegar pela plataforma,
+          estrutura dos conteúdos e o que esperar nos próximos níveis.
+        </p>
+        <a href="{{ '/modules/00-onboarding/' | url }}" class="module__link">Acessar Módulo</a>
+      </article>
+    </li>
+
+    <li>
+      <article class="module__card">
+        <div class="module__header">
+          <p class="module__level">Level 01</p>
+          <h3 class="module__title">Terminal Basics</h3>
+        </div>
+        <p class="module__description">
+          Domine os fundamentos do terminal Linux. Aprenda comandos essenciais, navegação de diretórios
+          e manipulação de arquivos através da linha de comando.
+        </p>
+        <a href="{{ '/modules/01-terminal-basics/' | url }}" class="module__link">Acessar Módulo</a>
+      </article>
+    </li>
+
+    <li>
+      <article class="module__card">
+        <div class="module__header">
+          <p class="module__level">Level 02</p>
+          <h3 class="module__title">Filesystem</h3>
+        </div>
+        <p class="module__description">
+          Entenda a hierarquia do sistema de arquivos Linux. Explore diretórios especiais, inodes,
+          hard links e symbolic links.
+        </p>
+        <a href="{{ '/modules/02-filesystem/' | url }}" class="module__link">Acessar Módulo</a>
+      </article>
+    </li>
+
+    <li>
+      <article class="module__card">
+        <div class="module__header">
+          <p class="module__level">Level 03</p>
+          <h3 class="module__title">Permissions</h3>
+        </div>
+        <p class="module__description">
+          Aprenda sobre permissões de arquivo, usuários, grupos e controle de acesso no Linux.
+          Segurança começa aqui!
+        </p>
+        <a href="{{ '/modules/03-permissions/' | url }}" class="module__link">Acessar Módulo</a>
+      </article>
+    </li>
+
+    <li>
+      <article class="module__card">
+        <div class="module__header">
+          <p class="module__level">Level 04</p>
+          <h3 class="module__title">Processes</h3>
+        </div>
+        <p class="module__description">
+          Gerencie processos do sistema. Aprenda sobre PID, sinais, estados de processo e como
+          monitorar a execução de aplicações.
+        </p>
+        <a href="{{ '/modules/04-processes/' | url }}" class="module__link">Acessar Módulo</a>
+      </article>
+    </li>
+
+    <li>
+      <article class="module__card">
+        <div class="module__header">
+          <p class="module__level">Level 05</p>
+          <h3 class="module__title">Networking</h3>
+        </div>
+        <p class="module__description">
+          Configure e gerencie redes em Linux. Explore endereços IP, DNS, roteamento e
+          ferramentas de diagnóstico de rede.
+        </p>
+        <a href="{{ '/modules/05-networking/' | url }}" class="module__link">Acessar Módulo</a>
+      </article>
+    </li>
+
+    <li>
+      <article class="module__card">
+        <div class="module__header">
+          <p class="module__level">Level 06</p>
+          <h3 class="module__title">Systemd & Logs</h3>
+        </div>
+        <p class="module__description">
+          Domine o systemd e entenda como o Linux registra e gerencia logs. Essencial para
+          administração e troubleshooting de sistemas.
+        </p>
+        <a href="{{ '/modules/06-systemd-logs/' | url }}" class="module__link">Acessar Módulo</a>
+      </article>
+    </li>
+
+  </ol>
+</section>
