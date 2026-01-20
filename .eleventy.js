@@ -14,6 +14,12 @@ module.exports = function (eleventyConfig) {
     return `${cleanBase}${cleanPath}`;
   });
 
+  // ✨ Excluir samples em produção
+  const isProduction = process.env.ELEVENTY_ENV === "production";
+  if (isProduction) {
+    eleventyConfig.ignores.add("src/samples");
+  }
+
   return {
     dir: {
       input: "src",
