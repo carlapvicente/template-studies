@@ -1,4 +1,14 @@
 <aside class="portal__aside" aria-label="Navegação da documentação">
+  {% if asideTopButton %}
+  <div class="aside__top-button">
+    {% set href = asideTopButton.href %}
+    {% set text = asideTopButton.text %}
+    {% set variant = asideTopButton.variant or 'nav' %}
+    {% set icon = asideTopButton.icon or '' %}
+    {% include "partials/button.njk" %}
+  </div>
+  {% endif %}
+
   <nav class="portal__nav" aria-label="Documentação">
     <h2 class="course__doc-title">Documentação</h2>
     <ul class="portal__nav-list">

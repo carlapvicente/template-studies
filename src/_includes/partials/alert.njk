@@ -1,0 +1,52 @@
+{# 
+  Alert Component - Template reutilizável para alertas
+  
+  Parâmetros recebidos via context:
+  - type: 'note' | 'tip' | 'important' | 'caution' | 'warning' (padrão: 'note')
+  - title: Título customizado (opcional)
+  - text: Conteúdo do alerta (obrigatório)
+  - icon: Ícone customizado (opcional)
+  - ariaLabel: Label para acessibilidade (opcional)
+#}
+
+{% set alertConfig = {
+  'note': {
+    'icon': '❕',
+    'defaultTitle': 'Observação',
+    'ariaLabel': 'Observação'
+  },
+  'tip': {
+    'icon': '💡',
+    'defaultTitle': 'Dica',
+    'ariaLabel': 'Dica'
+  },
+  'important': {
+    'icon': '❕',
+    'defaultTitle': 'Importante',
+    'ariaLabel': 'Importante'
+  },
+  'caution': {
+    'icon': '⛔',
+    'defaultTitle': 'Cuidado',
+    'ariaLabel': 'Cuidado'
+  },
+  'warning': {
+    'icon': '⚠️',
+    'defaultTitle': 'Aviso',
+    'ariaLabel': 'Aviso'
+  }
+} %}
+
+{% set alertType = type or 'note' %}
+{% set config = alertConfig[alertType] %}
+{% set alertIcon = icon or config.icon %}
+{% set alertTitle = title or config.defaultTitle %}
+{% set alertAriaLabel = ariaLabel or config.ariaLabel %}
+
+<div class="alert alert--{{ alertType }}" role="note" aria-label="{{ alertAriaLabel }}">
+  <div class="alert__head">
+    <span class="alert__icon" aria-hidden="true">{{ alertIcon }}</span>
+    <h3 class="alert__title">{{ alertTitle }}</h3>
+  </div>
+  <p class="alert__text">{{ text }}</p>
+</div>
