@@ -5,33 +5,33 @@
   - type: 'note' | 'tip' | 'important' | 'caution' | 'warning' (padrão: 'note')
   - title: Título customizado (opcional)
   - text: Conteúdo do alerta (obrigatório)
-  - icon: Ícone customizado (opcional)
+  - icon: Ícone customizado (opcional) - classe Font Awesome (ex: 'fa-circle-info')
   - ariaLabel: Label para acessibilidade (opcional)
 #}
 
 {% set alertConfig = {
   'note': {
-    'icon': '❕',
+    'icon': 'fa-circle-exclamation',
     'defaultTitle': 'Observação',
     'ariaLabel': 'Observação'
   },
   'tip': {
-    'icon': '💡',
+    'icon': 'fa-lightbulb',
     'defaultTitle': 'Dica',
     'ariaLabel': 'Dica'
   },
   'important': {
-    'icon': '❕',
+    'icon': 'fa-circle-exclamation',
     'defaultTitle': 'Importante',
     'ariaLabel': 'Importante'
   },
   'caution': {
-    'icon': '⛔',
+    'icon': 'fa-circle-xmark',
     'defaultTitle': 'Cuidado',
     'ariaLabel': 'Cuidado'
   },
   'warning': {
-    'icon': '⚠️',
+    'icon': 'fa-triangle-exclamation',
     'defaultTitle': 'Aviso',
     'ariaLabel': 'Aviso'
   }
@@ -45,8 +45,8 @@
 
 <div class="alert alert--{{ alertType }}" role="note" aria-label="{{ alertAriaLabel }}">
   <div class="alert__head">
-    <span class="alert__icon" aria-hidden="true">{{ alertIcon }}</span>
+    <i class="alert__icon fa-solid {{ alertIcon }}" aria-hidden="true"></i>
     <h3 class="alert__title">{{ alertTitle }}</h3>
   </div>
-  <p class="alert__text">{{ text }}</p>
+  <p class="alert__text">{{ text | safe }}</p>
 </div>
