@@ -2,13 +2,26 @@
 <html lang="pt-BR">
   <head>
     {% include "partials/head.njk" %}
+
   </head>
 
   <body>
-    {% include "partials/header-home.njk" %}
+    {# {% include "partials/header-home.njk" %} #}
+
+    {% if headerType == "doc" %}
+      {% include "partials/header-doc.njk" %}
+    {% else %}
+      {% include "partials/header-home.njk" %}
+    {% endif %}
 
     <div class="portal__layout">
-      {% include "partials/aside-home.njk" %}
+      {# {% include "partials/aside-home.njk" %} #}
+
+      {% if asideType == "doc" %}
+        {% include "partials/aside-doc.njk" %}
+      {% else %}
+        {% include "partials/aside-home.njk" %}
+      {% endif %}
 
       <main id="main-content" class="portal__main">
         <section class="construction">
