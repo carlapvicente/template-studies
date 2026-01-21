@@ -14,6 +14,9 @@ module.exports = function (eleventyConfig) {
     return `${cleanBase}${cleanPath}`;
   });
 
+  // ✨ Passar variável de ambiente para templates
+  eleventyConfig.addGlobalData("isDevelopment", process.env.ELEVENTY_ENV !== "production");
+
   // ✨ Excluir samples em produção
   const isProduction = process.env.ELEVENTY_ENV === "production";
   if (isProduction) {

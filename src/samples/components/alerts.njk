@@ -2,11 +2,6 @@
 layout: layouts/base.njk
 title: Exemplo de Alertas
 asideType: home
-asideTopButton:
-  href: "/samples/"
-  text: "← Voltar aos Samples"
-  icon: "📚"
-  variant: "nav"
 ---
 
 <section class="portal__section">
@@ -97,4 +92,12 @@ asideTopButton:
     {% include "partials/alert.njk" %}
 
     <hr class="portal__divider">
+
+    <h3>Alerta com Ícone Customizado</h3>
+    {% set type = 'tip' %}
+    {% set title = 'Pro Tip' %}
+    {% set text = 'Você pode customizar o ícone usando qualquer ícone do Font Awesome.' %}
+    {% set icon = 'fa-star' %}
+    {% include "partials/alert.njk" %}
+    
 </section>

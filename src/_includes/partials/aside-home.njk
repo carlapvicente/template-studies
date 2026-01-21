@@ -9,6 +9,17 @@
   </div>
   {% endif %}
 
+  {# Botão Samples: Apenas em desenvolvimento E NÃO na página /samples/ #}
+  {% if isDevelopment and page.filePathStem != '/samples/index' %}
+  <div class="aside__samples-button">
+    {% set href = '/samples/' %}
+    {% set text = 'Samples' %}
+    {% set variant = 'nav' %}
+    {% set icon = '📚' %}
+    {% include "partials/button.njk" %}
+  </div>
+  {% endif %}
+
   <nav class="portal__nav" aria-label="Documentação">
     <h2 class="course__doc-title">Documentação</h2>
     <ul class="portal__nav-list">
@@ -31,7 +42,7 @@
   <section class="course__prereq">
     <h2 class="course__prereq-title">Pré-requisitos</h2>
     <p class="course__prereq-text">
-      Você pode usar WSL ou máquina virtual (VirtualBox). Veja o <a href="{{ '/docs/setup/' | url }}">guia de Setup</a>.
+      Você pode usar WSL ou máquina virtual (VirtualBox). Veja os <a href="{{ '/docs/setup/' | url }}">Pré-requisitos do curso</a>.
     </p>
   </section>
 </aside>
