@@ -1141,6 +1141,168 @@ button:focus-visible {
   }
 }
 
+/* ---------- Reset Modal ---------- */
+.reset-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.reset-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.reset-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.reset-modal__content {
+  position: relative;
+  max-width: 420px;
+  width: 90%;
+  padding: 28px;
+  background: linear-gradient(135deg, rgba(7, 10, 18, 0.98), rgba(7, 10, 18, 0.95));
+  border: 1px solid rgba(255, 45, 170, 0.35);
+  border-radius: var(--radius);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 32px rgba(255, 45, 170, 0.15),
+    inset 0 0 20px rgba(255, 45, 170, 0.05);
+  animation: resetModalSlideIn 300ms ease;
+}
+
+@keyframes resetModalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.reset-modal__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.reset-modal__header i {
+  font-size: 24px;
+  color: rgba(255, 45, 170, 0.8);
+  text-shadow: 0 0 12px rgba(255, 45, 170, 0.3);
+}
+
+.reset-modal__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--text);
+  text-shadow: 0 0 10px rgba(255, 45, 170, 0.15);
+}
+
+.reset-modal__message {
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.reset-modal__message strong {
+  color: rgba(255, 45, 170, 0.9);
+  font-weight: 600;
+}
+
+.reset-modal__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.reset-modal__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 140ms ease;
+  text-decoration: none;
+}
+
+.reset-modal__btn i {
+  font-size: 12px;
+}
+
+/* Botão Cancelar */
+.reset-modal__btn--cancel {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+}
+
+.reset-modal__btn--cancel:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+}
+
+.reset-modal__btn--cancel:active {
+  transform: scale(0.98);
+}
+
+/* Botão Confirmar */
+.reset-modal__btn--confirm {
+  border-color: rgba(255, 45, 170, 0.65);
+  background: linear-gradient(135deg, rgba(255, 45, 170, 0.2), rgba(255, 45, 170, 0.1));
+  color: rgba(255, 45, 170, 0.95);
+  box-shadow: 0 0 12px rgba(255, 45, 170, 0.15);
+}
+
+.reset-modal__btn--confirm:hover {
+  border-color: rgba(255, 45, 170, 0.85);
+  background: linear-gradient(135deg, rgba(255, 45, 170, 0.3), rgba(255, 45, 170, 0.2));
+  box-shadow: 0 0 18px rgba(255, 45, 170, 0.25);
+}
+
+.reset-modal__btn--confirm:active {
+  transform: scale(0.98);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .reset-modal__content {
+    max-width: 95%;
+    padding: 24px;
+  }
+
+  .reset-modal__actions {
+    flex-direction: column-reverse;
+  }
+
+  .reset-modal__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* ---------- End of Construction Page ---------- */
 /* =========================================================
    End of File

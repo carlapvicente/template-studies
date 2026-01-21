@@ -188,6 +188,30 @@ asideType: home
   </ol>
 </section>
 
+<!-- Modal de Reset (HTML) -->
+<div id="reset-modal" class="reset-modal">
+  <div class="reset-modal__overlay"></div>
+  <div class="reset-modal__content">
+    <div class="reset-modal__header">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <h2 class="reset-modal__title">Reiniciar Curso</h2>
+    </div>
+    
+    <p class="reset-modal__message">
+      Tem certeza que deseja reiniciar o curso? <strong>Todo o seu progresso será apagado</strong> e não poderá ser recuperado.
+    </p>
+    
+    <div class="reset-modal__actions">
+      <button class="reset-modal__btn reset-modal__btn--cancel" onclick="closeResetModal();">
+        <i class="fa-solid fa-xmark"></i> Cancelar
+      </button>
+      <button class="reset-modal__btn reset-modal__btn--confirm" onclick="confirmReset();">
+        <i class="fa-solid fa-arrow-rotate-left"></i> Reiniciar
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- Script para gerenciar progresso na página -->
 <script>
   // Função para atualizar a exibição do progresso
@@ -219,19 +243,32 @@ asideType: home
     });
   }
 
-  // Função para resetar progresso com confirmação
+  // Abrir modal de reset
   function resetProgressConfirm() {
-    const confirmed = confirm(
-      '⚠️ Tem certeza que deseja reiniciar o curso?\n\nTodo o seu progresso será apagado e não poderá ser recuperado.'
-    );
-    
-    if (confirmed) {
-      window.progressTracker.resetProgress();
-      updateProgressDisplay();
-      
-      // Feedback visual
-      showResetNotification();
+    const modal = document.getElementById('reset-modal');
+    if (modal) {
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden'; // Evitar scroll
     }
+  }
+
+  // Fechar modal de reset
+  function closeResetModal() {
+    const modal = document.getElementById('reset-modal');
+    if (modal) {
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto'; // Restaurar scroll
+    }
+  }
+
+  // Confirmar reset
+  function confirmReset() {
+    window.progressTracker.resetProgress();
+    updateProgressDisplay();
+    closeResetModal();
+    
+    // Feedback visual
+    showResetNotification();
   }
 
   // Notificação visual de sucesso
@@ -252,9 +289,24 @@ asideType: home
     }, 3000);
   }
 
-  // Inicializar na carga da página
+  // Fechar modal ao clicar no overlay
   document.addEventListener('DOMContentLoaded', function() {
     updateProgressDisplay();
+    
+    const modal = document.getElementById('reset-modal');
+    if (modal) {
+      const overlay = modal.querySelector('.reset-modal__overlay');
+      if (overlay) {
+        overlay.addEventListener('click', closeResetModal);
+      }
+    }
+  });
+
+  // Fechar modal com ESC
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      closeResetModal();
+    }
   });
 
   // Atualizar quando progresso muda
