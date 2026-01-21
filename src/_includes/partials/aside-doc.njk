@@ -13,8 +13,21 @@
     <h2 class="course__doc-title">Documentação</h2>
     <ul class="portal__nav-list">
       <li><a href="{{ '/' | url }}" class="portal__nav-link">Início</a></li>
+      
+      {# Botão de Roadmap: Aparece em setup.njk e glossary.njk #}
+      {% if page.filePathStem != '/docs/roadmap' %}
+      <li><a href="{{ '/docs/roadmap/' | url }}" class="portal__nav-link">Roadmap do curso</a></li>
+      {% endif %}
+      
+      {# Botão de Setup: Aparece em roadmap.njk e glossary.njk #}
+      {% if page.filePathStem != '/docs/setup' %}
       <li><a href="{{ '/docs/setup/' | url }}" class="portal__nav-link">Setup do ambiente</a></li>
+      {% endif %}
+      
+      {# Botão de Glossário: Aparece em roadmap.njk e setup.njk #}
+      {% if page.filePathStem != '/docs/glossary' %}
       <li><a href="{{ '/docs/glossary/' | url }}" class="portal__nav-link">Glossário</a></li>
+      {% endif %}
     </ul>
   </nav>
 
