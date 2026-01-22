@@ -35,21 +35,13 @@ asideType: home
     
     <h3 class="portal__section-title">Exemplo de Código do Componente</h3>
 
-    <p class="portal__introduction-text">Botão com emoji:</p>
-
-    {% set language = 'markdown' %}
-    {% set code = '{% set href = "/docs/roadmap/" %}\n{% set text = "Roadmap" %}\n{% set variant = "nav" %}\n{% set icon = "📍" %}\n{% include "partials/button.njk" %}' %}
-    {% include "partials/code-block.njk" %}
-
-    <p class="portal__introduction-text">Botão com icon (Font Awesome):</p>
-
     {% set language = 'markdown' %}
     {% set code = '{% set href = "/docs/roadmap/" %}\n{% set text = "Roadmap" %}\n{% set variant = "nav" %}\n{% set icon = "fa-solid fa-map" %}\n{% include "partials/button.njk" %}' %}
     {% include "partials/code-block.njk" %}
 
     <hr class="portal__divider">
 
-    <h2 class="portal__section-title">🔘 Exemplo de Uso do Componente: Botões</h2>
+    <h2 class="portal__section-title"><i class="fa-solid fa-circle"></i> Exemplo de Uso do Componente: Botões</h2>
     <br>
     
     <h3 class="portal__section-title">Botão Tipo: Navegação (Nav)</h3>
@@ -109,19 +101,19 @@ asideType: home
       {% set href = '/docs/setup/' %}
       {% set text = 'Setup do ambiente' %}
       {% set variant = 'nav' %}
-      {% set icon = '⚙️' %}
+      {% set icon = 'fa-solid fa-gear' %}
       {% include "partials/button.njk" %}
 
       {% set href = '/modules/04-processes/' %}
       {% set text = 'Gerenciar Processos' %}
       {% set variant = 'module' %}
-      {% set icon = '⚡' %}
+      {% set icon = 'fa-solid fa-bolt' %}
       {% include "partials/button.njk" %}
 
       {% set href = '/docs/glossary/' %}
       {% set text = 'Consultar Glossário' %}
       {% set variant = 'nav' %}
-      {% set icon = '📖' %}
+      {% set icon = 'fa-solid fa-book' %}
       {% include "partials/button.njk" %}
     </div>
 
@@ -130,11 +122,11 @@ asideType: home
     <h2 class="portal__section-title">Exemplo de Código do Componente: asideTopButton</h2>
 
     {% set language = 'markdown' %}
-    {% set code = '---\nlayout: layouts/base.njk\ntitle: Minha Página\nasideType: home\nasideTopButton:\n  href: "/minha-secao/"\n  text: "Voltar"\n  icon: "⬅️"\n  variant: "nav"\n---' %}
+    {% set code = '---\nlayout: layouts/base.njk\ntitle: Minha Página\nasideType: home\nasideTopButton:\n  href: "/minha-secao/"\n  text: "Voltar"\n  icon: "fa-solid fa-arrow-left"\n  variant: "nav"\n---' %}
     {% include "partials/code-block.njk" %}
 
     {% set language = 'markdown' %}
-    {% set code = '---\nlayout: layouts/base.njk\ntitle: Guia Setup\nasideType: doc\nasideTopButton:\n  href: "/docs/"\n  text: "Documentação"\n  icon: "📖"\n  variant: "nav"\n---' %}
+    {% set code = '---\nlayout: layouts/base.njk\ntitle: Guia Setup\nasideType: doc\nasideTopButton:\n  href: "/docs/"\n  text: "Documentação"\n  icon: "fa-solid fa-book"\n  variant: "nav"\n---' %}
     {% include "partials/code-block.njk" %}
 
 

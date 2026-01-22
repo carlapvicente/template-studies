@@ -39,33 +39,33 @@ asideType: home
 
     <hr class="portal__divider">
 
-    <h2 class="portal__section-title">🔘 Exemplo de Uso do Componente: Alertas</h2>
+    <h2 class="portal__section-title"><i class="fa-solid fa-circle"></i> Exemplo de Uso do Componente: Alertas</h2>
 
-    <h3>Alert Note (Observação - Cyan)</h3>
+    <h3 class="portal__section-title">Alert Note (Observação - Cyan)</h3>
     {% set type = 'note' %}
     {% set title = 'Observação' %}
     {% set text = 'Informação que o aluno deve notar mesmo passando o olho.' %}
     {% include "partials/alert.njk" %}
 
-    <h3>Alert Tip (Dica - Violet)</h3>
+    <h3 class="portal__section-title">Alert Tip (Dica - Violet)</h3>
     {% set type = 'tip' %}
     {% set title = 'Dica' %}
     {% set text = 'Informação opcional para ajudar o aluno a ter mais sucesso.' %}
     {% include "partials/alert.njk" %}
 
-    <h3>Alert Important (Importante - Magenta)</h3>
+    <h3 class="portal__section-title">Alert Important (Importante - Magenta)</h3>
     {% set type = 'important' %}
     {% set title = 'Importante' %}
     {% set text = 'Informação essencial para o aluno seguir sem travar.' %}
     {% include "partials/alert.njk" %}
 
-    <h3>Alert Caution (Cuidado - Vermelho)</h3>
+    <h3 class="portal__section-title">Alert Caution (Cuidado - Vermelho)</h3>
     {% set type = 'caution' %}
     {% set title = 'Cuidado' %}
     {% set text = 'Possíveis consequências negativas de uma ação.' %}
     {% include "partials/alert.njk" %}
 
-    <h3>Alert Warning (Aviso - Ouro)</h3>
+    <h3 class="portal__section-title">Alert Warning (Aviso - Ouro)</h3>
     {% set type = 'warning' %}
     {% set title = 'Aviso' %}
     {% set text = 'Consequências potencialmente perigosas de uma ação.' %}
@@ -73,9 +73,9 @@ asideType: home
 
     <hr class="portal__divider">
 
-    <h2>🚨 Exemplo Avançado: Vários Alertas</h2>
+    <h2 class="portal__section-title"><i class="fa-solid fa-triangle-exclamation"></i> Exemplo Avançado: Vários Alertas</h2>
 
-    <h3>Múltiplos Alertas</h3>
+    <h3 class="portal__section-title">Múltiplos Alertas</h3>
     {% set type = 'note' %}
     {% set title = 'Primeiro Passo' %}
     {% set text = 'Comece por aqui.' %}
@@ -93,7 +93,7 @@ asideType: home
 
     <hr class="portal__divider">
 
-    <h3>Alerta com Ícone Customizado</h3>
+    <h3 class="portal__section-title">Alerta com Ícone Customizado</h3>
     {% set type = 'tip' %}
     {% set title = 'Pro Tip' %}
     {% set text = 'Você pode customizar o ícone usando qualquer ícone do Font Awesome.' %}
