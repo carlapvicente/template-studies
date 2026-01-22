@@ -1,49 +1,82 @@
 ---
 layout: layouts/module.njk
-title: "Level XX - Nome do Módulo"
+pageTitle: Linux Studies — Module Template
+title: Level XX - Template
 headerType: doc
 asideType: module
-moduleTitle: "Level XX - Nome do Módulo"
+moduleTitle: "Level XX - Template"
 moduleHasExplanation: true
 moduleHasExercises: true
-moduleHasChallenges: true
+moduleHasChallenges: false
 moduleChecklist:
-  - id: "item-1"
-    label: "Item 1"
+  - id: "intro-read"
+    label: "Ler Introdução"
     completed: false
-  - id: "item-2"
-    label: "Item 2"
+  - id: "objectives-understand"
+    label: "Entender Objetivos"
+    completed: false
+  - id: "structure-learn"
+    label: "Aprender Estrutura"
+    completed: false
+  - id: "exercise-1-complete"
+    label: "Completar Exercício 1"
+    completed: false
+  - id: "exercise-2-complete"
+    label: "Completar Exercício 2"
     completed: false
 asideTopButton:
   href: "/"
   text: "Início"
   variant: "nav"
+permalink: /samples/templates/module-template/
 ---
 
 <section class="module__content">
   <header class="module__header-content">
-    <h1 class="module__main-title"><i class="fa-solid fa-target"></i> Título do Módulo</h1>
-    <p class="module__subtitle">Descrição breve</p>
+    <h1 class="module__main-title"><i class="fa-solid fa-rocket"></i> Introdução</h1>
+    <p class="module__subtitle">Sua jornada no mundo do Linux começa aqui.</p>
   </header>
 
+  <!-- EXPLICAÇÃO -->
   <section id="explicacao" class="module__section">
-    <h2 class="module__section-title"><i class="fa-solid fa-book"></i> Explicação</h2>
-    <!-- Conteúdo -->
+    <h2 class="module__section-title"><i class="fa-solid fa-book"></i> Título da Explicação</h2>
+    <p>
+      Escrever a explicação do módulo aqui.
+    </p>
+    
+    {% set type = 'tip' %}
+    {% set title = 'Dica' %}
+    {% set text = 'Use o checklist no menu lateral para rastrear seu progresso dentro deste módulo!' %}
+    {% include "partials/alert.njk" %}
   </section>
 
+  <!-- EXERCÍCIOS -->
   <section id="exercicios" class="module__section">
     <h2 class="module__section-title"><i class="fa-solid fa-pen"></i> Exercícios</h2>
-    <!-- Conteúdo -->
+    
+    <div class="module__exercise">
+      <h3 class="module__exercise-title">Exercício 1: Título do Exercício</h3>
+      <p>O que deve ser feito:</p>
+      <ol>
+        <li>Lista de ações a serem realizadas...</li>
+        <li>Lista de ações a serem realizadas...</li>
+      </ol>
+    </div>
+
+    <div class="module__exercise">
+      <h3 class="module__exercise-title">Exercício 2: Título do Exercício</h3>
+      <p>O que deve ser feito:</p>
+      <ul class="portal__features-list">
+        <li>Lista de ações a serem realizadas...</li>
+        <li>Lista de ações a serem realizadas...</li>
+      </ul>
+    </div>
   </section>
 
-  <section id="desafios" class="module__section">
-    <h2 class="module__section-title"><i class="fa-solid fa-bolt"></i> Desafios</h2>
-    <!-- Conteúdo -->
-  </section>
-
+  <!-- CTA para próximo módulo -->
   <footer class="module__footer">
-    <a href="/modules/next-level/" class="module__next-btn">
-      <span>Próximo: Level XX</span>
+    <a href="/modules/01-terminal-basics/" class="module__next-btn">
+      <span>Próximo: Level 01 - Terminal Basics</span>
       <i class="fa-solid fa-arrow-right"></i>
     </a>
   </footer>
