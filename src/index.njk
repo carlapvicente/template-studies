@@ -62,8 +62,9 @@ asideType: home
         </p>
         <a href="{{ '/modules/00-onboarding/' | url }}" class="module__link">Acessar Módulo</a>
         <button class="module__complete-btn" onclick="toggleModuleComplete('00-onboarding');">
-          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
+          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
+
       </article>
     </li>
 
@@ -79,7 +80,7 @@ asideType: home
         </p>
         <a href="{{ '/modules/01-terminal-basics/' | url }}" class="module__link">Acessar Módulo</a>
         <button class="module__complete-btn" onclick="toggleModuleComplete('01-terminal-basics');">
-          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
+          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -96,7 +97,7 @@ asideType: home
         </p>
         <a href="{{ '/modules/02-filesystem/' | url }}" class="module__link">Acessar Módulo</a>
         <button class="module__complete-btn" onclick="toggleModuleComplete('02-filesystem');">
-          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
+          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -113,7 +114,7 @@ asideType: home
         </p>
         <a href="{{ '/modules/03-permissions/' | url }}" class="module__link">Acessar Módulo</a>
         <button class="module__complete-btn" onclick="toggleModuleComplete('03-permissions');">
-          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
+          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -130,7 +131,7 @@ asideType: home
         </p>
         <a href="{{ '/modules/04-processes/' | url }}" class="module__link">Acessar Módulo</a>
         <button class="module__complete-btn" onclick="toggleModuleComplete('04-processes');">
-          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
+          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -147,7 +148,7 @@ asideType: home
         </p>
         <a href="{{ '/modules/05-networking/' | url }}" class="module__link">Acessar Módulo</a>
         <button class="module__complete-btn" onclick="toggleModuleComplete('05-networking');">
-          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
+          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -164,7 +165,7 @@ asideType: home
         </p>
         <a href="{{ '/modules/06-systemd-logs/' | url }}" class="module__link">Acessar Módulo</a>
         <button class="module__complete-btn" onclick="toggleModuleComplete('06-systemd-logs');">
-          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
+          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -180,7 +181,7 @@ asideType: home
         </p>
         <a href="{{ '/modules/07-admin-essentials/' | url }}" class="module__link">Acessar Módulo</a>
         <button class="module__complete-btn" onclick="toggleModuleComplete('07-admin-essentials');">
-          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
+          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -214,6 +215,7 @@ asideType: home
 
 <!-- Script para gerenciar progresso na página -->
 <script>
+
   // Função para toggle de conclusão do módulo
   function toggleModuleComplete(moduleId) {
     const tracker = window.progressTracker;
@@ -266,8 +268,18 @@ asideType: home
       if (btn) {
         btn.textContent = isComplete ? 'Desmarcar' : 'Marcar como Completo';
       }
+      
+      // ← ADICIONAR: Atualizar ícone do botão
+      const icon = card.querySelector('.module__complete-btn .btn-icon');
+      if (icon) {
+        icon.className = isComplete 
+          ? 'btn-icon fa-solid fa-circle-check' 
+          : 'btn-icon fa-regular fa-circle';
+      }
     });
   }
+
+
 
   // Abrir modal de reset
   function resetProgressConfirm() {
