@@ -61,8 +61,8 @@ asideType: home
           estrutura dos conteúdos e o que esperar nos próximos níveis.
         </p>
         <a href="{{ '/modules/00-onboarding/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="window.progressTracker.markComplete('00-onboarding'); updateProgressDisplay();">
-          <i class="fa-solid fa-check"></i> Marcar como Completo
+        <button class="module__complete-btn" onclick="toggleModuleComplete('00-onboarding');">
+          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -78,8 +78,8 @@ asideType: home
           e manipulação de arquivos através da linha de comando.
         </p>
         <a href="{{ '/modules/01-terminal-basics/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="window.progressTracker.markComplete('01-terminal-basics'); updateProgressDisplay();">
-          <i class="fa-solid fa-check"></i> Marcar como Completo
+        <button class="module__complete-btn" onclick="toggleModuleComplete('01-terminal-basics');">
+          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -95,8 +95,8 @@ asideType: home
           hard links e symbolic links.
         </p>
         <a href="{{ '/modules/02-filesystem/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="window.progressTracker.markComplete('02-filesystem'); updateProgressDisplay();">
-          <i class="fa-solid fa-check"></i> Marcar como Completo
+        <button class="module__complete-btn" onclick="toggleModuleComplete('02-filesystem');">
+          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -112,8 +112,8 @@ asideType: home
           Segurança começa aqui!
         </p>
         <a href="{{ '/modules/03-permissions/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="window.progressTracker.markComplete('03-permissions'); updateProgressDisplay();">
-          <i class="fa-solid fa-check"></i> Marcar como Completo
+        <button class="module__complete-btn" onclick="toggleModuleComplete('03-permissions');">
+          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -129,8 +129,8 @@ asideType: home
           monitorar a execução de aplicações.
         </p>
         <a href="{{ '/modules/04-processes/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="window.progressTracker.markComplete('04-processes'); updateProgressDisplay();">
-          <i class="fa-solid fa-check"></i> Marcar como Completo
+        <button class="module__complete-btn" onclick="toggleModuleComplete('04-processes');">
+          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -146,8 +146,8 @@ asideType: home
           ferramentas de diagnóstico de rede.
         </p>
         <a href="{{ '/modules/05-networking/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="window.progressTracker.markComplete('05-networking'); updateProgressDisplay();">
-          <i class="fa-solid fa-check"></i> Marcar como Completo
+        <button class="module__complete-btn" onclick="toggleModuleComplete('05-networking');">
+          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -163,8 +163,8 @@ asideType: home
           administração e troubleshooting de sistemas.
         </p>
         <a href="{{ '/modules/06-systemd-logs/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="window.progressTracker.markComplete('06-systemd-logs'); updateProgressDisplay();">
-          <i class="fa-solid fa-check"></i> Marcar como Completo
+        <button class="module__complete-btn" onclick="toggleModuleComplete('06-systemd-logs');">
+          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -179,8 +179,8 @@ asideType: home
           Consolidar o aprendizado com rotinas comuns de administração e automação.
         </p>
         <a href="{{ '/modules/07-admin-essentials/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="window.progressTracker.markComplete('07-admin-essentials'); updateProgressDisplay();">
-          <i class="fa-solid fa-check"></i> Marcar como Completo
+        <button class="module__complete-btn" onclick="toggleModuleComplete('07-admin-essentials');">
+          <i class="fa-solid fa-user-check"></i> <span class="btn-text">Marcar como Completo</span>
         </button>
       </article>
     </li>
@@ -214,6 +214,24 @@ asideType: home
 
 <!-- Script para gerenciar progresso na página -->
 <script>
+  // Função para toggle de conclusão do módulo
+  function toggleModuleComplete(moduleId) {
+    const tracker = window.progressTracker;
+    const isCurrentlyComplete = tracker.isComplete(moduleId);
+    
+    if (isCurrentlyComplete) {
+      // Desmarcar
+      const progress = tracker.getProgress();
+      delete progress[moduleId];
+      localStorage.setItem('linux-studies-progress', JSON.stringify(progress));
+      tracker.triggerUpdateEvent();
+    } else {
+      // Marcar
+      tracker.markComplete(moduleId);
+    }
+    
+    updateProgressDisplay();
+  }
   // Função para atualizar a exibição do progresso
   function updateProgressDisplay() {
     const tracker = window.progressTracker;
@@ -232,13 +250,21 @@ asideType: home
       progressText.textContent = completed;
     }
     
-    // Atualizar cards completados
+    // Atualizar cards e botões completados
     document.querySelectorAll('[data-module-id]').forEach(card => {
       const moduleId = card.dataset.moduleId;
-      if (tracker.isComplete(moduleId)) {
+      const isComplete = tracker.isComplete(moduleId);
+      
+      if (isComplete) {
         card.classList.add('module__card--completed');
       } else {
         card.classList.remove('module__card--completed');
+      }
+      
+      // Atualizar texto do botão
+      const btn = card.querySelector('.module__complete-btn .btn-text');
+      if (btn) {
+        btn.textContent = isComplete ? 'Desmarcar' : 'Marcar como Completo';
       }
     });
   }
