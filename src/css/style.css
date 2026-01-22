@@ -730,20 +730,23 @@ button:focus-visible {
   align-items: center;
   gap: 8px;
   padding: 12px 20px;
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(0, 229, 255, 0.08));
-  border: 1px solid rgba(0, 229, 255, 0.35);
+  background: linear-gradient(135deg, rgba(124, 77, 255, 0.15), rgba(124, 77, 255, 0.08));
+  border: 1px solid rgba(124, 77, 255, 0.35);
   border-radius: 8px;
-  color: var(--cyan);
+  color: var(--text);
   font-weight: 600;
   text-decoration: none;
   transition: all 140ms ease;
 }
 
 .module__next-btn:hover {
-  border-color: rgba(0, 229, 255, 0.65);
-  box-shadow: 0 0 14px rgba(0, 229, 255, 0.2);
+  border-color: rgba(255, 215, 0, 0.65);
+  background: rgba(255, 45, 170, 0.12);
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.28);
   transform: translateX(2px);
 }
+
+
 
 /* ---------- Module Navigation (Aside) ---------- */
 .module-nav {
