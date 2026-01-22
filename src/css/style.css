@@ -664,6 +664,243 @@ button:focus-visible {
   text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
 }
 
+/* ---------- Module Layout & Content ---------- */
+.module__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.module__header-content {
+  margin-bottom: 16px;
+}
+
+.module__main-title {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: 0.3px;
+  text-shadow: 0 0 14px rgba(0, 229, 255, 0.2);
+}
+
+.module__subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.module__section {
+  padding: 20px;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 229, 255, 0.03);
+}
+
+.module__section-title {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.module__exercise {
+  margin: 16px 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid var(--cyan);
+  border-radius: 4px;
+}
+
+.module__exercise-title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.module__footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 229, 255, 0.15);
+}
+
+.module__next-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(0, 229, 255, 0.08));
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: 8px;
+  color: var(--cyan);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 140ms ease;
+}
+
+.module__next-btn:hover {
+  border-color: rgba(0, 229, 255, 0.65);
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.2);
+  transform: translateX(2px);
+}
+
+/* ---------- Module Navigation (Aside) ---------- */
+.module-nav {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.module-nav__title {
+  margin: 0 0 10px;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.module-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.module-nav__link {
+  display: block;
+  padding: 8px 10px;
+  color: var(--muted);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 140ms ease;
+  font-size: 13px;
+}
+
+.module-nav__link:hover {
+  background: rgba(0, 229, 255, 0.1);
+  color: var(--cyan);
+}
+
+/* ---------- Module Checklist ---------- */
+.module-checklist {
+  margin: 20px 0;
+  padding: 16px;
+  background: rgba(0, 229, 255, 0.05);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: var(--radius-sm);
+}
+
+.module-checklist__title {
+  margin: 0 0 12px;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.module-checklist__title i {
+  color: var(--cyan);
+}
+
+.module-checklist__items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.module-checklist__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  transition: background 140ms ease;
+}
+
+.module-checklist__item:hover {
+  background: rgba(0, 229, 255, 0.08);
+}
+
+.module-checklist__input {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--cyan);
+}
+
+.module-checklist__label {
+  font-size: 13px;
+  color: var(--muted);
+  flex: 1;
+}
+
+.module-checklist__item input:checked + .module-checklist__label {
+  color: var(--cyan);
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.module-checklist__summary {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 229, 255, 0.15);
+}
+
+.module-checklist__summary-text {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Mini Barra de Progresso */
+.module-progress-mini {
+  padding: 12px 0;
+}
+
+.module-progress-mini__bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(0, 229, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.module-progress-mini__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+  transition: width 400ms ease;
+}
+
+.module-progress-mini__text {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.module-info {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.module-info__title {
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /* ---------- Button Component ---------- */
 .btn {
   display: inline-flex;

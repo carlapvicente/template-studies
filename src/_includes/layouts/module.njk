@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    {% include "partials/head.njk" %}
+  </head>
+
+  <body>
+    {% include "partials/header-doc.njk" %}
+
+    <div class="portal__layout">
+      <!-- ASIDE com Checklist -->
+      <aside class="portal__aside" aria-label="Navegação do módulo">
+        {% if asideTopButton %}
+        <div class="aside__top-button">
+          {% set href = asideTopButton.href %}
+          {% set text = asideTopButton.text %}
+          {% set variant = asideTopButton.variant or 'nav' %}
+          {% set icon = asideTopButton.icon or '' %}
+          {% include "partials/button.njk" %}
+        </div>
+        {% endif %}
+
+        <!-- Navegação do Módulo -->
+        <nav class="module-nav" aria-label="Seções do módulo">
+          <h2 class="module-nav__title">{{ moduleTitle or 'Módulo' }}</h2>
+          <ul class="module-nav__list">
+            {% if moduleHasExplanation %}
+            <li><a href="#explicacao" class="module-nav__link">📖 Explicação</a></li>
+            {% endif %}
+            {% if moduleHasExercises %}
+            <li><a href="#exercicios" class="module-nav__link">✍️ Exercícios</a></li>
+            {% endif %}
+            {% if moduleHasChallenges %}
+            <li><a href="#desafios" class="module-nav__link">⚡ Desafios</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+
+        <!-- Checklist do Módulo -->
+        {% if moduleChecklist %}
+        {% include "partials/module-checklist.njk" %}
+        {% endif %}
+
+        <!-- Info -->
+        <section class="module-info">
+          <h2 class="module-info__title">Progressão</h2>
+          <div class="module-progress-mini">
+            <div class="module-progress-mini__bar">
+              <div class="module-progress-mini__fill" id="module-progress-bar" style="width: 0%"></div>
+            </div>
+            <p class="module-progress-mini__text"><span id="module-progress-text">0</span>% completo</p>
+          </div>
+        </section>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main id="main-content" class="portal__main">
+        {{ content | safe }}
+      </main>
+    </div>
+
+    {% include "partials/footer.njk" %}
+
+    <!-- Script de progresso do módulo -->
+    <script>
+      // Atualizar barra de progresso do módulo
+      function updateModuleProgress() {
+        const checklist = document.querySelectorAll('.module-checklist__item input[type="checkbox"]');
+        if (checklist.length === 0) return;
+        
+        const checked = document.querySelectorAll('.module-checklist__item input[type="checkbox"]:checked').length;
+        const percentage = Math.round((checked / checklist.length) * 100);
+        
+        const progressBar = document.getElementById('module-progress-bar');
+        const progressText = document.getElementById('module-progress-text');
+        
+        if (progressBar) progressBar.style.width = percentage + '%';
+        if (progressText) progressText.textContent = percentage;
+        
+        // Salvar no localStorage
+        const moduleId = '{{ page.filePathStem }}';
+        localStorage.setItem(`module-progress-${moduleId}`, JSON.stringify({
+          checklist: Array.from(checklist).map(cb => cb.checked),
+          percentage: percentage,
+          updatedAt: new Date().toISOString()
+        }));
+      }
+
+      // Inicializar checklist ao carregar
+      document.addEventListener('DOMContentLoaded', function() {
+        // Carregar progresso salvo
+        const moduleId = '{{ page.filePathStem }}';
+        const saved = localStorage.getItem(`module-progress-${moduleId}`);
+        
+        if (saved) {
+          const data = JSON.parse(saved);
+          const checklist = document.querySelectorAll('.module-checklist__item input[type="checkbox"]');
+          checklist.forEach((cb, idx) => {
+            cb.checked = data.checklist[idx] || false;
+          });
+        }
+        
+        updateModuleProgress();
+        
+        // Listener para mudanças no checklist
+        document.querySelectorAll('.module-checklist__item input[type="checkbox"]').forEach(cb => {
+          cb.addEventListener('change', updateModuleProgress);
+        });
+      });
+    </script>
+  </body>
+</html>

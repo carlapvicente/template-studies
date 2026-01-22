@@ -1,0 +1,51 @@
+---
+layout: layouts/module.njk
+title: "Level XX - Nome do Módulo"
+headerType: doc
+asideType: module
+moduleTitle: "Level XX - Nome do Módulo"
+moduleHasExplanation: true
+moduleHasExercises: true
+moduleHasChallenges: true
+moduleChecklist:
+  - id: "item-1"
+    label: "Item 1"
+    completed: false
+  - id: "item-2"
+    label: "Item 2"
+    completed: false
+asideTopButton:
+  href: "/"
+  text: "Voltar"
+  icon: "fa-solid fa-arrow-left"
+  variant: "nav"
+---
+
+<section class="module__content">
+  <header class="module__header-content">
+    <h1 class="module__main-title">🎯 Título do Módulo</h1>
+    <p class="module__subtitle">Descrição breve</p>
+  </header>
+
+  <section id="explicacao" class="module__section">
+    <h2 class="module__section-title">📖 Explicação</h2>
+    <!-- Conteúdo -->
+  </section>
+
+  <section id="exercicios" class="module__section">
+    <h2 class="module__section-title">✍️ Exercícios</h2>
+    <!-- Conteúdo -->
+  </section>
+
+  <section id="desafios" class="module__section">
+    <h2 class="module__section-title">⚡ Desafios</h2>
+    <!-- Conteúdo -->
+  </section>
+
+  <footer class="module__footer">
+    <a href="/modules/next-level/" class="module__next-btn">
+      <span>Próximo: Level XX</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </footer>
+</section>
