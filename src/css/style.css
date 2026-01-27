@@ -676,7 +676,8 @@ button:focus-visible {
   padding: 8px 12px;
   border: 1px solid color-mix(in srgb, var(--cyan), transparent 65%);
   background: color-mix(in srgb, var(--cyan), transparent 92%);
-  font-size: 12px;
+  font-size: 14px;
+  color: var(--text);
   border-radius: 8px;
 }
 
