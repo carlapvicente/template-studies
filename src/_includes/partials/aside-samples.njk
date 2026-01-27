@@ -15,20 +15,20 @@
   <nav class="portal__nav" aria-label="Componentes">
     <h2 class="course__doc-title">Componentes</h2>
     <ul class="portal__nav-list">
-      <li><a href="{{ '/samples/components/alerts/' | url }}" class="portal__nav-link" title="Alertas">Alertas</a></li>
-      <li><a href="{{ '/samples/components/buttons/' | url }}" class="portal__nav-link" title="Botões">Botões</a></li>
-      <li><a href="{{ '/samples/components/breadcrumb/' | url }}" class="portal__nav-link" title="Breadcrumb">Breadcrumb</a></li>
-      <li><a href="{{ '/samples/components/cards/' | url }}" class="portal__nav-link" title="Cards">Cards</a></li>
-      <li><a href="{{ '/samples/components/checklist/' | url }}" class="portal__nav-link" title="Checklist">Checklist</a></li>
-      <li><a href="{{ '/samples/components/code-block/' | url }}" class="portal__nav-link" title="Code Block">Code Block</a></li>
+      <li><a href="{{ '/samples/components/alerts/' | url }}" class="portal__nav-link" title="Alertas"{% if page.filePathStem == '/samples/components/alerts' %} aria-current="page"{% endif %}>Alertas</a></li>
+      <li><a href="{{ '/samples/components/buttons/' | url }}" class="portal__nav-link" title="Botões"{% if page.filePathStem == '/samples/components/buttons' %} aria-current="page"{% endif %}>Botões</a></li>
+      <li><a href="{{ '/samples/components/breadcrumb/' | url }}" class="portal__nav-link" title="Breadcrumb"{% if page.filePathStem == '/samples/components/breadcrumb' %} aria-current="page"{% endif %}>Breadcrumb</a></li>
+      <li><a href="{{ '/samples/components/cards/' | url }}" class="portal__nav-link" title="Cards"{% if page.filePathStem == '/samples/components/cards' %} aria-current="page"{% endif %}>Cards</a></li>
+      <li><a href="{{ '/samples/components/checklist/' | url }}" class="portal__nav-link" title="Checklist"{% if page.filePathStem == '/samples/components/checklist' %} aria-current="page"{% endif %}>Checklist</a></li>
+      <li><a href="{{ '/samples/components/code-block/' | url }}" class="portal__nav-link" title="Code Block"{% if page.filePathStem == '/samples/components/code-block' %} aria-current="page"{% endif %}>Code Block</a></li>
     </ul>
   </nav>
 
   <nav class="portal__nav" aria-label="Layouts">
     <h2 class="course__doc-title">Layouts</h2>
     <ul class="portal__nav-list">
-      <li><a href="{{ '/samples/components/module/' | url }}" class="portal__nav-link" title="Layout de Módulo">Módulo</a></li>
-      <li><a href="{{ '/samples/components/constructions/' | url }}" class="portal__nav-link" title="Página em Construção">Construção</a></li>
+      <li><a href="{{ '/samples/templates/module-layout/' | url }}" class="portal__nav-link" title="Layout de Módulo"{% if page.filePathStem == '/samples/templates/module-layout' %} aria-current="page"{% endif %}>Módulo</a></li>
+      <li><a href="{{ '/samples/components/constructions/' | url }}" class="portal__nav-link" title="Página em Construção"{% if page.filePathStem == '/samples/components/constructions' %} aria-current="page"{% endif %}>Construção</a></li>
     </ul>
   </nav>
 
