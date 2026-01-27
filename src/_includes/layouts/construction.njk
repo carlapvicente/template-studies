@@ -1,10 +1,11 @@
 {% extends "layouts/base.njk" %}
+{% import "macros/ui.njk" as ui %}
 
 {% block content %}
         <section class="construction">
           <div class="construction__container">
             <div class="construction__icon">
-              <i class="fa-solid fa-hammer"></i>
+              <i class="fa-solid fa-hammer" aria-hidden="true"></i>
             </div>
             
             <h1 class="construction__title">{{ pageTitle or 'Página em Construção' }}</h1>
@@ -15,17 +16,26 @@
 
             {% if constructionEstimate %}
             <p class="construction__estimate">
-              <i class="fa-solid fa-calendar-days"></i>
+              <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
               Conteúdo previsto para: <strong>{{ constructionEstimate }}</strong>
             </p>
             {% endif %}
 
             <div class="construction__progress">
-              <p class="construction__progress-label">Conteúdo em construção...</p>
-              <div class="construction__progress-bar">
+              <p class="construction__progress-label">Progresso do desenvolvimento</p>
+              <div class="construction__progress-bar" role="progressbar" aria-valuenow="{{ constructionProgress or '45' }}" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso da construção">
                 <div class="construction__progress-fill" style="width: {{ constructionProgress or '45' }}%"></div>
               </div>
               <p class="construction__progress-percent">{{ constructionProgress or '45' }}%</p>
+            </div>
+
+            <div class="construction__actions">
+              {{ ui.button(
+                href='/',
+                text='Voltar para o Início',
+                icon='fa-solid fa-house',
+                variant='nav'
+              ) }}
             </div>
           </div>
         </section>

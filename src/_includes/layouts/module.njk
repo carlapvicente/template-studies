@@ -15,25 +15,25 @@
         </div>
         {% endif %}
 
-        <!-- Navegação do Módulo -->
+        <!-- Navegação do Módulo (Links para seções com IDs específicos) -->
         <nav class="module-nav" aria-label="Seções do módulo">
           <h2 class="module-nav__title">{{ moduleTitle or 'Módulo' }}</h2>
           <ul class="module-nav__list">
             {% if moduleHasExplanation %}
-            <li><a href="#explicacao" class="module-nav__link"><i class="fa-solid fa-book"></i> Explicação</a></li>
+            <li><a href="#explicacao" class="module-nav__link"><i class="fa-solid fa-book" aria-hidden="true"></i> Explicação</a></li>
             {% endif %}
             {% if moduleHasExercises %}
-            <li><a href="#exercicios" class="module-nav__link"><i class="fa-solid fa-pen"></i> Exercícios</a></li>
+            <li><a href="#exercicios" class="module-nav__link"><i class="fa-solid fa-pen" aria-hidden="true"></i> Exercícios</a></li>
             {% endif %}
             {% if moduleHasChallenges %}
-            <li><a href="#desafios" class="module-nav__link"><i class="fa-solid fa-bolt"></i> Desafios</a></li>
+            <li><a href="#desafios" class="module-nav__link"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Desafios</a></li>
             {% endif %}
           </ul>
         </nav>
 
         <!-- Checklist do Módulo -->
         {% if moduleChecklist %}
-        {% include "partials/module-checklist.njk" %}
+        {{ ui.checklist(moduleChecklist) }}
         {% endif %}
 
         <!-- Info -->
