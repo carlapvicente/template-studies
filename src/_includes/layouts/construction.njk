@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    {% include "partials/head.njk" %}
+{% extends "layouts/base.njk" %}
 
-  </head>
-
-  <body>
-    {% if headerType == "doc" %}
-      {% include "partials/header-doc.njk" %}
-    {% else %}
-      {% include "partials/header-home.njk" %}
-    {% endif %}
-
-    <div class="portal__layout">
-      {% if asideType == "doc" %}
-        {% include "partials/aside-doc.njk" %}
-      {% else %}
-        {% include "partials/aside-home.njk" %}
-      {% endif %}
-
-      <main id="main-content" class="portal__main">
+{% block content %}
         <section class="construction">
           <div class="construction__container">
             <div class="construction__icon">
@@ -35,12 +16,12 @@
             {% if constructionEstimate %}
             <p class="construction__estimate">
               <i class="fa-solid fa-calendar-days"></i>
-              Previsão: <strong>{{ constructionEstimate }}</strong>
+              Conteúdo previsto para: <strong>{{ constructionEstimate }}</strong>
             </p>
             {% endif %}
 
             <div class="construction__progress">
-              <p class="construction__progress-label">Progresso da Trilha</p>
+              <p class="construction__progress-label">Conteúdo em construção...</p>
               <div class="construction__progress-bar">
                 <div class="construction__progress-fill" style="width: {{ constructionProgress or '45' }}%"></div>
               </div>
@@ -48,9 +29,4 @@
             </div>
           </div>
         </section>
-      </main>
-    </div>
-
-    {% include "partials/footer.njk" %}
-  </body>
-</html>
+{% endblock %}

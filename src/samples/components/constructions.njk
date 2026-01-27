@@ -1,53 +1,58 @@
 ---
 layout: layouts/base.njk
 title: Exemplo - Construção de Conteúdo
-asideType: home
+headerType: doc
+asideType: samples
 ---
+{% import "macros/ui.njk" as ui %}
+
 <section class="portal__section">
-    <h1 class="portal__section-title">Exemplos de Componentes</h1>
+    <h1 class="portal__section-title">Página em Construção</h1>
     <p class="portal__introduction-text">
-    Explore exemplos práticos de como usar os componentes disponíveis no site.
+      O layout de construção é utilizado para indicar que uma seção ou módulo ainda está em desenvolvimento, fornecendo uma estimativa de conclusão e barra de progresso visual.
     </p>
 
     <hr class="portal__divider">
 
-    <h1 class="portal__section-title">API do Componente</h1>
+    <!-- 1. SHOWCASE -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-eye"></i> Exemplo Visual</h2>
+    <p class="portal__introduction-text">
+      Como este é um layout de página inteira, você pode visualizar o resultado final no link abaixo:
+    </p>
     
-    {% set type = 'tip' %}
-    {% set title = 'Uso do Componente' %}
-    {% set text = 'Use os parâmetros constructionMessage, constructionEstimate e constructionProgress para customizar sua página de construção.' %}
-    {% include "partials/alert.njk" %}
+    <div style="margin: 20px 0;">
+      {{ ui.button(
+        href='/samples/templates/construction/',
+        text='Ver Template em Construção',
+        icon='fa-solid fa-hammer',
+        variant='module',
+        title='Visualizar exemplo do layout de construção'
+      ) }}
+    </div>
 
     <hr class="portal__divider">
 
-    <h1 class="portal__section-title">Parâmetros Disponíveis</h1>
+    <!-- 2. IMPLEMENTATION -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-code"></i> Como Utilizar</h2>
 
+    {{ ui.alert(
+      type='tip',
+      title='Layout Front Matter',
+      text='Este componente é utilizado definindo o <code>layout</code> no Front Matter do arquivo .njk.'
+    ) }}
+
+    <h3 class="portal__section-title">Configuração Básica</h3>
+    {% set code = '---\nlayout: layouts/construction.njk\npageTitle: "Nome da Seção"\nconstructionMessage: "Estamos trabalhando neste conteúdo."\nconstructionEstimate: "Dezembro de 2024"\nconstructionProgress: 45\n---' %}
+    {{ ui.codeBlock(code=code, language='yaml') }}
+
+    <h3 class="portal__section-title">Parâmetros Disponíveis</h3>
     <ul class="portal__features-list">
-        <li><strong>pageTitle</strong>: Para modificar o título da página</li>
-        <li><strong>headerType</strong>: Para configurar o modelo do cabeçalho</li>
-        <li><strong>asideType</strong>: Para configurar o modelo de navegação</li>
-        <li><strong>constructionMessage</strong>: Mensagem exibida na página de construção</li>
-        <li><strong>constructionEstimate</strong>: Data prevista para conclusão (opcional)</li>
-        <li><strong>constructionProgress</strong>: Progresso da Trilha (opcional)</li>
+        <li><strong>layout</strong> (obrigatório): Deve ser <code>layouts/construction.njk</code>.</li>
+        <li><strong>pageTitle</strong> (obrigatório): Título exibido na página.</li>
+        <li><strong>constructionMessage</strong> (opcional): Mensagem explicativa para o usuário.</li>
+        <li><strong>constructionEstimate</strong> (opcional): Data ou prazo previsto para lançamento.</li>
+        <li><strong>constructionProgress</strong> (opcional): Porcentagem de conclusão (0-100) para a barra de progresso.</li>
+        <li><strong>headerType</strong> (opcional): Tipo de cabeçalho (<code>'home'</code> ou <code>'doc'</code>).</li>
+        <li><strong>asideType</strong> (opcional): Tipo de barra lateral (<code>'home'</code> ou <code>'doc'</code>).</li>
     </ul>
-    </p>
-
-    <hr class="portal__divider">
-
-    <h2 class="portal__section-title">Exemplo de Código do Componente</h2>
-    
-    {% set language = 'bash' %}
-    {% set code = '---\nlayout: layouts/construction.njk\npageTitle: Nome da Seção\nheaderType: doc\nasideType: doc\nconstructionMessage: "Mensagem customizada"\nconstructionEstimate: "Data prevista"\nconstructionProgress: 75\npermalink: /docs/seção/\n---' %}
-    {% include "partials/code-block.njk" %}
-
-    <hr class="portal__divider">
-
-    <h2 class="portal__section-title"><i class="fa-solid fa-circle"></i> Exemplo de Componente: Conteúdo em Construção</h2>
-
-    <br>
-    
-    <p class="course__prereq-text">
-      Você pode visualizar o exemplo de como ficará a página em construção <a href="{{ '/samples/templates/construction/' | url }}">clicando aqui</a>.
-    </p>
 </section>
-

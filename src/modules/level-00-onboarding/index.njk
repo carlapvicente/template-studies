@@ -10,7 +10,7 @@ moduleHasChecklist: true
 moduleHasExercises: true
 moduleHasChallenges: true
 moduleChecklist:
-  - id: "introduction"
+  - id: "read-intro"
     label: "Ler a Introdução"
     completed: false
   - id: "objetivos"
@@ -32,11 +32,14 @@ moduleChecklist:
     label: "Completar Desafio 1"
     completed: false
 asideTopButton:
+  title: "Voltar para Início"
   href: "/"
   text: "Início"
   variant: "nav"
+  icon: "fa-solid fa-house"
 permalink: /modules/00-onboarding/
 ---
+{% import "macros/ui.njk" as ui %}
 
 <section class="module__content">
   <header class="module__header-content">
@@ -140,6 +143,11 @@ permalink: /modules/00-onboarding/
 
   <!-- CTA para próximo módulo -->
   <footer class="module__footer">
-    <a href="{{ '/modules/01-terminal-basics/' | url }}" class="module__link">Próximo: Level 01 - Terminal Basics <i class="fa-solid fa-arrow-right"></i></a>
+    {{ ui.button(
+      href='/modules/01-terminal-basics/',
+      text='Próximo: Level 01 - Terminal Basics',
+      icon='fa-solid fa-arrow-right',
+      title='Próximo: Level 01 - Terminal Basics'
+    ) }}
   </footer>
 </section>

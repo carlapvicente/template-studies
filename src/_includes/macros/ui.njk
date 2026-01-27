@@ -1,0 +1,149 @@
+{# 
+  UI Macros Library
+  Centralizes logic for reusable components.
+#}
+
+{# --- Button Macro --- #}
+{% macro button(text='Clique aqui', href='#', variant='module', icon='', title='', class='') %}
+  {% set isFontAwesome = icon and ('fa-' in icon) %}
+  {% set btnClass = 'btn--nav' if variant == 'nav' else 'btn--module' %}
+  {% set strText = '' ~ text %}
+  {% set iconAfter = strText.indexOf('Próximo') == 0 %}
+  
+  <a href="{{ href | url }}" class="btn {{ btnClass }} {{ class }}" {% if title %}title="{{ title }}"{% endif %}>
+    {% if icon and not iconAfter %}
+      {% if isFontAwesome %}
+        <i class="btn__icon {{ icon }}" aria-hidden="true"></i>
+      {% else %}
+        <span class="btn__icon">{{ icon }}</span>
+      {% endif %}
+    {% endif %}
+    <span class="btn__text">{{ text }}</span>
+    {% if icon and iconAfter %}
+      {% if isFontAwesome %}
+        <i class="btn__icon {{ icon }}" aria-hidden="true"></i>
+      {% else %}
+        <span class="btn__icon">{{ icon }}</span>
+      {% endif %}
+    {% endif %}
+  </a>
+{% endmacro %}
+
+{# --- Alert Macro --- #}
+{% macro alert(type='note', title='', text='', icon='', ariaLabel='') %}
+  {% set alertConfig = {
+    'note': {
+      'icon': 'fa-note-sticky',
+      'defaultTitle': 'Observação',
+      'ariaLabel': 'Observação'
+    },
+    'tip': {
+      'icon': 'fa-lightbulb',
+      'defaultTitle': 'Dica',
+      'ariaLabel': 'Dica'
+    },
+    'information': {
+      'icon': 'fa-circle-info',
+      'defaultTitle': 'Informação',
+      'ariaLabel': 'Informação'
+    },
+    'caution': {
+      'icon': 'fa-circle-xmark',
+      'defaultTitle': 'Cuidado',
+      'ariaLabel': 'Cuidado'
+    },
+    'warning': {
+      'icon': 'fa-triangle-exclamation',
+      'defaultTitle': 'Aviso',
+      'ariaLabel': 'Aviso'
+    }
+  } %}
+
+  {% set config = alertConfig[type] or alertConfig['note'] %}
+  {% set finalIcon = icon or config.icon %}
+  {% set finalTitle = title or config.defaultTitle %}
+  {% set finalAriaLabel = ariaLabel or config.ariaLabel %}
+
+  <div class="alert alert--{{ type }}" role="note" aria-label="{{ finalAriaLabel }}">
+    <div class="alert__head">
+      <i class="alert__icon fa-solid {{ finalIcon }}" aria-hidden="true"></i>
+      <h3 class="alert__title">{{ finalTitle }}</h3>
+    </div>
+    <p class="alert__text">{{ text | safe }}</p>
+  </div>
+{% endmacro %}
+
+{# --- Code Block Macro --- #}
+{% macro codeBlock(code='', language='bash') %}
+<pre class="terminal__block terminal__block--{{ language }}"><code>{{ code }}</code></pre>
+{% endmacro %}
+
+{# --- Breadcrumb Macro --- #}
+{% macro breadcrumb(items=[]) %}
+<nav aria-label="Breadcrumb" class="breadcrumb">
+  <ol class="breadcrumb__list">
+    {% for item in items %}
+      <li class="breadcrumb__item">
+        {% if loop.last %}
+          <span class="breadcrumb__current" aria-current="page">
+            {% if item.icon %}<i class="{{ item.icon }}" aria-hidden="true"></i>{% endif %} {{ item.label }}
+          </span>
+        {% else %}
+          <a href="{{ item.href | url }}" class="breadcrumb__link">
+            {% if item.icon %}<i class="{{ item.icon }}" aria-hidden="true"></i>{% endif %} {{ item.label }}
+          </a>
+          <span class="breadcrumb__separator" aria-hidden="true">/</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+</nav>
+{% endmacro %}
+
+{# --- Checklist Macro --- #}
+{% macro checklist(items=[]) %}
+  {% if items and items.length > 0 %}
+  <section class="module-checklist" aria-label="Checklist do módulo">
+    <h2 class="module-checklist__title">
+      <i class="fa-solid fa-list-check"></i> Checklist
+    </h2>
+    
+    <div class="module-checklist__items">
+      {% for item in items %}
+      <label class="module-checklist__item">
+        <input 
+          type="checkbox" 
+          id="checklist-{{ item.id }}"
+          class="module-checklist__input"
+          {% if item.completed %}checked{% endif %}
+        />
+        <span class="module-checklist__label">{{ item.label }}</span>
+      </label>
+      {% endfor %}
+    </div>
+    
+    <div class="module-checklist__summary">
+      <p class="module-checklist__summary-text">
+        <span id="checklist-count">0</span> de {{ items.length }} itens
+      </p>
+    </div>
+  </section>
+  {% endif %}
+{% endmacro %}
+
+{# --- Module Card Macro --- #}
+{% macro moduleCard(id='', level='', title='', description='', href='#', buttonText='Acessar Módulo') %}
+<article class="module__card" data-module-id="{{ id }}">
+  <div class="module__header">
+    <p class="module__level">{{ level }}</p>
+    <h3 class="module__title">{{ title }}</h3>
+  </div>
+  <p class="module__description">
+    {{ description }}
+  </p>
+  {{ button(href=href, text=buttonText, title=buttonText ~ ' ' ~ title) }}
+  <button class="module__complete-btn" onclick="toggleModuleComplete('{{ id }}');">
+    <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Concluído</span>
+  </button>
+</article>
+{% endmacro %}

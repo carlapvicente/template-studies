@@ -4,6 +4,7 @@ pageTitle: Linux Studies
 headerType: home
 asideType: home
 ---
+{% import "macros/ui.njk" as ui %}
 
 <section class="portal__introduction">
 
@@ -34,7 +35,7 @@ asideType: home
       Para manter seu progresso atualizado:
       <ul class="portal__features-list">
         <li>Marque o módulo como concluído apenas após finalizar todas as atividades.</li>
-        <li>A barra de progress mostra sua evolução na trilha.</li>
+        <li>A barra de progresso mostra sua evolução na trilha.</li>
         <li>O botão "Reiniciar Curso" zera o progresso salvo.</li>
       </ul>
     </p>
@@ -66,139 +67,83 @@ asideType: home
   <ol class="portal__modules-list" aria-label="Lista de módulos da trilha Linux">
 
     <li>
-      <article class="module__card" data-module-id="00-onboarding">
-        <div class="module__header">
-          <p class="module__level">Level 00</p>
-          <h3 class="module__title">Onboarding</h3>
-        </div>
-        <p class="module__description">
-          Prepare-se para a jornada! Neste módulo de boas-vindas, você aprenderá como navegar pela plataforma,
-          estrutura dos conteúdos e o que esperar nos próximos níveis.
-        </p>
-        <a href="{{ '/modules/00-onboarding/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="toggleModuleComplete('00-onboarding');">
-          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Concluído</span>
-        </button>
-
-      </article>
+      {{ ui.moduleCard(
+        id='00-onboarding',
+        level='Level 00',
+        title='Onboarding',
+        description='Prepare-se para a jornada! Neste módulo de boas-vindas, você aprenderá como navegar pela plataforma, estrutura dos conteúdos e o que esperar nos próximos níveis.',
+        href='/modules/00-onboarding/'
+      ) }}
     </li>
 
     <li>
-      <article class="module__card" data-module-id="01-terminal-basics">
-        <div class="module__header">
-          <p class="module__level">Level 01</p>
-          <h3 class="module__title">Terminal Basics</h3>
-        </div>
-        <p class="module__description">
-          Domine os fundamentos do terminal Linux. Aprenda comandos essenciais, navegação de diretórios
-          e manipulação de arquivos através da linha de comando.
-        </p>
-        <a href="{{ '/modules/01-terminal-basics/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="toggleModuleComplete('01-terminal-basics');">
-          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Concluído</span>
-        </button>
-      </article>
+      {{ ui.moduleCard(
+        id='01-terminal-basics',
+        level='Level 01',
+        title='Terminal Basics',
+        description='Domine os fundamentos do terminal Linux. Aprenda comandos essenciais, navegação de diretórios e manipulação de arquivos através da linha de comando.',
+        href='/modules/01-terminal-basics/'
+      ) }}
     </li>
 
     <li>
-      <article class="module__card" data-module-id="02-filesystem">
-        <div class="module__header">
-          <p class="module__level">Level 02</p>
-          <h3 class="module__title">Filesystem</h3>
-        </div>
-        <p class="module__description">
-          Entenda a hierarquia do sistema de arquivos Linux. Explore diretórios especiais, inodes,
-          hard links e symbolic links.
-        </p>
-        <a href="{{ '/modules/02-filesystem/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="toggleModuleComplete('02-filesystem');">
-          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Concluído</span>
-        </button>
-      </article>
+      {{ ui.moduleCard(
+        id='02-filesystem',
+        level='Level 02',
+        title='Filesystem',
+        description='Entenda a hierarquia do sistema de arquivos Linux. Explore diretórios especiais, inodes, hard links e symbolic links.',
+        href='/modules/02-filesystem/'
+      ) }}
     </li>
 
     <li>
-      <article class="module__card" data-module-id="03-permissions">
-        <div class="module__header">
-          <p class="module__level">Level 03</p>
-          <h3 class="module__title">Permissions</h3>
-        </div>
-        <p class="module__description">
-          Aprenda sobre permissões de arquivo, usuários, grupos e controle de acesso no Linux.
-          Segurança começa aqui!
-        </p>
-        <a href="{{ '/modules/03-permissions/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="toggleModuleComplete('03-permissions');">
-          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Concluído</span>
-        </button>
-      </article>
+      {{ ui.moduleCard(
+        id='03-permissions',
+        level='Level 03',
+        title='Permissions',
+        description='Aprenda sobre permissões de arquivo, usuários, grupos e controle de acesso no Linux. Segurança começa aqui!',
+        href='/modules/03-permissions/'
+      ) }}
     </li>
 
     <li>
-      <article class="module__card" data-module-id="04-processes">
-        <div class="module__header">
-          <p class="module__level">Level 04</p>
-          <h3 class="module__title">Processes</h3>
-        </div>
-        <p class="module__description">
-          Gerencie processos do sistema. Aprenda sobre PID, sinais, estados de processo e como
-          monitorar a execução de aplicações.
-        </p>
-        <a href="{{ '/modules/04-processes/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="toggleModuleComplete('04-processes');">
-          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Concluído</span>
-        </button>
-      </article>
+      {{ ui.moduleCard(
+        id='04-processes',
+        level='Level 04',
+        title='Processes',
+        description='Gerencie processos do sistema. Aprenda sobre PID, sinais, estados de processo e como monitorar a execução de aplicações.',
+        href='/modules/04-processes/'
+      ) }}
     </li>
 
     <li>
-      <article class="module__card" data-module-id="05-networking">
-        <div class="module__header">
-          <p class="module__level">Level 05</p>
-          <h3 class="module__title">Networking</h3>
-        </div>
-        <p class="module__description">
-          Configure e gerencie redes em Linux. Explore endereços IP, DNS, roteamento e
-          ferramentas de diagnóstico de rede.
-        </p>
-        <a href="{{ '/modules/05-networking/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="toggleModuleComplete('05-networking');">
-          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Concluído</span>
-        </button>
-      </article>
+      {{ ui.moduleCard(
+        id='05-networking',
+        level='Level 05',
+        title='Networking',
+        description='Configure e gerencie redes em Linux. Explore endereços IP, DNS, roteamento e ferramentas de diagnóstico de rede.',
+        href='/modules/05-networking/'
+      ) }}
     </li>
 
     <li>
-      <article class="module__card" data-module-id="06-systemd-logs">
-        <div class="module__header">
-          <p class="module__level">Level 06</p>
-          <h3 class="module__title">Systemd & Logs</h3>
-        </div>
-        <p class="module__description">
-          Domine o systemd e entenda como o Linux registra e gerencia logs. Essencial para
-          administração e troubleshooting de sistemas.
-        </p>
-        <a href="{{ '/modules/06-systemd-logs/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="toggleModuleComplete('06-systemd-logs');">
-          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Concluído</span>
-        </button>
-      </article>
+      {{ ui.moduleCard(
+        id='06-systemd-logs',
+        level='Level 06',
+        title='Systemd & Logs',
+        description='Domine o systemd e entenda como o Linux registra e gerencia logs. Essencial para administração e troubleshooting de sistemas.',
+        href='/modules/06-systemd-logs/'
+      ) }}
     </li>
 
     <li>
-      <article class="module__card" data-module-id="07-admin-essentials">
-        <div class="module__header">
-          <p class="module__level">Level 07</p>
-          <h3 class="module__title">Linux Admin Essentials</h3>
-        </div>
-        <p class="module__description">
-          Consolidar o aprendizado com rotinas comuns de administração e automação.
-        </p>
-        <a href="{{ '/modules/07-admin-essentials/' | url }}" class="module__link">Acessar Módulo</a>
-        <button class="module__complete-btn" onclick="toggleModuleComplete('07-admin-essentials');">
-          <i class="btn-icon fa-regular fa-circle"></i> <span class="btn-text">Marcar como Concluído</span>
-        </button>
-      </article>
+      {{ ui.moduleCard(
+        id='07-admin-essentials',
+        level='Level 07',
+        title='Linux Admin Essentials',
+        description='Consolide o aprendizado com rotinas comuns de administração e automação.',
+        href='/modules/07-admin-essentials/'
+      ) }}
     </li>
 
   </ol>

@@ -1,103 +1,97 @@
 ---
 layout: layouts/base.njk
-title: Exemplo de Alertas
-asideType: home
+title: Exemplo - Alertas
+headerType: doc
+asideType: samples
 ---
+{% import "macros/ui.njk" as ui %}
 
 <section class="portal__section">
-
-    <h1 class="portal__section-title">Exemplos de Componentes</h1>
+    <h1 class="portal__section-title">Alertas</h1>
     <p class="portal__introduction-text">
-    Explore exemplos práticos de como usar os componentes disponíveis no site.
+      Os componentes de alerta são utilizados para destacar informações importantes, dicas, avisos ou notas que requerem a atenção do usuário.
     </p>
 
     <hr class="portal__divider">
 
-    <h1 class="portal__section-title">API do Componente</h1>
-    
-    {% set type = 'tip' %}
-    {% set title = 'Uso do Componente' %}
-    {% set text = 'Use os parâmetros type, title e text para customizar seus alertas.' %}
-    {% include "partials/alert.njk" %}
+    <!-- 1. SHOWCASE -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-eye"></i> Exemplos Visuais</h2>
+    <p class="portal__introduction-text">
+      Existem 5 variantes de alertas, cada uma com uma cor e ícone semântico associado.
+    </p>
+
+    <h3 class="portal__section-title">Note (Observação)</h3>
+    {{ ui.alert(type='note', title='Observação', text='Informação que o aluno deve notar mesmo passando o olho.') }}
+
+    <h3 class="portal__section-title">Tip (Dica)</h3>
+    {{ ui.alert(type='tip', title='Dica', text='Informação opcional para ajudar o aluno a ter mais sucesso.') }}
+
+    <h3 class="portal__section-title">Information (Informação)</h3>
+    {{ ui.alert(type='information', title='Informação', text='Informação essencial para o aluno seguir sem travar.') }}
+
+    <h3 class="portal__section-title">Caution (Cuidado)</h3>
+    {{ ui.alert(type='caution', title='Cuidado', text='Possíveis consequências negativas de uma ação.') }}
+
+    <h3 class="portal__section-title">Warning (Aviso)</h3>
+    {{ ui.alert(type='warning', title='Aviso', text='Consequências potencialmente perigosas de uma ação.') }}
 
     <hr class="portal__divider">
 
-    <h3 class="portal__section-title">Parâmetros Disponíveis</h3>
+    <!-- 2. IMPLEMENTATION -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-code"></i> Como Utilizar</h2>
+
+    {{ ui.alert(
+      type='tip',
+      title='Macro Nunjucks',
+      text='Para usar este componente, importe a biblioteca de macros no topo do seu arquivo.'
+    ) }}
+
+    <h3 class="portal__section-title">1. Importação</h3>
+    {% set language = 'markdown' %}
+    {% set code = '{% import "macros/ui.njk" as ui %}' %}
+    {% include "partials/code-block.njk" %}
+
+    <h3 class="portal__section-title">2. Uso Básico</h3>
+    {% set language = 'markdown' %}
+    {% set code = '{{ ui.alert(\n  type="note",\n  title="Título do Alerta",\n  text="Conteúdo do alerta."\n) }}' %}
+    {% include "partials/code-block.njk" %}
+
+    <h3 class="portal__section-title">3. Parâmetros Disponíveis</h3>
     <ul class="portal__features-list">
-        <li><strong>type</strong> (obrigatório): Tipo do alerta (note, tip, important, caution, warning)</li>
-        <li><strong>title</strong> (obrigatório): Título do alerta</li>
-        <li><strong>text</strong> (obrigatório): Texto exibido no alerta</li>
+        <li><strong>type</strong> (opcional): Tipo do alerta. Padrão: <code>'note'</code>.
+            <ul>
+                <li><code>'note'</code> (Roxo)</li>
+                <li><code>'tip'</code> (Verde)</li>
+                <li><code>'information'</code> (Ciano)</li>
+                <li><code>'caution'</code> (Vermelho)</li>
+                <li><code>'warning'</code> (Amarelo/Ouro)</li>
+            </ul>
+        </li>
+        <li><strong>title</strong> (opcional): Título do alerta. Se omitido, usa o padrão do tipo (ex: "Observação").</li>
+        <li><strong>text</strong> (obrigatório): Conteúdo do alerta. Aceita HTML.</li>
+        <li><strong>icon</strong> (opcional): Classe Font Awesome para substituir o ícone padrão (ex: <code>'fa-solid fa-star'</code>).</li>
+        <li><strong>ariaLabel</strong> (opcional): Texto para leitores de tela.</li>
     </ul>
 
     <hr class="portal__divider">
+
+    <!-- 3. ADVANCED -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-sliders"></i> Exemplos Avançados</h2>
+
+    <h3 class="portal__section-title">Ícone Customizado</h3>
+    <p class="portal__introduction-text">
+      Você pode substituir o ícone padrão passando uma classe do Font Awesome no parâmetro <code>icon</code>.
+    </p>
     
-    <h3 class="portal__section-title">Exemplo de Código do Componente</h3>
-    
+    {{ ui.alert(
+      type='tip',
+      title='Pro Tip',
+      text='Você pode customizar o ícone usando qualquer ícone do Font Awesome.',
+      icon='fa-solid fa-star'
+    ) }}
+
     {% set language = 'markdown' %}
-    {% set code = '{% set type = "note" %}\n{% set title = "Observação" %}\n{% set text = "Informação que o aluno deve notar mesmo passando o olho." %}\n{% include "partials/alert.njk" %}' %}
+    {% set code = '{{ ui.alert(\n  type="tip",\n  title="Pro Tip",\n  text="Texto com ícone customizado.",\n  icon="fa-solid fa-star"\n) }}' %}
     {% include "partials/code-block.njk" %}
 
-    <hr class="portal__divider">
-
-    <h2 class="portal__section-title"><i class="fa-solid fa-circle"></i> Exemplo de Uso do Componente: Alertas</h2>
-
-    <h3 class="portal__section-title">Alert Note (Observação - Cyan)</h3>
-    {% set type = 'note' %}
-    {% set title = 'Observação' %}
-    {% set text = 'Informação que o aluno deve notar mesmo passando o olho.' %}
-    {% include "partials/alert.njk" %}
-
-    <h3 class="portal__section-title">Alert Tip (Dica - Violet)</h3>
-    {% set type = 'tip' %}
-    {% set title = 'Dica' %}
-    {% set text = 'Informação opcional para ajudar o aluno a ter mais sucesso.' %}
-    {% include "partials/alert.njk" %}
-
-    <h3 class="portal__section-title">Alert Information (Informação - Magenta)</h3>
-    {% set type = 'information' %}
-    {% set title = 'Informação' %}
-    {% set text = 'Informação essencial para o aluno seguir sem travar.' %}
-    {% include "partials/alert.njk" %}
-
-    <h3 class="portal__section-title">Alert Caution (Cuidado - Vermelho)</h3>
-    {% set type = 'caution' %}
-    {% set title = 'Cuidado' %}
-    {% set text = 'Possíveis consequências negativas de uma ação.' %}
-    {% include "partials/alert.njk" %}
-
-    <h3 class="portal__section-title">Alert Warning (Aviso - Ouro)</h3>
-    {% set type = 'warning' %}
-    {% set title = 'Aviso' %}
-    {% set text = 'Consequências potencialmente perigosas de uma ação.' %}
-    {% include "partials/alert.njk" %}
-
-    <hr class="portal__divider">
-
-    <h2 class="portal__section-title"><i class="fa-solid fa-triangle-exclamation"></i> Exemplo Avançado: Vários Alertas</h2>
-
-    <h3 class="portal__section-title">Múltiplos Alertas</h3>
-    {% set type = 'note' %}
-    {% set title = 'Primeiro Passo' %}
-    {% set text = 'Comece por aqui.' %}
-    {% include "partials/alert.njk" %}
-
-    {% set type = 'important' %}
-    {% set title = 'Configuração Necessária' %}
-    {% set text = 'Você precisa fazer isso antes de continuar.' %}
-    {% include "partials/alert.njk" %}
-
-    {% set type = 'tip' %}
-    {% set title = 'Pro Tip' %}
-    {% set text = 'Isso pode economizar seu tempo.' %}
-    {% include "partials/alert.njk" %}
-
-    <hr class="portal__divider">
-
-    <h3 class="portal__section-title">Alerta com Ícone Customizado</h3>
-    {% set type = 'tip' %}
-    {% set title = 'Pro Tip' %}
-    {% set text = 'Você pode customizar o ícone usando qualquer ícone do Font Awesome.' %}
-    {% set icon = 'fa-star' %}
-    {% include "partials/alert.njk" %}
-    
 </section>

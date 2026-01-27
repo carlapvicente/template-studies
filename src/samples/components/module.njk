@@ -1,0 +1,66 @@
+---
+layout: layouts/base.njk
+title: Exemplo - Layout de Módulo
+headerType: doc
+asideType: samples
+---
+{% import "macros/ui.njk" as ui %}
+
+<section class="portal__section">
+    <h1 class="portal__section-title">Layout de Módulo</h1>
+    <p class="portal__introduction-text">
+      O layout de módulo é a estrutura principal para o conteúdo educacional. Ele fornece navegação lateral automática, checklist de progresso e estrutura semântica para explicação, exercícios e desafios.
+    </p>
+
+    <hr class="portal__divider">
+
+    <!-- 1. SHOWCASE -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-eye"></i> Exemplo Visual</h2>
+    <p class="portal__introduction-text">
+      Visualize um módulo completo utilizando este layout no link abaixo:
+    </p>
+    
+    <div style="margin: 20px 0;">
+      {{ ui.button(
+        href='/samples/templates/module/',
+        text='Ver Template de Módulo',
+        icon='fa-solid fa-layer-group',
+        variant='module',
+        title='Visualizar exemplo do layout de módulo'
+      ) }}
+    </div>
+
+    <hr class="portal__divider">
+
+    <!-- 2. IMPLEMENTATION -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-code"></i> Como Utilizar</h2>
+
+    {{ ui.alert(
+      type='tip',
+      title='Layout Front Matter',
+      text='Este componente é utilizado definindo o <code>layout</code> no Front Matter do arquivo .njk.'
+    ) }}
+
+    <h3 class="portal__section-title">Configuração Básica (Front Matter)</h3>
+    {% set code = '---\nlayout: layouts/module.njk\npageTitle: "Título da Página"\ntitle: "Título H1 do Módulo"\nmoduleTitle: "Título na Sidebar"\nmoduleHasExplanation: true\nmoduleHasExercises: true\nmoduleHasChallenges: true\nmoduleChecklist:\n  - id: "item-1"\n    label: "Tarefa 1"\n    completed: false\nasideTopButton:\n  title: "Início"\n  href: "/"\n  text: "Voltar"\n  variant: "nav"\n---' %}
+    {{ ui.codeBlock(code=code, language='yaml') }}
+
+    <h3 class="portal__section-title">Parâmetros Disponíveis</h3>
+    <ul class="portal__features-list">
+        <li><strong>layout</strong> (obrigatório): Deve ser <code>layouts/module.njk</code>.</li>
+        <li><strong>moduleTitle</strong> (obrigatório): Título exibido no topo da navegação lateral.</li>
+        <li><strong>moduleHasExplanation</strong> (bool): Habilita o link âncora para <code>#explicacao</code>.</li>
+        <li><strong>moduleHasExercises</strong> (bool): Habilita o link âncora para <code>#exercicios</code>.</li>
+        <li><strong>moduleHasChallenges</strong> (bool): Habilita o link âncora para <code>#desafios</code>.</li>
+        <li><strong>moduleChecklist</strong> (array): Lista de objetos para gerar o checklist lateral.</li>
+        <li><strong>asideTopButton</strong> (object): Configuração do botão de retorno na sidebar.</li>
+    </ul>
+
+    <h3 class="portal__section-title">Estrutura do Conteúdo</h3>
+    <p class="portal__introduction-text">
+      O conteúdo da página deve ser dividido em seções com IDs correspondentes à navegação:
+    </p>
+    {% set code = '<section id="explicacao" class="module__section">\n  ...\n</section>\n\n<section id="exercicios" class="module__section">\n  ...\n</section>' %}
+    {{ ui.codeBlock(code=code, language='html') }}
+
+</section>

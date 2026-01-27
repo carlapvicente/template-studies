@@ -25,11 +25,14 @@ moduleChecklist:
     label: "Completar Exercício 2"
     completed: false
 asideTopButton:
+  title: "Voltar para Início"
   href: "/"
   text: "Início"
   variant: "nav"
+  icon: "fa-solid fa-house"
 permalink: /modules/01-terminal-basics/
 ---
+{% import "macros/ui.njk" as ui %}
 
 <section class="module__content">
   <header class="module__header-content">
@@ -52,6 +55,11 @@ permalink: /modules/01-terminal-basics/
 
   <!-- CTA para próximo módulo -->
   <footer class="module__footer">
-    <a href="{{ '/modules/02-filesystem/' | url }}" class="module__link">Próximo: Level 02 - File System <i class="fa-solid fa-arrow-right"></i></a>
+    {{ ui.button(
+      href='/modules/02-filesystem/',
+      text='Próximo: Level 02 - File System',
+      icon='fa-solid fa-arrow-right',
+      title='Próximo: Level 02 - File System'
+    ) }}
   </footer>
 </section>

@@ -1,52 +1,8 @@
-{# 
-  Alert Component - Template reutilizável para alertas
-  
-  Parâmetros recebidos via context:
-  - type: 'note' | 'tip' | 'important' | 'caution' | 'warning' (padrão: 'note')
-  - title: Título customizado (opcional)
-  - text: Conteúdo do alerta (obrigatório)
-  - icon: Ícone customizado (opcional) - classe Font Awesome (ex: 'fa-circle-info')
-  - ariaLabel: Label para acessibilidade (opcional)
-#}
-
-{% set alertConfig = {
-  'note': {
-    'icon': 'fa-note-sticky',
-    'defaultTitle': 'Observação',
-    'ariaLabel': 'Observação'
-  },
-  'tip': {
-    'icon': 'fa-lightbulb',
-    'defaultTitle': 'Dica',
-    'ariaLabel': 'Dica'
-  },
-  'information': {
-    'icon': 'fa-circle-info',
-    'defaultTitle': 'Informação',
-    'ariaLabel': 'Informação'
-  },
-  'caution': {
-    'icon': 'fa-circle-xmark',
-    'defaultTitle': 'Cuidado',
-    'ariaLabel': 'Cuidado'
-  },
-  'warning': {
-    'icon': 'fa-triangle-exclamation',
-    'defaultTitle': 'Aviso',
-    'ariaLabel': 'Aviso'
-  }
-} %}
-
-{% set alertType = type or 'note' %}
-{% set config = alertConfig[alertType] %}
-{% set alertIcon = icon or config.icon %}
-{% set alertTitle = title or config.defaultTitle %}
-{% set alertAriaLabel = ariaLabel or config.ariaLabel %}
-
-<div class="alert alert--{{ alertType }}" role="note" aria-label="{{ alertAriaLabel }}">
-  <div class="alert__head">
-    <i class="alert__icon fa-solid {{ alertIcon }}" aria-hidden="true"></i>
-    <h3 class="alert__title">{{ alertTitle }}</h3>
-  </div>
-  <p class="alert__text">{{ text | safe }}</p>
-</div>
+{% import "macros/ui.njk" as ui %}
+{{ ui.alert(
+  type = type,
+  title = title,
+  text = text,
+  icon = icon,
+  ariaLabel = ariaLabel
+) }}

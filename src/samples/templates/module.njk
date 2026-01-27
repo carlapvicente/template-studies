@@ -25,11 +25,13 @@ moduleChecklist:
     label: "Completar Exercício 2"
     completed: false
 asideTopButton:
+  title: "Início"
   href: "/"
   text: "Início"
   variant: "nav"
-permalink: /samples/templates/module-template/
+permalink: /samples/templates/module/
 ---
+{% import "macros/ui.njk" as ui %}
 
 <section class="module__content">
   <header class="module__header-content">
@@ -44,10 +46,11 @@ permalink: /samples/templates/module-template/
       Escrever a explicação do módulo aqui.
     </p>
     
-    {% set type = 'tip' %}
-    {% set title = 'Dica' %}
-    {% set text = 'Use o checklist no menu lateral para rastrear seu progresso dentro deste módulo!' %}
-    {% include "partials/alert.njk" %}
+    {{ ui.alert(
+      type='tip',
+      title='Dica',
+      text='Use o checklist no menu lateral para rastrear seu progresso dentro deste módulo!'
+    ) }}
   </section>
 
   <!-- EXERCÍCIOS -->
@@ -81,9 +84,11 @@ permalink: /samples/templates/module-template/
 
   <!-- CTA para próximo módulo -->
   <footer class="module__footer">
-    <a href="/modules/01-terminal-basics/" class="module__next-btn">
-      <span>Próximo: Level 01 - Terminal Basics</span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </a>
+    {{ ui.button(
+      href='/modules/00-onboarding/',
+      text='Próximo: Level 00 - Onboarding',
+      icon='fa-solid fa-arrow-right',
+      title='Ir para o próximo nível'
+    ) }}
   </footer>
 </section>

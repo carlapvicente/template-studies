@@ -1,74 +1,72 @@
 ---
 layout: layouts/base.njk
 title: Exemplo - Bloco de Código
-asideType: home
+headerType: doc
+asideType: samples
 ---
+{% import "macros/ui.njk" as ui %}
+
 <section class="portal__section">
-    <h1 class="portal__section-title">Exemplos de Componentes</h1>
+    <h1 class="portal__section-title">Blocos de Código</h1>
     <p class="portal__introduction-text">
-    Explore exemplos práticos de como usar os componentes disponíveis no site.
+      Utilize blocos de código para exibir comandos de terminal, scripts ou snippets de configuração com destaque visual e diferenciação por linguagem.
     </p>
 
     <hr class="portal__divider">
 
-    <h1 class="portal__section-title">API do Componente</h1>
-    
-    {% set type = 'tip' %}
-    {% set title = 'Uso do Componente' %}
-    {% set text = 'Use os parâmetros language e code para customizar seus blocos de código.' %}
-    {% include "partials/alert.njk" %}
-
-    <hr class="portal__divider">
-
-    <h1 class="portal__section-title">Customização do Bloco de Código</h1>
+    <!-- 1. SHOWCASE -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-eye"></i> Exemplos Visuais</h2>
     <p class="portal__introduction-text">
-    Você pode customizar a linguagem do código alterando o parâmetro `language`:
-    <ul class="portal__features-list">
-        <li><strong>`bash`</strong>: Para comandos Linux/Shell</li>
-        <li><strong>`powershell`</strong>: Para comandos Windows PowerShell</li>
-        <li><strong>`markdown`</strong>: Para conteúdo Markdown</li>
-    </ul>
+      O componente suporta estilização específica para diferentes contextos de terminal e linguagens.
     </p>
 
+    <h3 class="portal__section-title">Bash (Linux/Mac)</h3>
+    {{ ui.codeBlock(
+      language='bash',
+      code='npm install\nnpm run dev\necho "Build completo!"'
+    ) }}
+
+    <h3 class="portal__section-title">PowerShell (Windows)</h3>
+    {{ ui.codeBlock(
+      language='powershell',
+      code='Get-ChildItem -Path C:\\ -Recurse\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned\nWrite-Host "Pronto!"'
+    ) }}
+
+    <h3 class="portal__section-title">Markdown</h3>
+    {{ ui.codeBlock(
+      language='markdown',
+      code='# Titulo\n\n## Subtítulo\n\n- Item 1\n- Item 2\n\n```code\nExemplo\n```'
+    ) }}
+
     <hr class="portal__divider">
 
-    <h2 class="portal__section-title">Parâmetros Disponíveis</h2>
+    <!-- 2. IMPLEMENTATION -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-code"></i> Como Utilizar</h2>
+
+    {{ ui.alert(
+      type='tip',
+      title='Macro Nunjucks',
+      text='Para usar este componente, importe a biblioteca de macros no topo do seu arquivo.'
+    ) }}
+
+    <h3 class="portal__section-title">1. Importação</h3>
+    {% set code = '{% import "macros/ui.njk" as ui %}' %}
+    {{ ui.codeBlock(code=code, language='markdown') }}
+
+    <h3 class="portal__section-title">2. Uso Básico</h3>
+    {% set code = '{{ ui.codeBlock(\n  language="bash",\n  code="echo \'Olá Mundo\'"\n) }}' %}
+    {{ ui.codeBlock(code=code, language='markdown') }}
+
+    <h3 class="portal__section-title">3. Parâmetros Disponíveis</h3>
     <ul class="portal__features-list">
-        <li><strong>language</strong> (obrigatório): Linguagem do código</li>
-        <li><strong>code</strong> (obrigatório): Texto exibido no bloco de código</li>
+        <li><strong>language</strong> (opcional): Define o estilo do cabeçalho do terminal. Padrão: <code>'bash'</code>.
+            <ul>
+                <li><code>'bash'</code>: Exibe <code>$ bash</code> no topo.</li>
+                <li><code>'powershell'</code>: Exibe <code>PS></code> no topo.</li>
+                <li><code>'markdown'</code>: Exibe <code># markdown</code> no topo.</li>
+            </ul>
+        </li>
+        <li><strong>code</strong> (obrigatório): O conteúdo de texto/código a ser exibido.</li>
     </ul>
-
-    <hr class="portal__divider">
-
-    <h2 class="portal__section-title">Exemplo de Código do Componente</h2>
-    
-    {% set language = 'bash' %}
-    {% set code = '{% set language = "bash" %}\n{% set code = "npm install" %}\n{% include "partials/code-block.njk" %}' %}
-    {% include "partials/code-block.njk" %}
-
-    
-
-
-    <hr class="portal__divider">
-
-    <h2 class="portal__section-title"><i class="fa-solid fa-circle"></i> Exemplo de Componente: Bloco de Código</h2>
-
-    <br>
-    
-    <h3 class="portal__section-title">Bloco de Código Bash</h3>
-    {% set language = 'bash' %}
-    {% set code = 'npm install\nnpm run dev\necho "Build completo!"' %}
-    {% include "partials/code-block.njk" %}
-
-    <h3 class="portal__section-title">Bloco de Código PowerShell</h3>
-    {% set language = 'powershell' %}
-    {% set code = 'Get-ChildItem -Path C:\\ -Recurse\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned\nWrite-Host "Pronto!"' %}
-    {% include "partials/code-block.njk" %}
-
-    <h3 class="portal__section-title">Bloco de Código Markdown</h3>
-    {% set language = 'markdown' %}
-    {% set code = '# Titulo\n\n## Subtítulo\n\n- Item 1\n- Item 2\n\n```code\nExemplo\n```' %}
-    {% include "partials/code-block.njk" %}
 
 </section>
-

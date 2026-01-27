@@ -1,48 +1,9 @@
-{# 
-  Button Component - Template reutilizável para botões
-  
-  Parâmetros recebidos via context:
-  - href: URL do link (obrigatório)
-  - text: Texto do botão (obrigatório)
-  - variant: 'nav' | 'module' (padrão: 'module')
-    * 'nav': Estilo da navegação (arredondado 999px)
-    * 'module': Estilo dos cards (arredondado 14px)
-  - icon: Ícone (opcional) - pode ser:
-    * Font Awesome: 'fa-solid fa-check' (será envolvido em <i>)
-  - title: Atributo title para acessibilidade (opcional)
-  - class: Classes customizadas adicionais (opcional)
-#}
-
-{% set buttonVariant = variant or 'module' %}
-{% set buttonText = text or 'Clique aqui' %}
-{% set buttonHref = href or '#' %}
-{% set buttonIcon = icon or '' %}
-{% set buttonTitle = title or '' %}
-{% set buttonClass = class or '' %}
-
-{# Detectar se é ícone Font Awesome (contém 'fa-') ou emoji #}
-{% set isFontAwesome = buttonIcon and buttonIcon.indexOf('fa-') > -1 %}
-
-{% if buttonVariant == 'nav' %}
-  <a href="{{ buttonHref | url }}" class="btn btn--nav {{ buttonClass }}" {% if buttonTitle %}title="{{ buttonTitle }}"{% endif %}>
-    {% if buttonIcon %}
-      {% if isFontAwesome %}
-        <i class="btn__icon {{ buttonIcon }}" aria-hidden="true"></i>
-      {% else %}
-        <span class="btn__icon">{{ buttonIcon }}</span>
-      {% endif %}
-    {% endif %}
-    <span class="btn__text">{{ buttonText }}</span>
-  </a>
-{% else %}
-  <a href="{{ buttonHref | url }}" class="btn btn--module {{ buttonClass }}" {% if buttonTitle %}title="{{ buttonTitle }}"{% endif %}>
-    {% if buttonIcon %}
-      {% if isFontAwesome %}
-        <i class="btn__icon {{ buttonIcon }}" aria-hidden="true"></i>
-      {% else %}
-        <span class="btn__icon">{{ buttonIcon }}</span>
-      {% endif %}
-    {% endif %}
-    <span class="btn__text">{{ buttonText }}</span>
-  </a>
-{% endif %}
+{% import "macros/ui.njk" as ui %}
+{{ ui.button(
+  text = text,
+  href = href,
+  variant = variant,
+  icon = icon,
+  title = title,
+  class = class
+) }}

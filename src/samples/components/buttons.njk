@@ -1,134 +1,90 @@
 ---
 layout: layouts/base.njk
 title: Exemplo - Botões
-asideType: home
+headerType: doc
+asideType: samples
 ---
+{% import "macros/ui.njk" as ui %}
 
 <section class="portal__section">
-    <h1 class="portal__section-title">Exemplos de Componentes</h1>
+    <h1 class="portal__section-title">Botões</h1>
     <p class="portal__introduction-text">
-    Explore exemplos práticos de como usar os componentes disponíveis no site.
+      O componente de botão é fundamental para a navegação e chamadas para ação (CTAs) dentro do portal. 
+      Ele padroniza o estilo visual e garante acessibilidade em diferentes contextos.
     </p>
 
     <hr class="portal__divider">
 
-    <h1 class="portal__section-title">API do Componente</h1>
+    <!-- 1. SHOWCASE -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-eye"></i> Exemplos Visuais</h2>
     
-    {% set type = 'tip' %}
-    {% set title = 'Uso do Componente' %}
-    {% set text = 'Use os parâmetros href, text e variant para customizar seus botões.' %}
-    {% include "partials/alert.njk" %}
+    <!-- Nav Variant -->
+    <h3 class="portal__section-title">Variante: Navegação (`nav`)</h3>
+    <p class="portal__introduction-text">
+      Botões arredondados (pill-shape), ideais para menus laterais, barras de navegação e ações secundárias.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px;">
+      {{ ui.button(href='#', text='Botão Padrão', variant='nav', title='Exemplo de botão nav') }}
+      {{ ui.button(href='#', text='Com Ícone', variant='nav', icon='fa-solid fa-star', title='Exemplo com ícone') }}
+    </div>
+
+    <!-- Module Variant -->
+    <h3 class="portal__section-title">Variante: Módulo (`module`)</h3>
+    <p class="portal__introduction-text">
+      Botões com bordas levemente arredondadas, desenhados para compor cards e seções de conteúdo principal.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px;">
+      {{ ui.button(href='#', text='Acessar Módulo', variant='module', title='Exemplo de botão module') }}
+      {{ ui.button(href='#', text='Próximo Nível', variant='module', icon='fa-solid fa-arrow-right', title='Exemplo com ícone') }}
+    </div>
 
     <hr class="portal__divider">
 
-    <h3 class="portal__section-title">Parâmetros Disponíveis</h3>
+    <!-- 2. IMPLEMENTATION -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-code"></i> Como Utilizar</h2>
+
+    {{ ui.alert(
+      type='tip',
+      title='Macro Nunjucks',
+      text='Para usar este componente, importe a biblioteca de macros no topo do seu arquivo.'
+    ) }}
+
+    <h3 class="portal__section-title">1. Importação</h3>
+    {% set language = 'markdown' %}
+    {% set code = '{% import "macros/ui.njk" as ui %}' %}
+    {% include "partials/code-block.njk" %}
+
+    <h3 class="portal__section-title">2. Uso Básico</h3>
+    {% set language = 'markdown' %}
+    {% set code = '{{ ui.button(\n  href="/caminho/destino/",\n  text="Texto do Botão",\n  variant="nav",\n  icon="fa-solid fa-check",\n  title="Texto de acessibilidade"\n) }}' %}
+    {% include "partials/code-block.njk" %}
+
+    <h3 class="portal__section-title">3. Parâmetros Disponíveis</h3>
     <ul class="portal__features-list">
-        <li><strong>href</strong> (obrigatório): URL do link</li>
-        <li><strong>text</strong> (obrigatório): Texto exibido no botão</li>
-        <li><strong>variant</strong> (padrão: 'module'): 'nav' para navegação ou 'module' para cards</li>
-        <li><strong>icon</strong> (opcional): Ícone antes do texto</li>
-        <li><strong>title</strong> (opcional): Atributo title para acessibilidade</li>
-        <li><strong>class</strong> (opcional): Classes CSS customizadas adicionais</li>
+        <li><strong>href</strong> (obrigatório): URL de destino do link.</li>
+        <li><strong>text</strong> (obrigatório): Texto visível no botão.</li>
+        <li><strong>variant</strong> (opcional): Estilo do botão.
+            <ul>
+                <li><code>'nav'</code>: Arredondado (Padrão para menus).</li>
+                <li><code>'module'</code>: Retangular arredondado (Padrão para cards).</li>
+            </ul>
+        </li>
+        <li><strong>icon</strong> (opcional): Classe do ícone (ex: <code>'fa-solid fa-home'</code>).</li>
+        <li><strong>title</strong> (opcional): Texto descritivo para acessibilidade (tooltip nativo).</li>
+        <li><strong>class</strong> (opcional): Classes CSS adicionais para customização específica.</li>
     </ul>
 
     <hr class="portal__divider">
-    
-    <h3 class="portal__section-title">Exemplo de Código do Componente</h3>
 
-    {% set language = 'markdown' %}
-    {% set code = '{% set href = "/docs/roadmap/" %}\n{% set text = "Roadmap" %}\n{% set variant = "nav" %}\n{% set icon = "fa-solid fa-map" %}\n{% include "partials/button.njk" %}' %}
-    {% include "partials/code-block.njk" %}
-
-    <hr class="portal__divider">
-
-    <h2 class="portal__section-title"><i class="fa-solid fa-circle"></i> Exemplo de Uso do Componente: Botões</h2>
-    <br>
-    
-    <h3 class="portal__section-title">Botão Tipo: Navegação (Nav)</h3>
+    <!-- 3. CONFIGURATION -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-sliders"></i> Configuração via Front Matter</h2>
     <p class="portal__introduction-text">
-    Usado na navegação do aside, com estilo arredondado (border-radius: 999px).
+      Alguns layouts (como <code>base.njk</code> e <code>module.njk</code>) aceitam a configuração de um botão de topo na barra lateral através do Front Matter da página.
     </p>
 
-    <div style="display: flex; flex-direction: column; gap: 10px;">
-      {% set href = '/docs/roadmap/' %}
-      {% set text = 'Roadmap do curso' %}
-      {% set variant = 'nav' %}
-      {% include "partials/button.njk" %}
-
-      {% set href = '/docs/setup/' %}
-      {% set text = 'Setup do ambiente' %}
-      {% set variant = 'nav' %}
-      {% include "partials/button.njk" %}
-
-      {% set href = '/docs/glossary/' %}
-      {% set text = 'Glossário' %}
-      {% set variant = 'nav' %}
-      {% include "partials/button.njk" %}
-    </div>
-
-    <hr class="portal__divider">
-
-    <h3 class="portal__section-title">Botão Tipo: Módulo (Module)</h3>
-    <p class="portal__introduction-text">
-    Usado nos cards de módulos, com estilo menos arredondado (border-radius: 14px).
-    </p>
-
-    <div style="display: flex; flex-direction: column; gap: 10px;">
-      {% set href = '/modules/00-onboarding/' %}
-      {% set text = 'Acessar Módulo' %}
-      {% set variant = 'module' %}
-      {% include "partials/button.njk" %}
-
-      {% set href = '/modules/01-terminal-basics/' %}
-      {% set text = 'Terminal Basics' %}
-      {% set variant = 'module' %}
-      {% include "partials/button.njk" %}
-
-      {% set href = '/modules/02-filesystem/' %}
-      {% set text = 'Filesystem' %}
-      {% set variant = 'module' %}
-      {% include "partials/button.njk" %}
-    </div>
-
-    <hr class="portal__divider">
-
-    <h3 class="portal__section-title">Botões com Ícones</h3>
-    <p class="portal__introduction-text">
-    Você pode adicionar ícones antes do texto do botão usando o parâmetro `icon`.
-    </p>
-
-    <div style="display: flex; flex-direction: column; gap: 10px;">
-      {% set href = '/docs/setup/' %}
-      {% set text = 'Setup do ambiente' %}
-      {% set variant = 'nav' %}
-      {% set icon = 'fa-solid fa-gear' %}
-      {% include "partials/button.njk" %}
-
-      {% set href = '/modules/04-processes/' %}
-      {% set text = 'Gerenciar Processos' %}
-      {% set variant = 'module' %}
-      {% set icon = 'fa-solid fa-bolt' %}
-      {% include "partials/button.njk" %}
-
-      {% set href = '/docs/glossary/' %}
-      {% set text = 'Consultar Glossário' %}
-      {% set variant = 'nav' %}
-      {% set icon = 'fa-solid fa-book' %}
-      {% include "partials/button.njk" %}
-    </div>
-
-    <hr class="portal__divider">
-
-    <h2 class="portal__section-title">Exemplo de Código do Componente: asideTopButton</h2>
-
-    {% set language = 'markdown' %}
-    {% set code = '---\nlayout: layouts/base.njk\ntitle: Minha Página\nasideType: home\nasideTopButton:\n  href: "/minha-secao/"\n  text: "Voltar"\n  icon: "fa-solid fa-arrow-left"\n  variant: "nav"\n---' %}
+    <h3 class="portal__section-title">Exemplo: Botão "Voltar"</h3>
+    {% set language = 'yaml' %}
+    {% set code = '---\nlayout: layouts/base.njk\nasideType: home\nasideTopButton:\n  href: "/docs/"\n  text: "Voltar"\n  icon: "fa-solid fa-arrow-left"\n  variant: "nav"\n  title: "Voltar para a documentação"\n---' %}
     {% include "partials/code-block.njk" %}
-
-    {% set language = 'markdown' %}
-    {% set code = '---\nlayout: layouts/base.njk\ntitle: Guia Setup\nasideType: doc\nasideTopButton:\n  href: "/docs/"\n  text: "Documentação"\n  icon: "fa-solid fa-book"\n  variant: "nav"\n---' %}
-    {% include "partials/code-block.njk" %}
-
-
 
 </section>

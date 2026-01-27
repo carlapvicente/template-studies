@@ -1,12 +1,45 @@
+{% import "macros/ui.njk" as ui %}
+
 <a class="portal__skip-link" href="#main-content">Pular para o conteúdo</a>
 
 <header class="portal__header">
-  <p class="portal__kicker">
-    <a class="portal__home-link" href="{{ '/' | url }}"><i class="fa-brands fa-linux"></i> Linux Studies</a>
-    <span class="portal__kicker-sep">/</span>
-    <span class="portal__kicker-current">Documentação</span>
-  </p>
+  {# Definição dinâmica dos itens do Breadcrumb #}
+  {% set breadcrumbItems = [] %}
+  
+  {% if '/docs/' in page.filePathStem %}
+    {% set breadcrumbItems = [
+      { label: 'Linux Studies', href: '/', icon: 'fa-brands fa-linux' },
+      { label: 'Documentação', href: '/#docs' },
+      { label: title }
+    ] %}
+  {% elif '/modules/' in page.filePathStem %}
+    {% set breadcrumbItems = [
+      { label: 'Linux Studies', href: '/', icon: 'fa-brands fa-linux' },
+      { label: 'Módulos', href: '/#modules' },
+      { label: title }
+    ] %}
+  {% elif '/samples/' in page.filePathStem %}
+    {% if page.filePathStem == '/samples/index' %}
+      {% set breadcrumbItems = [
+        { label: 'Linux Studies', href: '/', icon: 'fa-brands fa-linux' },
+        { label: 'Design System' }
+      ] %}
+    {% else %}
+      {% set breadcrumbItems = [
+        { label: 'Linux Studies', href: '/', icon: 'fa-brands fa-linux' },
+        { label: 'Design System', href: '/samples/' },
+        { label: title }
+      ] %}
+    {% endif %}
+  {% else %}
+    {% set breadcrumbItems = [
+      { label: 'Linux Studies', href: '/', icon: 'fa-brands fa-linux' },
+      { label: title }
+    ] %}
+  {% endif %}
 
+  {{ ui.breadcrumb(breadcrumbItems) }}
+  
   <h1 class="portal__title">{{ title }}</h1>
   <p class="portal__subtitle">{{ subtitle }}</p>
 </header>

@@ -1,0 +1,81 @@
+---
+layout: layouts/base.njk
+title: Exemplo - Checklist
+headerType: doc
+asideType: samples
+---
+{% import "macros/ui.njk" as ui %}
+
+<section class="portal__section">
+    <h1 class="portal__section-title">Exemplos de Componentes</h1>
+    <p class="portal__introduction-text">
+    Explore exemplos práticos de como usar os componentes disponíveis no site.
+    </p>
+
+    <hr class="portal__divider">
+
+    <h1 class="portal__section-title">API do Componente</h1>
+    
+    {{ ui.alert(
+      type='tip',
+      title='Uso do Componente',
+      text='Use a macro <code>ui.checklist</code> para criar listas de tarefas interativas.'
+    ) }}
+
+    <hr class="portal__divider">
+
+    <h3 class="portal__section-title">Parâmetros Disponíveis</h3>
+    <ul class="portal__features-list">
+        <li><strong>items</strong> (obrigatório): Array de objetos contendo:
+            <ul>
+                <li><strong>id</strong>: Identificador único do item</li>
+                <li><strong>label</strong>: Texto do item</li>
+                <li><strong>completed</strong>: Booleano indicando se inicia marcado (opcional)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr class="portal__divider">
+    
+    <h3 class="portal__section-title">Exemplo de Código do Componente</h3>
+
+    {% set language = 'markdown' %}
+    {% set code = '{% import "macros/ui.njk" as ui %}\n\n{% set checklistItems = [\n  { id: "task-1", label: "Ler a documentação", completed: true },\n  { id: "task-2", label: "Praticar os comandos" },\n  { id: "task-3", label: "Realizar o desafio" }\n] %}\n\n{{ ui.checklist(checklistItems) }}' %}
+    {% include "partials/code-block.njk" %}
+
+    <hr class="portal__divider">
+
+    <h2 class="portal__section-title"><i class="fa-solid fa-circle"></i> Exemplo de Uso do Componente: Checklist</h2>
+    <br>
+    
+    <h3 class="portal__section-title">Checklist de Exemplo</h3>
+    {% set items = [
+      { id: 'sample-1', label: 'Item de exemplo 1', completed: true },
+      { id: 'sample-2', label: 'Item de exemplo 2' },
+      { id: 'sample-3', label: 'Item de exemplo 3' }
+    ] %}
+    {{ ui.checklist(items) }}
+
+</section>
+
+{% block scripts %}
+<script>
+  // Script simplificado para funcionamento do exemplo
+  function updateChecklistExample() {
+    const checklist = document.querySelectorAll('.module-checklist__item input[type="checkbox"]');
+    if (checklist.length === 0) return;
+    
+    const checked = document.querySelectorAll('.module-checklist__item input[type="checkbox"]:checked').length;
+    const checklistCount = document.getElementById('checklist-count');
+    
+    if (checklistCount) checklistCount.textContent = checked;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    updateChecklistExample();
+    document.querySelectorAll('.module-checklist__item input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', updateChecklistExample);
+    });
+  });
+</script>
+{% endblock %}

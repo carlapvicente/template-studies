@@ -1,0 +1,41 @@
+{% import "macros/ui.njk" as ui %}
+<aside class="portal__aside" aria-label="Navegação do Design System">
+  {% if asideTopButton %}
+  <div class="aside__top-button">
+    {{ ui.button(
+      href=asideTopButton.href,
+      text=asideTopButton.text,
+      variant=asideTopButton.variant or 'nav',
+      icon=asideTopButton.icon or '',
+      title=asideTopButton.title or ''
+    ) }}
+  </div>
+  {% endif %}
+
+  <nav class="portal__nav" aria-label="Componentes">
+    <h2 class="course__doc-title">Componentes</h2>
+    <ul class="portal__nav-list">
+      <li><a href="{{ '/samples/components/alerts/' | url }}" class="portal__nav-link" title="Alertas">Alertas</a></li>
+      <li><a href="{{ '/samples/components/buttons/' | url }}" class="portal__nav-link" title="Botões">Botões</a></li>
+      <li><a href="{{ '/samples/components/breadcrumb/' | url }}" class="portal__nav-link" title="Breadcrumb">Breadcrumb</a></li>
+      <li><a href="{{ '/samples/components/cards/' | url }}" class="portal__nav-link" title="Cards">Cards</a></li>
+      <li><a href="{{ '/samples/components/checklist/' | url }}" class="portal__nav-link" title="Checklist">Checklist</a></li>
+      <li><a href="{{ '/samples/components/code-block/' | url }}" class="portal__nav-link" title="Code Block">Code Block</a></li>
+    </ul>
+  </nav>
+
+  <nav class="portal__nav" aria-label="Layouts">
+    <h2 class="course__doc-title">Layouts</h2>
+    <ul class="portal__nav-list">
+      <li><a href="{{ '/samples/components/module/' | url }}" class="portal__nav-link" title="Layout de Módulo">Módulo</a></li>
+      <li><a href="{{ '/samples/components/constructions/' | url }}" class="portal__nav-link" title="Página em Construção">Construção</a></li>
+    </ul>
+  </nav>
+
+  <section class="doc-info">
+    <h2 class="doc-info__title">Design System</h2>
+    <p class="doc-info__text">
+      Guia de estilos e componentes do Linux Studies.
+    </p>
+  </section>
+</aside>

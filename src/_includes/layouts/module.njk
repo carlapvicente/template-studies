@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    {% include "partials/head.njk" %}
-  </head>
+{% extends "layouts/base.njk" %}
+{% import "macros/ui.njk" as ui %}
 
-  <body>
-    {% include "partials/header-doc.njk" %}
-
-    <div class="portal__layout">
-      <!-- ASIDE com Checklist -->
-      <aside class="portal__aside" aria-label="Navegação do módulo">
+{% block aside %}
+  <aside class="portal__aside" aria-label="Navegação do módulo">
         {% if asideTopButton %}
         <div class="aside__top-button">
-          {% set href = asideTopButton.href %}
-          {% set text = asideTopButton.text %}
-          {% set variant = asideTopButton.variant or 'nav' %}
-          {% set icon = asideTopButton.icon or '' %}
-          {% include "partials/button.njk" %}
+          {{ ui.button(
+            href=asideTopButton.href,
+            text=asideTopButton.text,
+            variant=asideTopButton.variant or 'nav',
+            icon=asideTopButton.icon or '',
+            title=asideTopButton.title or ''
+          ) }}
         </div>
         {% endif %}
 
@@ -43,7 +38,7 @@
 
         <!-- Info -->
         <section class="module-info">
-          <h2 class="module-info__title">Progressão</h2>
+          <h2 class="module-info__title">Seu progresso</h2>
           <div class="module-progress-mini">
             <div class="module-progress-mini__bar">
               <div class="module-progress-mini__fill" id="module-progress-bar" style="width: 0%"></div>
@@ -51,18 +46,11 @@
             <p class="module-progress-mini__text"><span id="module-progress-text">0</span>% completo</p>
           </div>
         </section>
-      </aside>
+  </aside>
+{% endblock %}
 
-      <!-- MAIN CONTENT -->
-      <main id="main-content" class="portal__main">
-        {{ content | safe }}
-      </main>
-    </div>
-
-    {% include "partials/footer.njk" %}
-
-    <!-- Script de progresso do módulo -->
-    <script>
+{% block scripts %}
+  <script>
       // Atualizar barra de progresso do módulo
       function updateModuleProgress() {
         const checklist = document.querySelectorAll('.module-checklist__item input[type="checkbox"]');
@@ -73,6 +61,9 @@
         
         const progressBar = document.getElementById('module-progress-bar');
         const progressText = document.getElementById('module-progress-text');
+        const checklistCount = document.getElementById('checklist-count');
+        
+        if (checklistCount) checklistCount.textContent = checked;
         
         if (progressBar) progressBar.style.width = percentage + '%';
         if (progressText) progressText.textContent = percentage;
@@ -107,6 +98,5 @@
           cb.addEventListener('change', updateModuleProgress);
         });
       });
-    </script>
-  </body>
-</html>
+  </script>
+{% endblock %}

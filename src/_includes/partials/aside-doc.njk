@@ -1,11 +1,14 @@
+{% import "macros/ui.njk" as ui %}
 <aside class="portal__aside" aria-label="Navegação da documentação">
   {% if asideTopButton %}
   <div class="aside__top-button">
-    {% set href = asideTopButton.href %}
-    {% set text = asideTopButton.text %}
-    {% set variant = asideTopButton.variant or 'nav' %}
-    {% set icon = asideTopButton.icon or '' %}
-    {% include "partials/button.njk" %}
+    {{ ui.button(
+      href=asideTopButton.href,
+      text=asideTopButton.text,
+      variant=asideTopButton.variant or 'nav',
+      icon=asideTopButton.icon or '',
+      title=asideTopButton.title or ''
+    ) }}
   </div>
   {% endif %}
 
@@ -14,14 +17,14 @@
     <ul class="portal__nav-list">
 
       <li>
-        <a href="{{ '/docs/setup/' | url }}" class="portal__nav-link"
+        <a href="{{ '/docs/setup/' | url }}" class="portal__nav-link" title="Pré-requisitos"
           {% if page.filePathStem == '/docs/setup' %}aria-current="page"{% endif %}>
           Pré-requisitos
         </a>
       </li>
 
       <li>
-        <a href="{{ '/docs/glossary/' | url }}" class="portal__nav-link"
+        <a href="{{ '/docs/glossary/' | url }}" class="portal__nav-link" title="Glossário"
           {% if page.filePathStem == '/docs/glossary' %}aria-current="page"{% endif %}>
           Glossário
         </a>

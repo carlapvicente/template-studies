@@ -1,37 +1,101 @@
 ---
 layout: layouts/base.njk
-title: Exemplos de Componentes
-asideType: home
+pageTitle: Linux Studies - Design System
+title: Design System
+headerType: doc
+asideType: samples
 asideTopButton:
+  title: "Voltar para Início"
   href: "/"
   text: "Início"
   variant: "nav"
+  icon: "fa-solid fa-house"
 ---
+{% import "macros/ui.njk" as ui %}
+
 <section class="portal__section">
-    <h1 class="portal__section-title">Exemplos de Componentes</h1>
+    <h1 class="portal__section-title">Design System & Samples</h1>
     <p class="portal__introduction-text">
-    Explore exemplos práticos de como usar os componentes disponíveis no site.
+      Bem-vindo à biblioteca de componentes do Linux Studies. Aqui você encontra a documentação e exemplos visuais de todos os elementos de interface e layouts utilizados no projeto.
     </p>
 
     <hr class="portal__divider">
 
-    <h1 class="portal__section-title">Componentes Disponíveis</h1>
+    <div style="display: grid; gap: 40px;">
+      
+      <!-- COMPONENTES -->
+      <div>
+        <h2 class="portal__section-title"><i class="fa-solid fa-cubes"></i> Componentes UI</h2>
+        <p class="portal__introduction-text">Elementos reutilizáveis de interface.</p>
+        
+        <ul class="portal__features-list">
+            <li>
+              <strong><a href="{{ '/samples/components/alerts/' | url }}">Alertas</a></strong>
+              <br><span style="font-size: 0.9em; opacity: 0.8;">Mensagens de destaque (Note, Tip, Warning, etc).</span>
+            </li>
+            <li>
+              <strong><a href="{{ '/samples/components/buttons/' | url }}">Botões</a></strong>
+              <br><span style="font-size: 0.9em; opacity: 0.8;">Estilos de botões para navegação e ações.</span>
+            </li>
+            <li>
+              <strong><a href="{{ '/samples/components/breadcrumb/' | url }}">Breadcrumb</a></strong>
+              <br><span style="font-size: 0.9em; opacity: 0.8;">Navegação estrutural (trilha de migalhas).</span>
+            </li>
+            <li>
+              <strong><a href="{{ '/samples/components/cards/' | url }}">Cards</a></strong>
+              <br><span style="font-size: 0.9em; opacity: 0.8;">Cards de módulos da página inicial.</span>
+            </li>
+            <li>
+              <strong><a href="{{ '/samples/components/checklist/' | url }}">Checklist</a></strong>
+              <br><span style="font-size: 0.9em; opacity: 0.8;">Lista de tarefas interativa para módulos.</span>
+            </li>
+            <li>
+              <strong><a href="{{ '/samples/components/code-block/' | url }}">Code Block</a></strong>
+              <br><span style="font-size: 0.9em; opacity: 0.8;">Blocos de código com destaque de sintaxe.</span>
+            </li>
+        </ul>
+      </div>
 
-    <ul class="portal__features-list">
-        <li><strong><a href="{{ 'samples/components/alerts/' | url }}">Alertas</a></strong>: (./components/alerts/) - Note, Tip, Important, Caution, Warning</li>
-        <li><strong><a href="{{ 'samples/components/code-block/' | url }}">Bloco de código</a></strong>: (./components/code-block/) - Bash, PowerShell, Markdown</li>
-        <li><strong><a href="{{ 'samples/components/buttons/' | url }}">Botões</a></strong>: (./components/buttons/) - Nav, Module, com ícones</li>
-        <li><strong><a href="{{ 'samples/components/constructions/' | url }}">Conteúdo em Construção</a></strong>: (./components/construction/) - Como utilizar o modelo de página em construção</li>
-        <li><strong><a href="{{ 'samples/components/cards/' | url }}">Cards</a></strong>: (./components/cards/) - (em breve)</li>
-    </ul>
+      <!-- LAYOUTS -->
+      <div>
+        <h2 class="portal__section-title"><i class="fa-solid fa-layer-group"></i> Layouts & Estruturas</h2>
+        <p class="portal__introduction-text">Documentação de layouts de página e configurações.</p>
 
-    <hr class="portal__divider">
+        <ul class="portal__features-list">
+            <li>
+              <strong><a href="{{ '/samples/templates/module-layout/' | url }}">Layout de Módulo</a></strong>
+              <br><span style="font-size: 0.9em; opacity: 0.8;">Estrutura padrão para conteúdo educacional.</span>
+            </li>
+            <li>
+              <strong><a href="{{ '/samples/components/constructions/' | url }}">Página em Construção</a></strong>
+              <br><span style="font-size: 0.9em; opacity: 0.8;">Layout para páginas em desenvolvimento.</span>
+            </li>
+        </ul>
+      </div>
 
-    <h1 class="portal__section-title">Templates Disponíveis</h1>
+      <!-- TEMPLATES -->
+      <div>
+        <h2 class="portal__section-title"><i class="fa-solid fa-window-maximize"></i> Templates (Live Preview)</h2>
+        <p class="portal__introduction-text">Visualização em tela cheia dos layouts.</p>
 
-    <ul class="portal__features-list">
-        <li><strong><a href="{{ 'samples/templates/module-template/' | url }}">Modelo de Módulo</a></strong>: (./templates/module-template/) - Modelo de página de módulo</li>
-        <li><strong><a href="{{ 'samples/templates/construction/' | url }}">Modelo de Conteúdo em Construção</a></strong>: (./templates/construction/) - Modelo de página em construção</li>
-    </ul>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          {{ ui.button(
+            href='/samples/templates/module-template/',
+            text='Template de Módulo',
+            icon='fa-solid fa-book-open',
+            variant='module',
+            title='Ver exemplo vivo do módulo'
+          ) }}
 
+          {{ ui.button(
+            href='/samples/templates/construction/',
+            text='Template Construção',
+            icon='fa-solid fa-hammer',
+            variant='module',
+            title='Ver exemplo vivo da página em construção'
+          ) }}
+        </div>
+      </div>
+
+    </div>
 </section>

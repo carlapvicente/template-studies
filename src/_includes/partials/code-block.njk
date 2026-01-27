@@ -1,9 +1,5 @@
-{# 
-  Code Block Component - Bloco de código reutilizável
-  
-  Parâmetros:
-  - language: 'bash' | 'powershell' | 'markdown' (padrão: 'bash')
-  - code: Conteúdo do código (obrigatório)
-#}
-
-<pre class="terminal__block terminal__block--{{ language or 'bash' }}"><code>{{ code }}</code></pre>
+{% import "macros/ui.njk" as ui %}
+{{ ui.codeBlock(
+  code = code,
+  language = language
+) }}
