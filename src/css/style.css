@@ -187,6 +187,58 @@ button:focus-visible {
   gap: 10px;
 }
 
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.breadcrumb__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb__link {
+  color: var(--cyan);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+  opacity: 0.8;
+}
+
+.breadcrumb__link:hover {
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+  text-decoration: none;
+}
+
+.breadcrumb__separator {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+}
+
+.breadcrumb__current {
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: default;
+}
+
 /* ---------- Aside: Samples Button ---------- */
 .aside__samples-button {
   margin-bottom: 16px;
