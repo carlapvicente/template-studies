@@ -25,6 +25,7 @@
   /* Acento quente - Ouro */
   --accent-gold: #FFD700;
   --caution: rgb(255, 65, 108);
+  --success: rgb(27, 231, 88);
 
   /* Para borders e estados fracos */
   --cyan-muted: rgba(0, 229, 255, 0.25);
@@ -804,17 +805,17 @@ button:focus-visible {
 .module__complete-btn {
   margin-top: 8px;
   padding: 8px 12px;
-  border: 1px solid color-mix(in srgb, var(--cyan), transparent 65%);
-  background: color-mix(in srgb, var(--cyan), transparent 92%);
+  border: 1px solid color-mix(in srgb, var(--success), transparent 65%);
+  background: color-mix(in srgb, var(--success), transparent 92%);
   font-size: 14px;
   color: var(--text);
   border-radius: 8px;
 }
 
 .module__complete-btn:hover {
-  border-color: color-mix(in srgb, var(--cyan), transparent 35%);
-  background: color-mix(in srgb, var(--cyan), transparent 85%);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--cyan), transparent 80%);
+  border-color: color-mix(in srgb, var(--success), transparent 35%);
+  background: color-mix(in srgb, var(--success), transparent 85%);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--success), transparent 80%);
 }
 
 .module__complete-btn:active {
@@ -823,9 +824,9 @@ button:focus-visible {
 
 .module__complete-btn i {
   font-size: 20px;
-  /* color: var(--cyan); */
-  color: rgba(27, 231, 88, 0.733);
-  text-shadow: 0 0 8px rgba(27, 231, 88, 0.4);
+  color: var(--success);
+  text-shadow: 0 0 8px color-mix(in srgb, var(--success), transparent 40%);
+  transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* ---------- Module Complete ---------- */
@@ -996,7 +997,7 @@ button:focus-visible {
 }
 
 .module-checklist__title i {
-  color: var(--cyan);
+  color: var(--success);
 }
 
 .module-checklist__items {
@@ -1016,14 +1017,14 @@ button:focus-visible {
 }
 
 .module-checklist__item:hover {
-  background: color-mix(in srgb, var(--cyan), transparent 92%);
+  background: color-mix(in srgb, var(--success), transparent 92%);
 }
 
 .module-checklist__input {
   cursor: pointer;
   width: 16px;
   height: 16px;
-  accent-color: var(--cyan);
+  accent-color: var(--success);
 }
 
 .module-checklist__label {
@@ -1033,7 +1034,7 @@ button:focus-visible {
 }
 
 .module-checklist__item input:checked + .module-checklist__label {
-  color: var(--cyan);
+  color: var(--success);
   text-decoration: line-through;
   opacity: 0.6;
 }
@@ -1267,9 +1268,9 @@ button:focus-visible {
   text-shadow: 0 0 8px color-mix(in srgb, var(--accent), transparent 75%);
 }
 
-/* Alert: Tip - Cyan */
+/* Alert: Tip - Green */
 .alert--tip {
-  --accent: rgb(27, 231, 88);
+  --accent: var(--success);
 }
 
 .alert--tip .alert__title {
