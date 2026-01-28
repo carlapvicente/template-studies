@@ -57,9 +57,14 @@ asideType: home
   <p class="portal__progress-text"><span id="progress-text">0</span> de 8 módulos completados</p>
   
   <!-- Botão de Reset -->
-  <button class="portal__progress-reset-btn" onclick="resetProgressConfirm();" title="Limpar progresso e reiniciar o curso">
-    <i class="fa-solid fa-arrow-rotate-left"></i> Reiniciar Curso
-  </button>
+  {{ ui.button(
+    text='Reiniciar Curso',
+    href='#',
+    icon='fa-solid fa-arrow-rotate-left',
+    title='Limpar progresso e reiniciar o curso',
+    class='portal__progress-reset-btn',
+    attrs='data-modal-open="reset-modal"'
+  ) }}
 </div>
 </section>
 
@@ -149,29 +154,22 @@ asideType: home
   </ol>
 </section>
 
-<!-- Modal de Reset (HTML) -->
-<div id="reset-modal" class="reset-modal">
-  <div class="reset-modal__overlay"></div>
-  <div class="reset-modal__content">
-    <div class="reset-modal__header">
-      <i class="fa-solid fa-triangle-exclamation"></i>
-      <h2 class="reset-modal__title">Reiniciar Curso</h2>
-    </div>
-    
+{% set resetModalContent %}
     <p class="reset-modal__message">
       Tem certeza que deseja reiniciar o curso? <strong>Todo o seu progresso será apagado</strong> e não poderá ser recuperado.
     </p>
     
     <div class="reset-modal__actions">
-      <button class="reset-modal__btn reset-modal__btn--cancel" onclick="closeResetModal();">
-        <i class="fa-solid fa-xmark"></i> Cancelar
+      <button class="reset-modal__btn reset-modal__btn--cancel" data-modal-close>
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i> Cancelar
       </button>
       <button class="reset-modal__btn reset-modal__btn--confirm" onclick="confirmReset();">
-        <i class="fa-solid fa-arrow-rotate-left"></i> Reiniciar
+        <i class="fa-solid fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar
       </button>
     </div>
-  </div>
-</div>
+{% endset %}
+
+{{ ui.modal(id='reset-modal', title='Reiniciar Curso', content=resetModalContent) }}
 
 <!-- Script para gerenciar progresso na página -->
 <script>
@@ -241,29 +239,18 @@ asideType: home
 
 
 
-  // Abrir modal de reset
-  function resetProgressConfirm() {
-    const modal = document.getElementById('reset-modal');
-    if (modal) {
-      modal.classList.add('show');
-      document.body.style.overflow = 'hidden'; // Evitar scroll
-    }
-  }
-
-  // Fechar modal de reset
-  function closeResetModal() {
-    const modal = document.getElementById('reset-modal');
-    if (modal) {
-      modal.classList.remove('show');
-      document.body.style.overflow = 'auto'; // Restaurar scroll
-    }
-  }
-
   // Confirmar reset
   function confirmReset() {
     window.progressTracker.resetProgress();
     updateProgressDisplay();
-    closeResetModal();
+    
+    // Fechar modal (usando lógica do componente modal.js)
+    const modal = document.getElementById('reset-modal');
+    if (modal) {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
     
     // Feedback visual
     showResetNotification();
@@ -287,24 +274,8 @@ asideType: home
     }, 3000);
   }
 
-  // Fechar modal ao clicar no overlay
   document.addEventListener('DOMContentLoaded', function() {
     updateProgressDisplay();
-    
-    const modal = document.getElementById('reset-modal');
-    if (modal) {
-      const overlay = modal.querySelector('.reset-modal__overlay');
-      if (overlay) {
-        overlay.addEventListener('click', closeResetModal);
-      }
-    }
-  });
-
-  // Fechar modal com ESC
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-      closeResetModal();
-    }
   });
 
   // Atualizar quando progresso muda

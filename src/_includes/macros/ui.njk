@@ -4,13 +4,13 @@
 #}
 
 {# --- Button Macro --- #}
-{% macro button(text='Clique aqui', href='#', variant='module', icon='', title='', class='') %}
+{% macro button(text='Clique aqui', href='#', variant='module', icon='', title='', class='', attrs='') %}
   {% set isFontAwesome = icon and ('fa-' in icon) %}
   {% set btnClass = 'btn--nav' if variant == 'nav' else 'btn--module' %}
   {% set strText = '' ~ text %}
   {% set iconAfter = strText.indexOf('Próximo') == 0 %}
   
-  <a href="{{ href | url }}" class="btn {{ btnClass }} {{ class }}" {% if title %}title="{{ title }}"{% endif %}>
+  <a href="{{ href | url }}" class="btn {{ btnClass }} {{ class }}" {% if title %}title="{{ title }}"{% endif %} {{ attrs | safe }}>
     {% if icon and not iconAfter %}
       {% if isFontAwesome %}
         <i class="btn__icon {{ icon }}" aria-hidden="true"></i>

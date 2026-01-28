@@ -1514,76 +1514,21 @@ button:focus-visible {
 }
 
 /* ---------- Reset Modal ---------- */
-.reset-modal {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 300ms ease;
-}
-
-.reset-modal.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.reset-modal__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
-  cursor: pointer;
-}
-
-.reset-modal__content {
-  position: relative;
+/* Estilização específica para o modal de reset (sobrescreve o genérico) */
+#reset-modal .modal__container {
   max-width: 420px;
-  width: 90%;
-  padding: 28px;
-  background: linear-gradient(135deg, rgba(7, 10, 18, 0.98), rgba(7, 10, 18, 0.95));
   border: 1px solid rgba(255, 45, 170, 0.35);
-  border-radius: var(--radius);
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.4),
     0 0 32px rgba(255, 45, 170, 0.15),
     inset 0 0 20px rgba(255, 45, 170, 0.05);
-  animation: resetModalSlideIn 300ms ease;
 }
 
-@keyframes resetModalSlideIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+#reset-modal .modal__header {
+  border-bottom-color: rgba(255, 45, 170, 0.35);
 }
 
-.reset-modal__header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.reset-modal__header i {
-  font-size: 24px;
-  color: rgba(255, 45, 170, 0.8);
-  text-shadow: 0 0 12px rgba(255, 45, 170, 0.3);
-}
-
-.reset-modal__title {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  color: var(--text);
+#reset-modal .modal__title {
   text-shadow: 0 0 10px color-mix(in srgb, var(--magenta), transparent 85%);
 }
 
@@ -1653,11 +1598,6 @@ button:focus-visible {
 
 /* Responsivo */
 @media (max-width: 600px) {
-  .reset-modal__content {
-    max-width: 95%;
-    padding: 24px;
-  }
-
   .reset-modal__actions {
     flex-direction: column-reverse;
   }
