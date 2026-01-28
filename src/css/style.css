@@ -697,6 +697,17 @@ button:focus-visible {
   color: var(--muted);
 }
 
+.portal__progress-overview--completed {
+  border-color: var(--success);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--success), transparent 80%);
+  animation: progressGlow 2s infinite alternate;
+}
+
+@keyframes progressGlow {
+  from { box-shadow: 0 0 10px color-mix(in srgb, var(--success), transparent 80%); }
+  to { box-shadow: 0 0 25px color-mix(in srgb, var(--success), transparent 50%); }
+}
+
 /* ---------- Module Card ---------- */
 .module__card {
   display: flex;
@@ -1607,6 +1618,25 @@ button:focus-visible {
     width: 100%;
     justify-content: center;
   }
+}
+
+/* ---------- Completion Modal ---------- */
+#completion-modal .modal__container {
+  max-width: 600px;
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 32px rgba(255, 215, 0, 0.15),
+    inset 0 0 20px rgba(255, 215, 0, 0.05);
+}
+
+#completion-modal .modal__header {
+  border-bottom-color: rgba(255, 215, 0, 0.35);
+}
+
+#completion-modal .modal__title {
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent-gold), transparent 85%);
+  color: var(--accent-gold);
 }
 
 /* ---------- Tabs Component ---------- */
