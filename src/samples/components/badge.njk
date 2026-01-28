@@ -1,0 +1,58 @@
+---
+layout: layouts/base.njk
+title: Exemplo - Badge
+headerType: doc
+asideType: samples
+---
+{% import "macros/ui.njk" as ui %}
+
+<section class="portal__section">
+    <h1 class="portal__section-title">Badge (Etiqueta)</h1>
+    <p class="portal__introduction-text">
+      Badges são pequenos rótulos usados para destacar status, categorias ou atributos importantes de um item, como "Novo", "Atualizado" ou "Em Breve".
+    </p>
+
+    <hr class="portal__divider">
+
+    <!-- 1. SHOWCASE -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-eye"></i> Exemplos Visuais</h2>
+    
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px;">
+      {{ ui.badge(text='Padrão', variant='default') }}
+      {{ ui.badge(text='Novo', variant='new', icon='fa-solid fa-star') }}
+      {{ ui.badge(text='Atualizado', variant='updated', icon='fa-solid fa-rotate') }}
+      {{ ui.badge(text='Hot', variant='hot', icon='fa-solid fa-fire') }}
+    </div>
+
+    <h3 class="portal__section-title">Uso em Cards</h3>
+    <div style="max-width: 350px;">
+      <article class="module__card">
+        <div class="module__header">
+          <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+            <p class="module__level">Level 99</p>
+            {{ ui.badge(text='Novo', variant='new') }}
+          </div>
+          <h3 class="module__title" style="margin-top: 10px;">Módulo Exemplo</h3>
+        </div>
+        <p class="module__description">
+          Este é um exemplo de como um badge pode ser posicionado dentro de um card.
+        </p>
+      </article>
+    </div>
+
+    <hr class="portal__divider">
+
+    <!-- 2. IMPLEMENTATION -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-code"></i> Como Utilizar</h2>
+
+    <h3 class="portal__section-title">Código</h3>
+    {% set code = '{{ ui.badge(text="Novo", variant="new", icon="fa-solid fa-star") }}' %}
+    {{ ui.codeBlock(code=code, language='jinja2') }}
+
+    <h3 class="portal__section-title">Parâmetros</h3>
+    <ul class="portal__features-list">
+        <li><strong>text</strong> (obrigatório): O texto exibido no badge.</li>
+        <li><strong>variant</strong> (opcional): Estilo visual. Opções: <code>'default'</code>, <code>'new'</code>, <code>'updated'</code>, <code>'hot'</code>.</li>
+        <li><strong>icon</strong> (opcional): Classe de ícone Font Awesome.</li>
+    </ul>
+</section>

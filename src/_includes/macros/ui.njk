@@ -232,3 +232,11 @@
   </div>
 </div>
 {% endmacro %}
+
+{# --- Badge Macro --- #}
+{% macro badge(text='Novo', variant='default', icon='') %}
+  <span class="badge badge--{{ variant }}">
+    {% if icon %}<i class="{{ icon }}" aria-hidden="true"></i>{% endif %}
+    {{ text }}
+  </span>
+{% endmacro %}
