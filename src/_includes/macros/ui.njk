@@ -214,3 +214,21 @@
   {% endfor %}
 </div>
 {% endmacro %}
+
+{# --- Modal Macro --- #}
+{% macro modal(id, title='', content='') %}
+<div id="{{ id }}" class="modal" aria-hidden="true">
+  <div class="modal__overlay" tabindex="-1" data-modal-close></div>
+  <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="{{ id }}-title">
+    <header class="modal__header">
+      <h2 id="{{ id }}-title" class="modal__title">{{ title }}</h2>
+      <button type="button" class="modal__close" aria-label="Fechar" data-modal-close>
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </header>
+    <div class="modal__content">
+      {{ content | safe }}
+    </div>
+  </div>
+</div>
+{% endmacro %}

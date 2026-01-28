@@ -1,0 +1,55 @@
+---
+layout: layouts/base.njk
+title: Exemplo - Modal
+headerType: doc
+asideType: samples
+---
+{% import "macros/ui.njk" as ui %}
+
+<section class="portal__section">
+    <h1 class="portal__section-title">Modal</h1>
+    <p class="portal__introduction-text">
+      O componente Modal é utilizado para exibir conteúdo em uma camada superior à página atual, focando a atenção do usuário em uma informação ou ação específica.
+    </p>
+
+    <hr class="portal__divider">
+
+    <!-- 1. SHOWCASE -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-eye"></i> Exemplo Visual</h2>
+    
+    <p>Clique no botão abaixo para abrir o modal de exemplo.</p>
+
+    <button class="btn btn--module" data-modal-open="demo-modal">
+      <i class="fa-solid fa-window-restore"></i> Abrir Modal
+    </button>
+
+    {% set modalContent %}
+      <p>Este é um exemplo de conteúdo dentro do modal.</p>
+      {{ ui.alert(type='information', text='Modais são ótimos para avisos importantes ou formulários rápidos.') }}
+      <p>Você pode fechar este modal clicando no "X", no fundo escuro ou pressionando ESC.</p>
+    {% endset %}
+
+    {{ ui.modal(id='demo-modal', title='Título do Modal', content=modalContent) }}
+
+    <hr class="portal__divider">
+
+    <!-- 2. IMPLEMENTATION -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-code"></i> Como Utilizar</h2>
+
+    <h3 class="portal__section-title">1. Criar o Modal</h3>
+    <p>Use a macro <code>ui.modal</code> para definir a estrutura do modal na página.</p>
+    {% set code = '{% set myContent %}\n  <p>Conteúdo HTML aqui...</p>\n{% endset %}\n\n{{ ui.modal(id="meu-modal-id", title="Meu Título", content=myContent) }}' %}
+    {{ ui.codeBlock(code=code, language='jinja2') }}
+
+    <h3 class="portal__section-title">2. Criar o Gatilho (Trigger)</h3>
+    <p>Adicione o atributo <code>data-modal-open="ID-DO-MODAL"</code> em qualquer botão ou link.</p>
+    {% set code = '<button class="btn" data-modal-open="meu-modal-id">\n  Abrir Modal\n</button>' %}
+    {{ ui.codeBlock(code=code, language='html') }}
+
+    <h3 class="portal__section-title">Parâmetros</h3>
+    <ul class="portal__features-list">
+        <li><strong>id</strong> (obrigatório): ID único do modal (usado pelo gatilho).</li>
+        <li><strong>title</strong> (opcional): Título exibido no cabeçalho do modal.</li>
+        <li><strong>content</strong> (obrigatório): Conteúdo HTML a ser exibido no corpo do modal.</li>
+    </ul>
+</section>
