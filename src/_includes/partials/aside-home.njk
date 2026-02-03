@@ -12,8 +12,10 @@
   </div>
   {% endif %}
 
+  {# Botão Samples: Visível no Template para acesso ao Design System #}
   {# Botão Samples: Apenas em desenvolvimento E NÃO na página /samples/ #}
-  {% if isDevelopment and page.filePathStem != '/samples/index' %}
+  {# {% if isDevelopment and page.filePathStem != '/samples/index' %} #}
+  {% if page.filePathStem != '/samples/index' %}
   <div class="aside__samples-button">
     {{ ui.button(
       href='/samples/',

@@ -1,15 +1,9 @@
 class ProgressTracker {
   constructor() {
-    this.storageKey = 'linux-studies-progress';
+    this.storageKey = 'template-studies-progress';
     this.modules = [
       '00-onboarding',
-      '01-terminal-basics',
-      '02-filesystem',
-      '03-permissions',
-      '04-processes',
-      '05-networking',
-      '06-systemd-logs',
-      '07-admin-essentials'
+      '01-exemplo'
     ];
   }
 

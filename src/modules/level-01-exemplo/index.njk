@@ -1,0 +1,81 @@
+---
+layout: layouts/module.njk
+pageTitle: DevOps Arcade — Exemplo
+title: Level 01 - Título do Módulo
+headerType: doc
+asideType: module
+moduleTitle: "Level 01 - Título Curto"
+moduleHasExplanation: true
+moduleHasExercises: true
+moduleHasChallenges: true
+moduleChecklist:
+  - id: "read-concept"
+    label: "Ler Conceitos"
+    completed: false
+  - id: "exercise-1"
+    label: "Exercício 1"
+    completed: false
+asideTopButton:
+  href: "/"
+  text: "Início"
+  variant: "nav"
+permalink: /modules/01-exemplo/
+---
+{% import "macros/ui.njk" as ui %}
+
+<section class="module__content">
+  <header class="module__header-content">
+    <h1 class="module__main-title"><i class="fa-solid fa-book-open"></i> Introdução do Módulo</h1>
+    <p class="module__subtitle">
+      Este é um módulo de exemplo (Template). Duplique a pasta deste módulo para criar novos níveis (ex: level-02-topico).
+    </p>
+  </header>
+
+  <!-- EXPLICAÇÃO -->
+  <section id="explicacao" class="module__section">
+    <h2 class="module__section-title"><i class="fa-solid fa-chalkboard-user"></i> Explicação Teórica</h2>
+    <p>
+      Utilize esta seção para explicar os conceitos fundamentais do tópico.
+    </p>
+    
+    {{ ui.alert(
+      type='tip',
+      title='Dica para Criadores',
+      text='Mantenha os parágrafos curtos e use listas para facilitar a leitura.'
+    ) }}
+  </section>
+
+  <!-- EXERCÍCIOS -->
+  <section id="exercicios" class="module__section">
+    <h2 class="module__section-title"><i class="fa-solid fa-pen"></i> Exercícios Práticos</h2>
+    
+    <div class="module__exercise">
+      <h3 class="module__exercise-title">Exercício 1: Prática Guiada</h3>
+      <p>Descreva o passo a passo do que o aluno deve fazer:</p>
+      <ol>
+        <li>Passo um da instrução.</li>
+        <li>Passo dois da instrução.</li>
+      </ol>
+
+      {% set code = 'echo "Exemplo de comando"' %}
+      {{ ui.codeBlock(code=code, language='bash') }}
+    </div>
+  </section>
+
+  <!-- DESAFIOS -->
+  <section id="desafios" class="module__section">
+    <h2 class="module__section-title"><i class="fa-solid fa-trophy"></i> Desafios</h2>
+    <p>Proponha um problema para o aluno resolver sem guia passo a passo.</p>
+  </section>
+
+  <!-- CTA -->
+  <footer class="module__footer">
+    <!-- Aponte o href para o próximo módulo ou para '/' se for o último -->
+    {{ ui.button(
+      href='/',
+      text='Concluir Trilha',
+      icon='fa-solid fa-check',
+      variant='module'
+    ) }}
+  </footer>
+</section>

@@ -4,7 +4,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/css": "css" });
   eleventyConfig.addPassthroughCopy({ "src/js": "js" });
 
-  // Base path: local = "/", GitHub Pages project = "/linux-studies/"
+  // Base path: local = "/", GitHub Pages project = "/template-studies/"
   const baseUrl = process.env.ELEVENTY_BASE_URL || "/";
 
   // Helper para prefixar URLs com base path
@@ -20,10 +20,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("buildTime", new Date().getTime());
 
   // ✨ Excluir samples em produção
-  const isProduction = process.env.ELEVENTY_ENV === "production";
-  if (isProduction) {
-    eleventyConfig.ignores.add("src/samples");
-  }
+  // Comentado para permitir que o Design System (Samples) seja visível no Template em produção
+  // eleventyConfig.ignores.add("src/samples");
 
   return {
     dir: {

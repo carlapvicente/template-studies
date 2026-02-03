@@ -8,32 +8,32 @@
   
   {% if '/docs/' in page.filePathStem %}
     {% set breadcrumbItems = [
-      { label: 'Linux Studies', href: '/', icon: 'fa-brands fa-linux' },
+      { label: 'Início', href: '/', icon: 'fa-solid fa-house' },
       { label: 'Documentação', href: '/#docs' },
       { label: title }
     ] %}
   {% elif '/modules/' in page.filePathStem %}
     {% set breadcrumbItems = [
-      { label: 'Linux Studies', href: '/', icon: 'fa-brands fa-linux' },
+      { label: 'Início', href: '/', icon: 'fa-solid fa-house' },
       { label: 'Módulos', href: '/#modules' },
       { label: title }
     ] %}
   {% elif '/samples/' in page.filePathStem %}
     {% if page.filePathStem == '/samples/index' %}
       {% set breadcrumbItems = [
-        { label: 'Linux Studies', href: '/', icon: 'fa-brands fa-linux' },
+        { label: 'Início', href: '/', icon: 'fa-solid fa-house' },
         { label: 'Design System' }
       ] %}
     {% else %}
       {% set breadcrumbItems = [
-        { label: 'Linux Studies', href: '/', icon: 'fa-brands fa-linux' },
+        { label: 'Início', href: '/', icon: 'fa-solid fa-house' },
         { label: 'Design System', href: '/samples/' },
         { label: title }
       ] %}
     {% endif %}
   {% else %}
     {% set breadcrumbItems = [
-      { label: 'Linux Studies', href: '/', icon: 'fa-brands fa-linux' },
+      { label: 'Início', href: '/', icon: 'fa-solid fa-house' },
       { label: title }
     ] %}
   {% endif %}

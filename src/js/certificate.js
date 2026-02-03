@@ -3,9 +3,9 @@
 const certificateConfig = {
   title: "CERTIFICADO DE CONCLUSÃO",
   subtitle: "Certificamos que",
-  courseName: "Linux Studies - Fundamentos & Prática",
-  message: "Concluiu com êxito a trilha prática, demonstrando competência em terminal, sistema de arquivos, permissões e administração de sistemas Linux.",
-  footer: "DevOps Arcade | Linux Track",
+  courseName: "DevOps Arcade - Template Track",
+  message: "Concluiu com êxito a trilha prática, demonstrando competência nos módulos propostos e completando todos os desafios.",
+  footer: "DevOps Arcade | Education",
   colors: {
     cyan: [0, 229, 255],
     magenta: [255, 45, 170],
@@ -96,5 +96,5 @@ async function generateCertificate(customName) {
   doc.text(certificateConfig.footer, 148.5, 190, { align: "center" });
 
   // Salvar
-  doc.save("certificado-linux-studies.pdf");
+  doc.save("certificado-conclusao.pdf");
 }
