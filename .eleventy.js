@@ -23,6 +23,13 @@ module.exports = function (eleventyConfig) {
   // Comentado para permitir que o Design System (Samples) seja visível no Template em produção
   // eleventyConfig.ignores.add("src/samples");
 
+  // ✨ Coleção automática de módulos
+  eleventyConfig.addCollection("modules", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/modules/*/index.njk")
+      .filter(item => item.data.moduleId) // Garante que tem ID definido
+      .sort((a, b) => a.data.moduleId.localeCompare(b.data.moduleId));
+  });
+
   return {
     dir: {
       input: "src",

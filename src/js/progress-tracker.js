@@ -1,10 +1,8 @@
 class ProgressTracker {
   constructor() {
     this.storageKey = 'template-studies-progress';
-    this.modules = [
-      '00-onboarding',
-      '01-exemplo'
-    ];
+    // Carrega a lista gerada dinamicamente no head.njk
+    this.modules = window.courseModules || [];
   }
 
   markComplete(moduleId) {
