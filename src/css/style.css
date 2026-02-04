@@ -2141,6 +2141,38 @@ button:focus-visible {
   display: none;
 }
 
+
+.quiz__footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 12px;
+}
+
+.quiz__footer[hidden] {
+  display: none;
+}
+
+.quiz__reset-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quiz__reset-btn:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0, 229, 255, 0.05);
+}
 /* ---------- Quiz Score ---------- */
 #quiz-score-display {
   background: rgba(255, 255, 255, 0.05);

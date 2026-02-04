@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const correctMsg = quiz.dataset.correctMsg || 'Correto!';
     const incorrectMsg = quiz.dataset.incorrectMsg || 'Incorreto.';
+    const footer = quiz.querySelector('.quiz__footer');
+    const resetBtn = quiz.querySelector('.quiz__reset-btn');
 
     options.forEach(option => {
       option.addEventListener('click', () => {
@@ -87,7 +89,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Inserir após a opção clicada
         option.insertAdjacentElement('afterend', feedbackDiv);
+
+        // Mostrar botão de reiniciar
+        if (footer) footer.hidden = false;
       });
     });
+
+    // Lógica de Reinício
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        // Se estava resolvido, diminuir pontuação para manter o contador correto
+        if (quiz.classList.contains('is-solved')) {
+          currentScore--;
+          updateScoreDisplay();
+          quiz.classList.remove('is-solved');
+        }
+
+        // Limpar estado das opções
+        options.forEach(option => {
+          option.classList.remove('is-correct', 'is-incorrect');
+          option.disabled = false;
+          const icon = option.querySelector('.quiz__status-icon');
+          if (icon) icon.className = 'quiz__status-icon fa-solid';
+        });
+
+        // Remover mensagens de feedback
+        quiz.querySelectorAll('.quiz__feedback').forEach(el => el.remove());
+
+        // Esconder rodapé novamente
+        if (footer) footer.hidden = true;
+      });
+    }
   });
 });
