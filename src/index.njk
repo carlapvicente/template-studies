@@ -247,6 +247,14 @@ asideType: home
   // Confirmar reset
   function confirmReset() {
     window.progressTracker.resetProgress();
+    
+    // Limpar checklists individuais dos módulos
+    Object.keys(localStorage).forEach(function(key) {
+      if (key.startsWith('module-progress-')) {
+        localStorage.removeItem(key);
+      }
+    });
+
     updateProgressDisplay();
     
     // Fechar modal (usando lógica do componente modal.js)
