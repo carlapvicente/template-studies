@@ -268,3 +268,19 @@
   </span>
 </span>
 {% endmacro %}
+
+{# --- Quiz Macro --- #}
+{% macro quiz(id, question, options=[], correctMessage='Correto! Mandou bem.', incorrectMessage='Ops! Tente novamente.') %}
+<div class="quiz" id="{{ id }}" data-quiz data-correct-msg="{{ correctMessage }}" data-incorrect-msg="{{ incorrectMessage }}">
+  <p class="quiz__question">{{ question }}</p>
+  <div class="quiz__options">
+    {% for option in options %}
+      <button class="quiz__option" type="button" data-correct="{{ option.isCorrect }}">
+        <span class="quiz__option-text">{{ option.text }}</span>
+        <i class="quiz__status-icon fa-solid" aria-hidden="true"></i>
+        <span class="quiz__option-explanation" hidden>{{ option.explanation | safe }}</span>
+      </button>
+    {% endfor %}
+  </div>
+</div>
+{% endmacro %}

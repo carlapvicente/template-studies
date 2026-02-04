@@ -1,0 +1,66 @@
+---
+layout: layouts/base.njk
+title: Exemplo - Quiz
+headerType: doc
+asideType: samples
+---
+{% import "macros/ui.njk" as ui %}
+
+<section class="portal__section">
+    <h1 class="portal__section-title">Quiz</h1>
+    <p class="portal__introduction-text">
+      O componente de Quiz permite criar perguntas de múltipla escolha simples para testar o conhecimento do aluno ao final de uma seção.
+    </p>
+
+    <hr class="portal__divider">
+
+    <!-- 1. SHOWCASE -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-eye"></i> Exemplo Visual</h2>
+    
+    <!-- Score Counter -->
+    <div id="quiz-score-display"></div>
+
+    <h3 class="portal__section-title">Pergunta 1</h3>
+    {% set quizOptions1 = [
+      { text: 'HyperText Markup Language', isCorrect: true, explanation: '<strong>Correto!</strong> HTML é a linguagem de marcação padrão da Web.' },
+      { text: 'HighTech Multi Level', isCorrect: false, explanation: '<strong>Incorreto.</strong> Isso não é uma tecnologia web real.' },
+      { text: 'HyperLink Text Mode', isCorrect: false, explanation: '<strong>Incorreto.</strong> Embora HTML use hiperlinks, o nome não é esse.' }
+    ] %}
+
+    {{ ui.quiz(
+      id='demo-quiz-1',
+      question='O que significa a sigla HTML?',
+      options=quizOptions1
+    ) }}
+
+    <h3 class="portal__section-title">Pergunta 2</h3>
+    {% set quizOptions2 = [
+      { text: 'cd', isCorrect: false, explanation: '<strong>Incorreto.</strong> "cd" (change directory) é usado para navegar entre pastas.' },
+      { text: 'ls', isCorrect: true, explanation: '<strong>Correto!</strong> "ls" (list) exibe os arquivos e pastas do diretório atual.' },
+      { text: 'mkdir', isCorrect: false, explanation: '<strong>Incorreto.</strong> "mkdir" (make directory) cria novas pastas.' }
+    ] %}
+
+    {{ ui.quiz(
+      id='demo-quiz-2',
+      question='Qual comando é usado para listar arquivos no Linux?',
+      options=quizOptions2
+    ) }}
+
+    <hr class="portal__divider">
+
+    <!-- 2. IMPLEMENTATION -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-code"></i> Como Utilizar</h2>
+
+    <h3 class="portal__section-title">Código</h3>
+    {% set code = '{% set myOptions = [\n  { text: "Opção A", isCorrect: true, explanation: "Explicação A" },\n  { text: "Opção B", isCorrect: false, explanation: "Explicação B" }\n] %}\n\n{{ ui.quiz(\n  id="quiz-01",\n  question="Qual a resposta correta?",\n  options=myOptions\n) }}' %}
+    {{ ui.codeBlock(code=code, language='jinja2') }}
+
+    <h3 class="portal__section-title">Parâmetros</h3>
+    <ul class="portal__features-list">
+        <li><strong>id</strong> (obrigatório): ID único para o quiz.</li>
+        <li><strong>question</strong> (obrigatório): O texto da pergunta.</li>
+        <li><strong>options</strong> (obrigatório): Lista de objetos com <code>text</code>, <code>isCorrect</code> e <code>explanation</code>.</li>
+        <li><strong>correctMessage</strong> (opcional): Mensagem de sucesso customizada.</li>
+        <li><strong>incorrectMessage</strong> (opcional): Mensagem de erro customizada.</li>
+    </ul>
+</section>
