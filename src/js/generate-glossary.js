@@ -7,7 +7,8 @@ const OUTPUT_FILE = 'src/_data/glossary.json';
 
 // Regex para capturar {{ ui.tooltip(term='...', definition='...') }}
 // Suporta aspas simples ou duplas e quebras de linha
-const TOOLTIP_REGEX = /ui\.tooltip\s*\(\s*term\s*=\s*(["'])(.*?)\1\s*,\s*definition\s*=\s*(["'])(.*?)\3\s*\)/gs;
+// Atualizado para exigir '{{' inicial para evitar capturar exemplos de código na documentação
+const TOOLTIP_REGEX = /{{\s*ui\.tooltip\s*\(\s*term\s*=\s*(["'])(.*?)\1\s*,\s*definition\s*=\s*(["'])(.*?)\3\s*\)/gs;
 
 async function generateGlossary() {
   console.log('DevOps Arcade: Gerando glossário automático...');
@@ -24,6 +25,11 @@ async function generateGlossary() {
     while ((match = TOOLTIP_REGEX.exec(content)) !== null) {
       const term = match[2];
       const definition = match[4];
+
+      // Ignorar termos de exemplo (como "...") ou vazios
+      if (!term || term === '...' || term.trim() === '') {
+        continue;
+      }
 
       // Armazena no Map para evitar duplicatas (mantém a última definição encontrada)
       // Normaliza a chave para lowercase para evitar duplicatas por caixa alta/baixa

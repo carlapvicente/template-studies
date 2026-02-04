@@ -49,7 +49,7 @@ asideType: samples
     {{ ui.alert(
       type='information',
       title='Geração Automática',
-      text='Todos os termos definidos via <code>ui.tooltip</code> são automaticamente extraídos e adicionados à página de <a href="/docs/glossary/">Glossário</a> durante o build.'
+      text='Todos os termos definidos via <code>ui.tooltip</code> são automaticamente extraídos e adicionados à página de <a href="' ~ ('/docs/glossary/' | url) ~ '">Glossário</a> durante o build.'
     ) }}
 
     <h3 class="portal__section-title">Como funciona?</h3>
