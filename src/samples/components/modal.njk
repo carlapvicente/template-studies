@@ -31,6 +31,39 @@ asideType: samples
 
     {{ ui.modal(id='demo-modal', title='Título do Modal', content=modalContent) }}
 
+    <h3 class="portal__section-title" style="margin-top: 32px;">Modal de Conclusão (Certificado)</h3>
+    <p>Este é o modal exibido quando o aluno completa 100% do curso.</p>
+
+    <button class="btn btn--module" data-modal-open="completion-modal" style="border-color: var(--accent-gold); color: var(--accent-gold);">
+      <i class="fa-solid fa-award"></i> Abrir Modal de Conclusão
+    </button>
+
+    <!-- Modal de Conclusão -->
+    {% set completionModalContent %}
+        <div style="text-align: center; padding: 60px 0;">
+          <i class="fa-solid fa-award fa-beat" style="font-size: 80px; color: var(--accent-gold); margin-bottom: 30px; display: inline-block; text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);"></i>
+          <p class="reset-modal__message" style="font-size: 18px;">
+            Parabéns! Você completou 100% da trilha <strong>DevOps Arcade</strong>.
+          </p>
+          <p class="reset-modal__message">
+            Digite seu nome abaixo para emitir seu certificado:
+          </p>
+          
+          <input type="text" id="certificate-name" class="certificate-input" placeholder="Seu Nome Completo" autocomplete="off">
+          
+          <div class="reset-modal__actions" style="justify-content: center; margin-top: 24px; gap: 10px; flex-wrap: wrap;">
+            <button class="btn" onclick="generateCertificate()" style="border-color: var(--accent-gold); color: #000; background: var(--accent-gold);">
+              <i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Baixar Certificado
+            </button>
+            <button class="btn" data-modal-close style="border-color: rgba(255,255,255,0.2); color: var(--muted); background: transparent;">
+              Fechar
+            </button>
+          </div>
+        </div>
+    {% endset %}
+
+    {{ ui.modal(id='completion-modal', title='Curso Concluído!', content=completionModalContent) }}
+
     <hr class="portal__divider">
 
     <!-- 2. IMPLEMENTATION -->
