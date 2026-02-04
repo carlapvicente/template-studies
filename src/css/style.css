@@ -316,22 +316,37 @@ button:focus-visible {
   gap: 16px;
 }
 
-/* Desktop: sidebar + content */
+/* Tablet/Laptop: sidebar + content */
+@media (min-width: 1024px) {
+  .portal__layout {
+    gap: 20px;
+    grid-template-columns: 300px 1fr;
+  }
+
+  /* Sidebar sticky para acompanhar o scroll */
+  .portal__aside {
+    height: fit-content;
+  }
+
+  /* Sticky apenas para módulos (classe adicionada no layout module.njk) */
+  .portal__aside--sticky {
+    position: sticky;
+    top: 24px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+  }
+}
+
+/* Large Desktop */
 @media (min-width: 1400px) {
   :root {
     --max: 1600px;
   }
 
   .portal__layout {
-    gap: 20px;
-  }
-
-  /* sidebar um pouco maior */
-  .portal__layout {
     grid-template-columns: 360px 1fr;
   }
 }
-
 
 /* ---------- Aside (Guide) ---------- */
 .portal__aside {

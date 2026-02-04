@@ -4,6 +4,7 @@ pageTitle: DevOps Arcade — Template de Módulo
 title: Level XX - Nome do Módulo
 headerType: doc
 asideType: module
+moduleId: sample-template
 moduleTitle: "Level XX - Nome Curto"
 moduleHasExplanation: true
 moduleHasExercises: true
@@ -27,9 +28,30 @@ permalink: /samples/templates/module/
 
 <section class="module__content">
   <header class="module__header-content">
-    <h1 class="module__main-title"><i class="fa-solid fa-rocket"></i> Introdução</h1>
+    <h1 class="module__main-title"><i class="fa-solid fa-rocket"></i> Título do Módulo</h1>
     <p class="module__subtitle">Breve descrição do que será abordado neste módulo.</p>
   </header>
+
+  <!-- VISÃO GERAL -->
+  <section class="module__section">
+    <h2 class="module__section-title"><i class="fa-solid fa-map"></i> Visão Geral</h2>
+    
+    <div style="display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; font-size: 14px;">
+      <span style="display: flex; align-items: center; gap: 8px; color: var(--accent-gold);">
+        <i class="fa-solid fa-clock"></i> <strong>Tempo estimado:</strong> 20 minutos
+      </span>
+      <span style="display: flex; align-items: center; gap: 8px; color: var(--cyan);">
+        <i class="fa-solid fa-terminal"></i> <strong>Comandos:</strong> <code>ls</code>, <code>cd</code>, <code>mkdir</code>
+      </span>
+    </div>
+
+    <p><strong>O que você vai aprender:</strong></p>
+    <ul class="portal__features-list">
+      <li>Conceito fundamental do tópico.</li>
+      <li>Como utilizar os comandos listados.</li>
+      <li>Boas práticas de uso.</li>
+    </ul>
+  </section>
 
   <!-- EXPLICAÇÃO -->
   <section id="explicacao" class="module__section">
