@@ -1,0 +1,62 @@
+---
+layout: layouts/base.njk
+title: Exemplo - Tooltip (Glossário)
+headerType: doc
+asideType: samples
+---
+{% import "macros/ui.njk" as ui %}
+
+<section class="portal__section">
+    <h1 class="portal__section-title">Tooltip (Glossário Rápido)</h1>
+    <p class="portal__introduction-text">
+      O componente de tooltip é usado para fornecer definições ou explicações curtas para termos técnicos ao passar o mouse ou focar no elemento.
+    </p>
+
+    <hr class="portal__divider">
+
+    <!-- 1. SHOWCASE -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-eye"></i> Exemplo Visual</h2>
+    
+    <p class="portal__introduction-text">
+      Passe o mouse sobre o termo destacado para ver a definição:
+      <br><br>
+      Para iniciar o projeto, você precisa rodar o {{ ui.tooltip(term='SSG', definition='Static Site Generator (Gerador de Site Estático), como o Eleventy, que compila o site em arquivos HTML, CSS e JS puros.') }} e acessar o servidor local.
+    </p>
+
+    <hr class="portal__divider">
+
+    <!-- 2. IMPLEMENTATION -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-code"></i> Como Utilizar</h2>
+
+    <h3 class="portal__section-title">Código</h3>
+    {% set code = '{{ ui.tooltip(term="SSG", definition="Static Site Generator (Gerador de Site Estático).") }}' %}
+    {{ ui.codeBlock(code=code, language='jinja2') }}
+
+    <h3 class="portal__section-title">Parâmetros</h3>
+    <ul class="portal__features-list">
+        <li><strong>term</strong> (obrigatório): O texto que ficará visível e acionará o tooltip.</li>
+        <li><strong>definition</strong> (obrigatório): O conteúdo de texto que aparecerá dentro do tooltip.</li>
+    </ul>
+
+    <hr class="portal__divider">
+
+    <!-- 3. AUTOMATION -->
+    <h2 class="portal__section-title"><i class="fa-solid fa-robot"></i> Automação do Glossário</h2>
+    <p class="portal__introduction-text">
+      Este projeto inclui um script de automação que varre todos os arquivos <code>.njk</code> em busca do uso desta macro.
+    </p>
+
+    {{ ui.alert(
+      type='information',
+      title='Geração Automática',
+      text='Todos os termos definidos via <code>ui.tooltip</code> são automaticamente extraídos e adicionados à página de <a href="/docs/glossary/">Glossário</a> durante o build.'
+    ) }}
+
+    <h3 class="portal__section-title">Como funciona?</h3>
+    <ul class="portal__features-list">
+        <li>O script <code>src/js/generate-glossary.js</code> é executado antes do comando <code>eleventy</code>.</li>
+        <li>Ele procura pelo padrão <code>ui.tooltip(term="...", definition="...")</code>.</li>
+        <li>Os termos encontrados são salvos em <code>src/_data/glossary.json</code>.</li>
+        <li>A página de glossário lê esse arquivo JSON para renderizar a lista.</li>
+    </ul>
+</section>

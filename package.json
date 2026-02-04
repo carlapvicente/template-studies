@@ -5,7 +5,8 @@
     "@11ty/eleventy": "^3.0.0"
   },
   "scripts": {
-    "dev": "eleventy --serve",
-    "build": "eleventy"
+    "generate:glossary": "node src/js/generate-glossary.js",
+    "dev": "npm run generate:glossary && eleventy --serve",
+    "build": "npm run generate:glossary && eleventy"
   }
 }

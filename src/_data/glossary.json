@@ -1,0 +1,6 @@
+[
+  {
+    "term": "SSG",
+    "definition": "Static Site Generator (Gerador de Site Estático), como o Eleventy, que compila o site em arquivos HTML, CSS e JS puros."
+  }
+]

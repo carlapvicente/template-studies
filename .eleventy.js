@@ -22,6 +22,7 @@ module.exports = function (eleventyConfig) {
   // ✨ Excluir samples em produção
   // Comentado para permitir que o Design System (Samples) seja visível no Template em produção
   // eleventyConfig.ignores.add("src/samples");
+  eleventyConfig.ignores.add("src/js/generate-glossary.js");
 
   // ✨ Coleção automática de módulos
   eleventyConfig.addCollection("modules", function(collectionApi) {

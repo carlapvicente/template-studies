@@ -258,3 +258,13 @@
   {% endif %}
 </figure>
 {% endmacro %}
+
+{# --- Tooltip (Glossary) Macro --- #}
+{% macro tooltip(term, definition) %}
+<span class="tooltip" tabindex="0">
+  {{ term }}
+  <span class="tooltip__box" role="tooltip">
+    {{ definition | safe }}
+  </span>
+</span>
+{% endmacro %}

@@ -1,12 +1,48 @@
 ---
-layout: layouts/construction.njk
+layout: layouts/base.njk
 pageTitle: Glossário
 title: Glossário
 subtitle: Definições claras para termos essenciais do Linux.
 headerType: doc
 asideType: doc
-constructionMessage: "Estamos preparando definições claras e concisas para você!"
-constructionEstimate: "Fevereiro de 2026"
-constructionProgress: 50
 permalink: /docs/glossary/
 ---
+{% import "macros/ui.njk" as ui %}
+
+<section class="portal__section">
+  <h1 class="portal__section-title"><i class="fa-solid fa-book-atlas"></i> Termos Técnicos</h1>
+  <p class="portal__introduction-text">
+    Este glossário é gerado automaticamente a partir dos tooltips encontrados nos módulos do curso.
+  </p>
+
+  <hr class="portal__divider">
+
+  {% if glossary and glossary.length > 0 %}
+    <div class="glossary-list">
+      {% for item in glossary %}
+      <div class="glossary-item" id="term-{{ item.term | slugify }}">
+        <h3 class="glossary-term">
+          {{ item.term }}
+          <a href="#term-{{ item.term | slugify }}" class="glossary-anchor" aria-label="Link para este termo">#</a>
+        </h3>
+        <p class="glossary-definition">{{ item.definition | safe }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    {{ ui.alert(
+      type='information',
+      title='Glossário Vazio',
+      text='Ainda não há termos definidos nos módulos. Adicione tooltips nas aulas para popular esta lista.'
+    ) }}
+  {% endif %}
+
+</section>
+
+<style>
+  .glossary-item { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .glossary-term { color: var(--cyan); margin-bottom: 8px; font-size: 1.2em; display: flex; align-items: center; gap: 10px; }
+  .glossary-definition { color: var(--muted); line-height: 1.6; margin: 0; }
+  .glossary-anchor { opacity: 0; color: var(--muted); font-size: 0.8em; transition: opacity 0.2s; text-decoration: none; }
+  .glossary-item:hover .glossary-anchor { opacity: 0.5; }
+</style>
