@@ -47,14 +47,16 @@ asideType: samples
     ) }}
 
     <h3 class="portal__section-title">1. Importação</h3>
-    {% set language = 'markdown' %}
-    {% set code = '{% import "macros/ui.njk" as ui %}' %}
-    {% include "partials/code-block.njk" %}
+    {{ ui.codeBlock(
+      language='markdown',
+      code='{% import "macros/ui.njk" as ui %}'
+    ) }}
 
     <h3 class="portal__section-title">2. Uso Básico</h3>
-    {% set language = 'markdown' %}
-    {% set code = '{{ ui.alert(\n  type="note",\n  title="Título do Alerta",\n  text="Conteúdo do alerta."\n) }}' %}
-    {% include "partials/code-block.njk" %}
+    {{ ui.codeBlock(
+      language='markdown',
+      code='{{ ui.alert(\n  type="note",\n  title="Título do Alerta",\n  text="Conteúdo do alerta."\n) }}'
+    ) }}
 
     <h3 class="portal__section-title">3. Parâmetros Disponíveis</h3>
     <ul class="portal__features-list">
@@ -90,8 +92,9 @@ asideType: samples
       icon='fa-solid fa-star'
     ) }}
 
-    {% set language = 'markdown' %}
-    {% set code = '{{ ui.alert(\n  type="tip",\n  title="Pro Tip",\n  text="Texto com ícone customizado.",\n  icon="fa-solid fa-star"\n) }}' %}
-    {% include "partials/code-block.njk" %}
+    {{ ui.codeBlock(
+      language='markdown',
+      code='{{ ui.alert(\n  type="tip",\n  title="Pro Tip",\n  text="Texto com ícone customizado.",\n  icon="fa-solid fa-star"\n) }}'
+    ) }}
 
 </section>

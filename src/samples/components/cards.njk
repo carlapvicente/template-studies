@@ -38,9 +38,10 @@ asideType: samples
     
     <h3 class="portal__section-title">Exemplo de Código do Componente</h3>
 
-    {% set language = 'markdown' %}
-    {% set code = '{{ ui.moduleCard(\n  id="sample-module",\n  level="Level XX",\n  title="Título do Módulo",\n  description="Descrição do conteúdo do módulo.",\n  href="/modules/exemplo/"\n) }}' %}
-    {% include "partials/code-block.njk" %}
+    {{ ui.codeBlock(
+      language='markdown',
+      code='{{ ui.moduleCard(\n  id="sample-module",\n  level="Level XX",\n  title="Título do Módulo",\n  description="Descrição do conteúdo do módulo.",\n  href="/modules/exemplo/"\n) }}'
+    ) }}
 
     <hr class="portal__divider">
 

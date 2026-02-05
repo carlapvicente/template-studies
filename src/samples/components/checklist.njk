@@ -39,9 +39,10 @@ asideType: samples
     
     <h3 class="portal__section-title">Exemplo de Código do Componente</h3>
 
-    {% set language = 'markdown' %}
-    {% set code = '{% import "macros/ui.njk" as ui %}\n\n{% set checklistItems = [\n  { id: "task-1", label: "Ler a documentação", completed: true },\n  { id: "task-2", label: "Praticar os comandos" },\n  { id: "task-3", label: "Realizar o desafio" }\n] %}\n\n{{ ui.checklist(checklistItems) }}' %}
-    {% include "partials/code-block.njk" %}
+    {{ ui.codeBlock(
+      language='markdown',
+      code='{% import "macros/ui.njk" as ui %}\n\n{% set checklistItems = [\n  { id: "task-1", label: "Ler a documentação", completed: true },\n  { id: "task-2", label: "Praticar os comandos" },\n  { id: "task-3", label: "Realizar o desafio" }\n] %}\n\n{{ ui.checklist(checklistItems) }}'
+    ) }}
 
     <hr class="portal__divider">
 

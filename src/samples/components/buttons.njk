@@ -50,14 +50,16 @@ asideType: samples
     ) }}
 
     <h3 class="portal__section-title">1. Importação</h3>
-    {% set language = 'markdown' %}
-    {% set code = '{% import "macros/ui.njk" as ui %}' %}
-    {% include "partials/code-block.njk" %}
+    {{ ui.codeBlock(
+      language='markdown',
+      code='{% import "macros/ui.njk" as ui %}'
+    ) }}
 
     <h3 class="portal__section-title">2. Uso Básico</h3>
-    {% set language = 'markdown' %}
-    {% set code = '{{ ui.button(\n  href="/caminho/destino/",\n  text="Texto do Botão",\n  variant="nav",\n  icon="fa-solid fa-check",\n  title="Texto de acessibilidade"\n) }}' %}
-    {% include "partials/code-block.njk" %}
+    {{ ui.codeBlock(
+      language='markdown',
+      code='{{ ui.button(\n  href="/caminho/destino/",\n  text="Texto do Botão",\n  variant="nav",\n  icon="fa-solid fa-check",\n  title="Texto de acessibilidade"\n) }}'
+    ) }}
 
     <h3 class="portal__section-title">3. Parâmetros Disponíveis</h3>
     <ul class="portal__features-list">
@@ -83,8 +85,9 @@ asideType: samples
     </p>
 
     <h3 class="portal__section-title">Exemplo: Botão "Voltar"</h3>
-    {% set language = 'yaml' %}
-    {% set code = '---\nlayout: layouts/base.njk\nasideType: home\nasideTopButton:\n  href: "/docs/"\n  text: "Voltar"\n  icon: "fa-solid fa-arrow-left"\n  variant: "nav"\n  title: "Voltar para a documentação"\n---' %}
-    {% include "partials/code-block.njk" %}
+    {{ ui.codeBlock(
+      language='yaml',
+      code='---\nlayout: layouts/base.njk\nasideType: home\nasideTopButton:\n  href: "/docs/"\n  text: "Voltar"\n  icon: "fa-solid fa-arrow-left"\n  variant: "nav"\n  title: "Voltar para a documentação"\n---'
+    ) }}
 
 </section>
