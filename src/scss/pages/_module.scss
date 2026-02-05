@@ -159,6 +159,28 @@
   border-radius: 4px; 
 }
 
+.module__meta-info {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meta-item--time {
+  color: var(--accent-gold);
+}
+
+.meta-item--commands {
+  color: var(--cyan);
+}
+
 .module__exercise-title { 
   margin: 0 0 8px; 
   font-size: 16px; 
