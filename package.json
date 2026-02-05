@@ -3,9 +3,13 @@
   "private": true,
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "sass": "^1.85.0"
+    "sass": "^1.85.0",
+    "stylelint": "^16.2.0",
+    "stylelint-config-standard-scss": "^13.0.0"
   },
   "scripts": {
+    "lint:css": "stylelint \"src/scss/**/*.scss\"",
+    "lint:css:fix": "stylelint \"src/scss/**/*.scss\" --fix",
     "build:css": "sass src/scss/main.scss src/css/style.css --no-source-map",
     "watch:css": "sass --watch src/scss/main.scss src/css/style.css",
     "generate:glossary": "node src/js/generate-glossary.js",
