@@ -40,12 +40,11 @@ asideType: home
       </ul>
     </p>
 
-    {% set type = 'tip' %}
-    {% set title = 'Dica' %}
-    {% set text = 'A trilha é progressiva e cada nível prepara você para o próximo.
-    <strong>Recomendamos que siga a sequência</strong> para consolidar bem os conceitos.<br>
-    Você pode rastrear seu progresso conforme avança pelos módulos. Os módulos completados aparecerão com uma marcação especial!' %}
-    {% include "partials/alert.njk" %}
+    {{ ui.alert(
+      type='tip',
+      title='Dica',
+      text='A trilha é progressiva e cada nível prepara você para o próximo. <strong>Recomendamos que siga a sequência</strong> para consolidar bem os conceitos.<br>Você pode rastrear seu progresso conforme avança pelos módulos. Os módulos completados aparecerão com uma marcação especial!'
+    ) }}
   </section>
 
 <!-- Barra de progresso -->

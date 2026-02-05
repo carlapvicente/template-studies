@@ -14,21 +14,26 @@
 
   <nav class="portal__nav" aria-label="Componentes">
     <h2 class="course__doc-title">Componentes</h2>
+    {% set components = [
+      { name: 'Accordion', path: 'accordion' },
+      { name: 'Alertas', path: 'alerts' },
+      { name: 'Badge', path: 'badge' },
+      { name: 'Botões', path: 'buttons' },
+      { name: 'Breadcrumb', path: 'breadcrumb' },
+      { name: 'Cards', path: 'cards' },
+      { name: 'Certificado', path: 'certificate' },
+      { name: 'Checklist', path: 'checklist' },
+      { name: 'Code Block', path: 'code-block' },
+      { name: 'Modal', path: 'modal' },
+      { name: 'Quiz', path: 'quiz' },
+      { name: 'Tabs', path: 'tabs' },
+      { name: 'Tooltip', path: 'tooltip' },
+      { name: 'Vídeo', path: 'video' }
+    ] %}
     <ul class="portal__nav-list">
-      <li><a href="{{ '/samples/components/accordion/' | url }}" class="portal__nav-link" title="Accordion"{% if page.filePathStem == '/samples/components/accordion' %} aria-current="page"{% endif %}>Accordion</a></li>
-      <li><a href="{{ '/samples/components/alerts/' | url }}" class="portal__nav-link" title="Alertas"{% if page.filePathStem == '/samples/components/alerts' %} aria-current="page"{% endif %}>Alertas</a></li>
-      <li><a href="{{ '/samples/components/badge/' | url }}" class="portal__nav-link" title="Badge"{% if page.filePathStem == '/samples/components/badge' %} aria-current="page"{% endif %}>Badge</a></li>
-      <li><a href="{{ '/samples/components/buttons/' | url }}" class="portal__nav-link" title="Botões"{% if page.filePathStem == '/samples/components/buttons' %} aria-current="page"{% endif %}>Botões</a></li>
-      <li><a href="{{ '/samples/components/breadcrumb/' | url }}" class="portal__nav-link" title="Breadcrumb"{% if page.filePathStem == '/samples/components/breadcrumb' %} aria-current="page"{% endif %}>Breadcrumb</a></li>
-      <li><a href="{{ '/samples/components/cards/' | url }}" class="portal__nav-link" title="Cards"{% if page.filePathStem == '/samples/components/cards' %} aria-current="page"{% endif %}>Cards</a></li>
-      <li><a href="{{ '/samples/components/certificate/' | url }}" class="portal__nav-link" title="Certificado"{% if page.filePathStem == '/samples/components/certificate' %} aria-current="page"{% endif %}>Certificado</a></li>
-      <li><a href="{{ '/samples/components/checklist/' | url }}" class="portal__nav-link" title="Checklist"{% if page.filePathStem == '/samples/components/checklist' %} aria-current="page"{% endif %}>Checklist</a></li>
-      <li><a href="{{ '/samples/components/code-block/' | url }}" class="portal__nav-link" title="Code Block"{% if page.filePathStem == '/samples/components/code-block' %} aria-current="page"{% endif %}>Code Block</a></li>
-      <li><a href="{{ '/samples/components/modal/' | url }}" class="portal__nav-link" title="Modal"{% if page.filePathStem == '/samples/components/modal' %} aria-current="page"{% endif %}>Modal</a></li>
-      <li><a href="{{ '/samples/components/quiz/' | url }}" class="portal__nav-link" title="Quiz"{% if page.filePathStem == '/samples/components/quiz' %} aria-current="page"{% endif %}>Quiz</a></li>
-      <li><a href="{{ '/samples/components/tabs/' | url }}" class="portal__nav-link" title="Tabs"{% if page.filePathStem == '/samples/components/tabs' %} aria-current="page"{% endif %}>Tabs</a></li>
-      <li><a href="{{ '/samples/components/tooltip/' | url }}" class="portal__nav-link" title="Tooltip"{% if page.filePathStem == '/samples/components/tooltip' %} aria-current="page"{% endif %}>Tooltip</a></li>
-      <li><a href="{{ '/samples/components/video/' | url }}" class="portal__nav-link" title="Vídeo"{% if page.filePathStem == '/samples/components/video' %} aria-current="page"{% endif %}>Vídeo</a></li>
+      {% for item in components %}
+      <li><a href="{{ ('/samples/components/' ~ item.path ~ '/') | url }}" class="portal__nav-link" title="{{ item.name }}"{% if page.filePathStem == '/samples/components/' ~ item.path %} aria-current="page"{% endif %}>{{ item.name }}</a></li>
+      {% endfor %}
     </ul>
   </nav>
 

@@ -7,7 +7,7 @@
   {% if moduleId %}
   <div class="module__completion-container">
     <hr class="portal__divider">
-    <button id="btn-complete-module" class="module__complete-btn-large" disabled onclick="toggleCompleteModule()">
+    <button id="btn-complete-module" class="module__complete-btn-large" disabled>
       <i class="fa-regular fa-square"></i>
       <span>Concluir Módulo</span>
     </button>
@@ -65,106 +65,32 @@
 
 {% block scripts %}
   <script>
-      // Atualizar barra de progresso do módulo
-      function updateModuleProgress() {
-        const checklist = document.querySelectorAll('.module-checklist__item input[type="checkbox"]');
-        if (checklist.length === 0) return;
-        
-        const checked = document.querySelectorAll('.module-checklist__item input[type="checkbox"]:checked').length;
-        const percentage = Math.round((checked / checklist.length) * 100);
-        
-        const progressBar = document.getElementById('module-progress-bar');
-        const progressText = document.getElementById('module-progress-text');
-        const checklistCount = document.getElementById('checklist-count');
-        
-        if (checklistCount) checklistCount.textContent = checked;
-        
-        if (progressBar) progressBar.style.width = percentage + '%';
-        if (progressText) progressText.textContent = percentage;
-        
-        // Atualizar estado do botão de conclusão
-        const completeBtn = document.getElementById('btn-complete-module');
-        if (completeBtn) {
-          // Habilita apenas se 100% completo
-          completeBtn.disabled = (percentage < 100);
-          updateCompleteButtonVisuals(); // Garante que o visual (check/uncheck) esteja correto
-        }
+    // Configuração para o script externo
+    window.moduleData = {
+      moduleId: "{{ moduleId }}",
+      filePathStem: "{{ page.filePathStem }}"
+    };
 
-        // Salvar no localStorage
-        const moduleId = '{{ page.filePathStem }}';
-        localStorage.setItem(`module-progress-${moduleId}`, JSON.stringify({
-          checklist: Array.from(checklist).map(cb => cb.checked),
-          percentage: percentage,
-          updatedAt: new Date().toISOString()
-        }));
+    // Função global necessária para o botão de conclusão interagir com o Tracker
+    window.toggleCompleteModule = function() {
+      const tracker = window.progressTracker;
+      const id = '{{ moduleId }}';
+      if (!id || !tracker) return;
+
+      const isComplete = tracker.isComplete(id);
+
+      if (isComplete) {
+        // Desmarcar
+        const progress = tracker.getProgress();
+        delete progress[id];
+        localStorage.setItem(tracker.storageKey, JSON.stringify(progress));
+        tracker.triggerUpdateEvent();
+      } else {
+        // Marcar
+        tracker.markComplete(id);
       }
-
-      // Lógica do Botão Concluir (Sincronizado com Tracker Global)
-      function toggleCompleteModule() {
-        const tracker = window.progressTracker;
-        const id = '{{ moduleId }}';
-        if (!id || !tracker) return;
-
-        const isComplete = tracker.isComplete(id);
-
-        if (isComplete) {
-          // Desmarcar (remover do localStorage global)
-          const progress = tracker.getProgress();
-          delete progress[id];
-          localStorage.setItem(tracker.storageKey, JSON.stringify(progress));
-          tracker.triggerUpdateEvent();
-        } else {
-          // Marcar como concluído
-          tracker.markComplete(id);
-          
-          // Efeito visual simples (Confetti poderia ser adicionado aqui se desejado)
-        }
-        updateCompleteButtonVisuals();
-      }
-
-      function updateCompleteButtonVisuals() {
-        const tracker = window.progressTracker;
-        const id = '{{ moduleId }}';
-        const btn = document.getElementById('btn-complete-module');
-        
-        if (!btn || !id || !tracker) return;
-
-        const isComplete = tracker.isComplete(id);
-        const icon = btn.querySelector('i');
-        const span = btn.querySelector('span');
-
-        if (isComplete) {
-          icon.className = 'fa-solid fa-square-check';
-          span.textContent = 'Módulo Concluído!';
-        } else {
-          icon.className = 'fa-regular fa-square';
-          span.textContent = 'Concluir Módulo';
-        }
-      }
-
-      // Inicializar checklist ao carregar
-      document.addEventListener('DOMContentLoaded', function() {
-        // Carregar progresso salvo
-        const moduleId = '{{ page.filePathStem }}';
-        const saved = localStorage.getItem(`module-progress-${moduleId}`);
-        
-        if (saved) {
-          const data = JSON.parse(saved);
-          const checklist = document.querySelectorAll('.module-checklist__item input[type="checkbox"]');
-          checklist.forEach((cb, idx) => {
-            cb.checked = data.checklist[idx] || false;
-          });
-        }
-        
-        updateModuleProgress();
-        
-        // Listener para mudanças no checklist
-        document.querySelectorAll('.module-checklist__item input[type="checkbox"]').forEach(cb => {
-          cb.addEventListener('change', updateModuleProgress);
-        });
-
-        // Verificar estado inicial do botão global
-        updateCompleteButtonVisuals();
-      });
+      // A atualização visual do botão é tratada pelo listener 'progressUpdated' ou pelo script module-logic.js
+    };
   </script>
+  <script src="{{ '/js/module-logic.js' | url }}"></script>
 {% endblock %}

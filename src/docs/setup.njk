@@ -37,9 +37,10 @@ permalink: /docs/setup/
   <br>
   <h3 class="portal__section-title">Exemplo de Instalação</h3>
   
-  {% set language = 'bash' %}
-  {% set code = 'npm install -g ferramenta-exemplo' %}
-  {% include "partials/code-block.njk" %}
+  {{ ui.codeBlock(
+    language='bash',
+    code='npm install -g ferramenta-exemplo'
+  ) }}
 
   <hr class="portal__divider">
 
