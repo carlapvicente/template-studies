@@ -23,6 +23,7 @@ module.exports = function (eleventyConfig) {
   // Comentado para permitir que o Design System (Samples) seja visível no Template em produção
   // eleventyConfig.ignores.add("src/samples");
   eleventyConfig.ignores.add("src/js/generate-glossary.js");
+  eleventyConfig.ignores.add("src/js/validate-modules.js");
 
   // ✨ Monitorar arquivos Sass
   eleventyConfig.addWatchTarget("src/scss");

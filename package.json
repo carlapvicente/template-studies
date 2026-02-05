@@ -18,13 +18,14 @@
   "scripts": {
     "lint:css": "stylelint \"src/scss/**/*.scss\"",
     "lint:css:fix": "stylelint \"src/scss/**/*.scss\" --fix",
+    "validate:modules": "node src/js/validate-modules.js",
     "build:sass": "sass src/scss/main.scss src/css/style.css --no-source-map",
     "build:postcss": "postcss src/css/style.css --use autoprefixer --replace --no-map",
     "build:css": "npm run build:sass && npm run build:postcss",
     "postbuild:css": "node -e \"console.log('CSS Final Size: ' + (require('fs').statSync('src/css/style.css').size / 1024).toFixed(2) + ' KB')\"",
     "watch:css": "sass --watch src/scss/main.scss src/css/style.css",
     "generate:glossary": "node src/js/generate-glossary.js",
-    "dev": "npm run generate:glossary && npm run build:css && eleventy --serve & npm run watch:css",
-    "build": "npm run generate:glossary && npm run build:css && eleventy"
+    "dev": "npm run validate:modules && npm run generate:glossary && npm run build:css && eleventy --serve & npm run watch:css",
+    "build": "npm run validate:modules && npm run generate:glossary && npm run build:css && eleventy"
   }
 }
