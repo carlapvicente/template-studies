@@ -1,8 +1,16 @@
 {
   "name": "template-studies",
   "private": true,
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "> 0.2%"
+  ],
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
     "sass": "^1.85.0",
     "stylelint": "^16.2.0",
     "stylelint-config-standard-scss": "^13.0.0"
@@ -10,7 +18,10 @@
   "scripts": {
     "lint:css": "stylelint \"src/scss/**/*.scss\"",
     "lint:css:fix": "stylelint \"src/scss/**/*.scss\" --fix",
-    "build:css": "sass src/scss/main.scss src/css/style.css --no-source-map",
+    "build:sass": "sass src/scss/main.scss src/css/style.css --no-source-map",
+    "build:postcss": "postcss src/css/style.css --use autoprefixer --replace --no-map",
+    "build:css": "npm run build:sass && npm run build:postcss",
+    "postbuild:css": "node -e \"console.log('CSS Final Size: ' + (require('fs').statSync('src/css/style.css').size / 1024).toFixed(2) + ' KB')\"",
     "watch:css": "sass --watch src/scss/main.scss src/css/style.css",
     "generate:glossary": "node src/js/generate-glossary.js",
     "dev": "npm run generate:glossary && npm run build:css && eleventy --serve & npm run watch:css",
