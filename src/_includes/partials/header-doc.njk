@@ -15,19 +15,19 @@
   {% elif '/modules/' in page.filePathStem %}
     {% set breadcrumbItems = [
       { label: 'Início', href: '/', icon: 'fa-solid fa-house' },
-      { label: 'Módulos', href: '/#modules' },
+      { label: 'Módulos', href: '/#modules', icon: 'fa-solid fa-layer-group' },
       { label: title }
     ] %}
   {% elif '/samples/' in page.filePathStem %}
     {% if page.filePathStem == '/samples/index' %}
       {% set breadcrumbItems = [
         { label: 'Início', href: '/', icon: 'fa-solid fa-house' },
-        { label: 'Design System' }
+        { label: 'Design System', icon: 'fa-solid fa-pen-ruler' }
       ] %}
     {% else %}
       {% set breadcrumbItems = [
         { label: 'Início', href: '/', icon: 'fa-solid fa-house' },
-        { label: 'Design System', href: '/samples/' },
+        { label: 'Design System', href: '/samples/', icon: 'fa-solid fa-pen-ruler' },
         { label: title }
       ] %}
     {% endif %}
