@@ -1,0 +1,354 @@
+/* ---------- Module Card ---------- */
+.module__card {
+  display: flex; 
+  flex-direction: column; 
+  border-radius: var(--radius); 
+  border: 1px solid color-mix(in srgb, var(--cyan), transparent 65%); 
+  background: linear-gradient(180deg, color-mix(in srgb, var(--cyan), transparent 97%), color-mix(in srgb, var(--cyan), transparent 99%)); 
+  box-shadow: 0 0 18px color-mix(in srgb, var(--cyan), transparent 88%); padding: 16px; 
+  position: relative; 
+  overflow: hidden; 
+  height: 100%; 
+  transition: var(--transition-fast);
+  
+  &::before { 
+    content: ""; 
+    position: absolute; 
+    inset: -2px; 
+    background: radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--cyan), transparent 88%), transparent 65%); 
+    opacity: 0.65; filter: blur(104px); 
+    pointer-events: none; 
+  }
+  
+  &:hover { 
+    transform: translateY(-2px); 
+    border-color: color-mix(in srgb, var(--magenta), transparent 45%); 
+    background: radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--magenta), transparent 88%), transparent 70%); 
+    box-shadow: 0 0 26px color-mix(in srgb, var(--magenta), transparent 80%), 0 0 14px color-mix(in srgb, var(--magenta), transparent 88%); 
+  }
+}
+
+.module__header { 
+  display: grid; 
+  grid-template-columns: auto 1fr; 
+  gap: 12px; 
+  align-items: start; 
+}
+
+.module__level { 
+  margin: 0; 
+  font-size: 12px; 
+  letter-spacing: 1.2px; 
+  text-transform: uppercase; 
+  color: rgb(255 255 255 / 72%); 
+  padding: 6px 10px; border-radius: 999px; 
+  border: 1px solid rgb(255 255 255 / 14%); 
+  background: rgb(0 0 0 / 25%); 
+}
+
+.module__title { 
+  margin: 0; 
+  font-size: 18px; 
+  line-height: 1.2; 
+  letter-spacing: 0.3px; 
+  color: var(--text); 
+}
+
+.module__description { 
+  display: -webkit-box; 
+  -webkit-line-clamp: 7; 
+  line-clamp: 7; 
+  -webkit-box-orient: vertical; 
+  overflow: hidden; 
+  margin: 10px 0 14px; 
+  color: var(--muted); 
+  flex: 1; 
+}
+
+.module__complete-btn {
+  margin-top: 8px; 
+  padding: 8px 12px; 
+  border: 1px solid color-mix(in srgb, var(--success), transparent 65%); 
+  background: color-mix(in srgb, var(--success), transparent 92%); 
+  font-size: 14px; color: var(--text); 
+  border-radius: 8px;
+  
+  &:hover { 
+    border-color: color-mix(in srgb, var(--success), transparent 35%); 
+    background: color-mix(in srgb, var(--success), transparent 85%); 
+    box-shadow: 0 0 12px color-mix(in srgb, var(--success), transparent 80%); 
+  }
+  
+  &:active { 
+    transform: scale(0.98); 
+  }
+
+  i { 
+    font-size: 20px; 
+    color: var(--success); 
+    text-shadow: 0 0 8px color-mix(in srgb, var(--success), transparent 40%); 
+    transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  }
+}
+
+.module__card--completed {
+  border-color: color-mix(in srgb, var(--cyan), transparent 35%); 
+  background: linear-gradient(180deg, color-mix(in srgb, var(--cyan), transparent 92%), color-mix(in srgb, var(--cyan), transparent 97%));
+  
+  &::after { 
+    content: ""; 
+    position: absolute; 
+    top: 8px; 
+    right: 12px; 
+    width: 24px; 
+    height: 24px; 
+    background: color-mix(in srgb, var(--cyan), transparent 80%); 
+    border: 1px solid color-mix(in srgb, var(--cyan), transparent 50%); 
+    border-radius: 50%; 
+    display: none; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 14px; 
+    color: var(--cyan); 
+    text-shadow: 0 0 8px color-mix(in srgb, var(--cyan), transparent 60%); 
+  }
+}
+
+/* ---------- Module Page ---------- */
+.module__content { 
+  display: flex; 
+  flex-direction: column; gap: 24px; 
+}
+
+.module__header-content { 
+  margin-bottom: 16px; 
+}
+
+.module__main-title { 
+  margin: 0 0 8px; 
+  font-size: clamp(28px, 4vw, 40px); 
+  letter-spacing: 0.3px; 
+  text-shadow: 0 0 14px color-mix(in srgb, var(--cyan), transparent 80%); 
+}
+
+.module__subtitle { 
+  margin: 0; 
+  color: var(--muted); 
+  font-size: 16px; 
+}
+
+.module__section { 
+  padding: 20px; 
+  border: 1px solid color-mix(in srgb, var(--cyan), transparent 85%); 
+  border-radius: var(--radius-sm); 
+  background: color-mix(in srgb, var(--cyan), transparent 97%); 
+}
+
+.module__section-title { 
+  margin: 0 0 16px; 
+  font-size: 20px; 
+  font-weight: 600; 
+  color: var(--text); 
+}
+
+.module__exercise { 
+  margin: 16px 0; 
+  padding: 16px; 
+  background: rgb(255 255 255 / 2%); 
+  border-left: 3px solid var(--cyan); 
+  border-radius: 4px; 
+}
+
+.module__exercise-title { 
+  margin: 0 0 8px; 
+  font-size: 16px; 
+  font-weight: 600; 
+  color: var(--text); 
+}
+
+.module__footer { 
+  display: flex; 
+  justify-content: flex-end; 
+  margin-top: 24px; 
+  padding-top: 20px; 
+  border-top: 1px solid color-mix(in srgb, var(--cyan), transparent 85%); 
+}
+
+.module-nav { 
+  margin-bottom: 20px; 
+  padding-bottom: 16px; 
+  border-bottom: 1px solid rgb(255 255 255 / 10%); 
+}
+
+.module-nav__list { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+}
+
+.module-nav__link { 
+  display: block; 
+  padding: 8px 10px; 
+  color: var(--muted); 
+  text-decoration: none; 
+  border-radius: 4px; 
+  transition: var(--transition-fast); 
+  font-size: 13px;
+
+  &:hover { 
+    background: color-mix(in srgb, var(--cyan), transparent 90%); 
+    color: var(--cyan); 
+  } 
+}
+
+.module-checklist { 
+  margin: 20px 0; 
+  padding: 16px; 
+  background: color-mix(in srgb, var(--cyan), transparent 95%); 
+  border: 1px solid color-mix(in srgb, var(--cyan), transparent 80%); 
+  border-radius: var(--radius-sm); 
+}
+
+.module-checklist__title { 
+  margin: 0 0 12px; 
+  font-size: 13px; 
+  letter-spacing: 0.3px; 
+  text-transform: uppercase; 
+  color: var(--muted); 
+  display: flex; 
+  align-items: center; 
+  gap: 6px; 
+  
+  i { 
+    color: var(--success); 
+  } 
+}
+
+.module-checklist__items { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+}
+
+.module-checklist__item { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  cursor: pointer; 
+  padding: 6px; 
+  border-radius: 4px; 
+  transition: background 140ms ease;
+
+  &:hover { 
+    background: color-mix(in srgb, var(--success), transparent 92%); 
+  } 
+}
+
+.module-checklist__input { 
+  cursor: pointer; 
+  width: 16px; 
+  height: 16px; 
+  accent-color: var(--success); 
+}
+
+.module-checklist__label { 
+  font-size: 13px; 
+  color: var(--muted); flex: 1; 
+}
+
+.module-checklist__item input:checked + .module-checklist__label { 
+  color: var(--success); 
+  text-decoration: line-through; 
+  opacity: 0.6; 
+}
+
+.module-checklist__summary { 
+  margin-top: 12px; 
+  padding-top: 12px; 
+  border-top: 1px solid color-mix(in srgb, var(--cyan), transparent 85%); 
+}
+
+.module-checklist__summary-text { 
+  margin: 0; 
+  font-size: 12px; 
+  color: var(--muted); 
+  text-align: center; 
+}
+
+.module-progress-mini { 
+  padding: 12px 0; 
+}
+
+.module-progress-mini__bar { 
+  width: 100%; height: 6px; 
+  background: color-mix(in srgb, var(--cyan), transparent 90%); 
+  border-radius: 3px; 
+  overflow: hidden; 
+  margin-bottom: 8px; 
+}
+
+.module-progress-mini__fill { 
+  height: 100%; 
+  background: linear-gradient(90deg, var(--cyan), var(--magenta)); 
+  box-shadow: 0 0 8px color-mix(in srgb, var(--cyan), transparent 70%); 
+  transition: width 400ms ease; 
+}
+
+.module-progress-mini__text { 
+  margin: 0; 
+  font-size: 12px; 
+  color: var(--muted); 
+  text-align: center; 
+}
+
+.module-info { 
+  padding-top: 16px; 
+  border-top: 1px solid rgb(255 255 255 / 10%); 
+}
+
+.module-info__title { 
+  margin: 0 0 10px; 
+  font-size: 13px; 
+  letter-spacing: 0.3px; 
+  text-transform: uppercase; 
+  color: var(--muted); 
+}
+
+.module__completion-container { 
+  margin-top: 40px; 
+  text-align: center; 
+  padding-bottom: 20px; 
+}
+
+.module__complete-btn-large {
+  display: inline-flex; 
+  align-items: center; 
+  gap: 12px; 
+  padding: 12px 20px; 
+  font-size: 16px; 
+  font-weight: 600; 
+  border-radius: 12px; 
+  border: 1px solid var(--border); 
+  background: rgb(255 255 255 / 5%); 
+  color: var(--muted); cursor: not-allowed; 
+  transition: var(--transition-smooth); 
+  opacity: 0.6;
+  
+  &:not(:disabled) { 
+    cursor: pointer; 
+    opacity: 1; 
+    border-color: var(--success); 
+    background: color-mix(in srgb, var(--success), transparent 90%); 
+    color: var(--success); 
+    box-shadow: 0 0 20px color-mix(in srgb, var(--success), transparent 85%); 
+    
+    &:hover { 
+      transform: translateY(-2px); 
+      background: color-mix(in srgb, var(--success), transparent 80%); 
+      box-shadow: 0 0 30px color-mix(in srgb, var(--success), transparent 75%); 
+    } 
+  }
+}

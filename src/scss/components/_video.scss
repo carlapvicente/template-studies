@@ -1,0 +1,32 @@
+/* ---------- Video ---------- */
+.video-component {
+  margin: 24px 0;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--cyan), transparent 80%);
+  background: rgb(0 0 0 / 20%);
+  box-shadow: 0 0 20px rgb(0 0 0 / 30%);
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.video-caption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.4;
+}

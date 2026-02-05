@@ -1,0 +1,122 @@
+/* ---------- Modals Specifics ---------- */
+#reset-modal .modal__container {
+  max-width: 420px;
+  border: 1px solid rgb(255 45 170 / 35%);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 40%), 0 0 32px rgb(255 45 170 / 15%), inset 0 0 20px rgb(255 45 170 / 5%);
+}
+
+#reset-modal .modal__header {
+  border-bottom-color: rgb(255 45 170 / 35%);
+}
+
+#reset-modal .modal__title {
+  text-shadow: 0 0 10px color-mix(in srgb, var(--magenta), transparent 85%);
+}
+
+.reset-modal__message {
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+
+  strong {
+    color: rgb(255 45 170 / 90%);
+    font-weight: 600;
+  }
+}
+
+.reset-modal__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+
+  @media (width <= 600px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.reset-modal__btn {
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 13px;
+
+  i {
+    font-size: 12px;
+  }
+
+  @media (width <= 600px) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.reset-modal__btn--cancel {
+  border-color: rgb(255 255 255 / 25%);
+  background: rgb(255 255 255 / 8%);
+  color: var(--muted);
+
+  &:hover {
+    border-color: rgb(255 255 255 / 40%);
+    background: rgb(255 255 255 / 12%);
+    color: var(--text);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.reset-modal__btn--confirm {
+  border-color: rgb(255 45 170 / 65%);
+  background: linear-gradient(135deg, rgb(255 45 170 / 20%), rgb(255 45 170 / 10%));
+  color: rgb(255 45 170 / 95%);
+  box-shadow: 0 0 12px rgb(255 45 170 / 15%);
+
+  &:hover {
+    border-color: rgb(255 45 170 / 85%);
+    background: linear-gradient(135deg, rgb(255 45 170 / 30%), rgb(255 45 170 / 20%));
+    box-shadow: 0 0 18px rgb(255 45 170 / 25%);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+#completion-modal .modal__container {
+  max-width: 600px;
+  border: 1px solid rgb(255 215 0 / 35%);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 40%), 0 0 32px rgb(255 215 0 / 15%), inset 0 0 20px rgb(255 215 0 / 5%);
+}
+
+#completion-modal .modal__header {
+  border-bottom-color: rgb(255 215 0 / 35%);
+}
+
+#completion-modal .modal__title {
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent-gold), transparent 85%);
+  color: var(--accent-gold);
+}
+
+.certificate-input {
+  background: rgb(255 255 255 / 5%);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px 16px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 320px;
+  margin: 16px auto;
+  display: block;
+  font-size: 16px;
+  text-align: center;
+  transition: var(--transition-fast);
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 15px rgb(255 215 0 / 15%);
+    background: rgb(255 255 255 / 8%);
+  }
+}

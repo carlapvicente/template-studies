@@ -1,0 +1,76 @@
+@use '../mixins';
+
+/* ---------- Code Block ---------- */
+.terminal__block {
+  background: rgb(0 0 0 / 35%);
+  border: 1px solid rgb(217 217 217 / 35%);
+  border-radius: 14px;
+  padding: 14px;
+  color: rgb(255 255 255 / 90%);
+  box-shadow: 0 0 14px rgb(217 217 217 / 18%);
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.terminal__block--bash::before {
+  content: "$ bash";
+  display: block;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--cyan), transparent 30%);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.terminal__block--powershell::before {
+  content: "PS>";
+  display: block;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--accent-gold), transparent 30%);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.terminal__block--markdown::before {
+  content: "# markdown";
+  display: block;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--magenta), transparent 30%);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.code-block-wrapper {
+  position: relative;
+  margin: 16px 0;
+}
+
+.code-block__copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: 6px;
+  color: var(--muted);
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  &:hover {
+    background: rgb(255 255 255 / 10%);
+    color: var(--cyan);
+    border-color: var(--cyan);
+
+    @include mixins.glow-box(var(--cyan), 15px, 60%);
+  }
+
+  &.copied {
+    color: var(--cyan);
+    border-color: var(--cyan);
+    background: rgb(0 229 255 / 10%);
+  }
+}

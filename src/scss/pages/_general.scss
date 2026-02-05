@@ -1,0 +1,41 @@
+/* ---------- General Page Elements ---------- */
+.portal__section-title {
+  margin: 0 0 10px;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--cyan), transparent 82%);
+}
+
+.portal__introduction-text {
+  line-height: 1.7;
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.portal__divider {
+  border: none;
+  border-top: 1px solid var(--cyan-muted);
+  margin: 24px 0;
+}
+
+.portal__features-list {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+
+  li {
+    margin-bottom: 4px;
+    list-style: none;
+    position: relative;
+    padding-left: 10px;
+
+    &::before {
+      content: "▸";
+      color: var(--accent-gold);
+      position: absolute;
+      left: -12px;
+      text-shadow: 0 0 8px rgb(255 215 0 / 35%);
+    }
+  }
+}

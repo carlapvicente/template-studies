@@ -1,0 +1,75 @@
+/* ---------- Alerts ---------- */
+.alert {
+  position: relative;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  border-left: 4px solid var(--accent);
+  padding: 14px 16px;
+  margin: 16px 0;
+  background: rgb(255 255 255 / 2%);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 18%, transparent), 0 0 6px rgb(0 0 0 / 35%);
+
+  &::before {
+    content: "";
+    position: relative;
+    overflow: hidden;
+    inset: -2px;
+    background: linear-gradient(120deg, transparent 0%, color-mix(in srgb, var(--accent), transparent 82%) 30%, transparent 60%, color-mix(in srgb, var(--accent), transparent 88%) 78%, transparent 100%);
+    opacity: 0.55;
+    filter: blur(14px);
+    pointer-events: none;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.alert__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.alert__icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: color-mix(in srgb, var(--accent), transparent 10%);
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent), transparent 70%);
+}
+
+.alert__title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  line-height: 1;
+  color: color-mix(in srgb, var(--accent), transparent 5%);
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent), transparent 75%);
+}
+
+.alert__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+
+  + .alert__text { margin-top: 8px; }
+}
+
+/* Variantes de Alerta */
+.alert--note { --accent: rgb(124 77 255); }
+.alert--tip { --accent: var(--success); }
+.alert--information { --accent: rgb(0 229 255); }
+.alert--caution { --accent: rgb(255 65 108); }
+.alert--warning { --accent: rgb(255 215 0); }

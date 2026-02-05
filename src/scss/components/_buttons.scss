@@ -1,0 +1,54 @@
+@use '../mixins';
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--violet), transparent 65%);
+  background: color-mix(in srgb, var(--violet), transparent 93%);
+  color: var(--text);
+  border-radius: 14px;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--accent-gold), transparent 35%);
+    background: color-mix(in srgb, var(--magenta), transparent 88%);
+
+    @include mixins.glow-box(var(--accent-gold), 14px, 72%);
+
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent-gold), transparent 25%);
+    outline-offset: 3px;
+
+    @include mixins.glow-box(var(--accent-gold), 20px, 72%);
+  }
+}
+
+.btn--nav {
+  width: 100%;
+  justify-content: center;
+  border-radius: 999px;
+}
+
+.btn--module {
+  margin-top: auto;
+  justify-content: center;
+  border-radius: 14px;
+}
+
+.btn__icon {
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
