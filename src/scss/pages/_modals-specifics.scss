@@ -120,3 +120,23 @@
     background: rgb(255 255 255 / 8%);
   }
 }
+
+.home-completion-content {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.home-completion-icon {
+  font-size: 80px;
+  color: var(--accent-gold);
+  margin-bottom: 30px;
+  display: inline-block;
+  text-shadow: 0 0 30px rgb(255 215 0 / 60%);
+}
+
+.home-completion-actions {
+  justify-content: center;
+  margin-top: 24px;
+  gap: 10px;
+  flex-wrap: wrap;
+}

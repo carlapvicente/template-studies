@@ -6,8 +6,6 @@ asideType: home
 ---
 {% import "macros/ui.njk" as ui %}
 
-<section class="portal__introduction">
-
 <section class="module__content">
   <header class="module__header-content">
     <h1 class="module__main-title"><i class="fa-solid fa-gamepad"></i> Bem-vindo ao Template Studies!</h1>
@@ -29,7 +27,7 @@ asideType: home
   </section>
 
   <!-- SOBRE O PROGRESSO -->
-  <section id="explicacao" class="module__section">
+  <section id="progresso" class="module__section">
     <h2 class="module__section-title"><i class="fa-solid fa-chart-line"></i> Sobre o Progresso</h2>
     <p>
       Para manter seu progresso atualizado:
@@ -114,8 +112,8 @@ asideType: home
 
 <!-- Modal de Conclusão -->
 {% set completionModalContent %}
-    <div style="text-align: center; padding: 60px 0;">
-      <i class="fa-solid fa-award fa-beat" style="font-size: 80px; color: var(--accent-gold); margin-bottom: 30px; display: inline-block; text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);"></i>
+    <div class="home-completion-content">
+      <i class="fa-solid fa-award fa-beat home-completion-icon"></i>
       <p class="reset-modal__message" style="font-size: 18px;">
         Parabéns! Você completou 100% da trilha <strong>DevOps Arcade</strong>.
       </p>
@@ -125,7 +123,7 @@ asideType: home
       
       <input type="text" id="certificate-name" class="certificate-input" placeholder="Seu Nome Completo" autocomplete="off">
       
-      <div class="reset-modal__actions" style="justify-content: center; margin-top: 24px; gap: 10px; flex-wrap: wrap;">
+      <div class="reset-modal__actions home-completion-actions">
         <button class="btn" onclick="generateCertificate()" style="border-color: var(--accent-gold); color: #000; background: var(--accent-gold);">
           <i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Baixar Certificado
         </button>
@@ -142,178 +140,5 @@ asideType: home
 <!-- Confetti Library -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
-<!-- Script para gerenciar progresso na página -->
-<script>
-
-  // Função para toggle de conclusão do módulo
-  function toggleModuleComplete(moduleId) {
-    const tracker = window.progressTracker;
-    const isCurrentlyComplete = tracker.isComplete(moduleId);
-    
-    // Verificar estado antes da mudança
-    const was100 = tracker.getOverallProgress() === 100;
-    
-    if (isCurrentlyComplete) {
-      // Desmarcar
-      const progress = tracker.getProgress();
-      delete progress[moduleId];
-      localStorage.setItem('template-studies-progress', JSON.stringify(progress));
-      tracker.triggerUpdateEvent();
-    } else {
-      // Marcar
-      tracker.markComplete(moduleId);
-    }
-    
-    // Verificar estado após a mudança
-    const is100 = tracker.getOverallProgress() === 100;
-    
-    // Se completou 100% agora, soltar confetes!
-    if (!was100 && is100) {
-      // 1. Abrir modal (efeito de blur aparece)
-      const completionModal = document.getElementById('completion-modal');
-      if (completionModal) {
-        completionModal.classList.add('is-open');
-        completionModal.setAttribute('aria-hidden', 'false');
-        
-        // 2. Rolar para o topo suavemente (enquanto o blur está ativo)
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        
-        // 3. Disparar confetes e travar o scroll após a animação de subida
-        setTimeout(() => {
-          launchConfetti();
-          document.body.style.overflow = 'hidden';
-        }, 800);
-      }
-    }
-    
-    updateProgressDisplay();
-  }
-  // Função para atualizar a exibição do progresso
-  function updateProgressDisplay() {
-    const tracker = window.progressTracker;
-    const progress = tracker.getOverallProgress();
-    const completed = Object.keys(tracker.getProgress()).length;
-    
-    // Atualizar barra
-    const progressBar = document.getElementById('progress-bar-fill');
-    if (progressBar) {
-      progressBar.style.width = progress + '%';
-    }
-    
-    // Atualizar texto
-    const progressText = document.getElementById('progress-text');
-    if (progressText) {
-      progressText.textContent = completed;
-    }
-    
-    // Atualizar estilo do container (Brilho Extra)
-    const container = document.querySelector('.portal__progress-overview');
-    if (container) {
-      if (progress === 100) {
-        container.classList.add('portal__progress-overview--completed');
-      } else {
-        container.classList.remove('portal__progress-overview--completed');
-      }
-    }
-    
-    // Atualizar cards e botões completados
-    document.querySelectorAll('[data-module-id]').forEach(card => {
-      const moduleId = card.dataset.moduleId;
-      const isComplete = tracker.isComplete(moduleId);
-      
-      if (isComplete) {
-        card.classList.add('module__card--completed');
-      } else {
-        card.classList.remove('module__card--completed');
-      }
-      
-      // Atualizar texto do botão
-      const btn = card.querySelector('.module__complete-btn .btn-text');
-      if (btn) {
-        btn.textContent = isComplete ? 'Desmarcar' : 'Marcar como Concluído';
-      }
-      
-      // ← ADICIONAR: Atualizar ícone do botão
-      const icon = card.querySelector('.module__complete-btn .btn-icon');
-      if (icon) {
-        icon.className = isComplete 
-          ? 'btn-icon fa-solid fa-square-check' 
-          : 'btn-icon fa-regular fa-square';
-      }
-    });
-  }
-
-  // Confirmar reset
-  function confirmReset() {
-    window.progressTracker.resetProgress();
-    
-    // Limpar checklists individuais dos módulos
-    Object.keys(localStorage).forEach(function(key) {
-      if (key.startsWith('module-progress-')) {
-        localStorage.removeItem(key);
-      }
-    });
-
-    updateProgressDisplay();
-    
-    // Fechar modal (usando lógica do componente modal.js)
-    const modal = document.getElementById('reset-modal');
-    if (modal) {
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-    
-    // Feedback visual
-    showResetNotification();
-  }
-
-  // Notificação visual de sucesso
-  function showResetNotification() {
-    const notification = document.createElement('div');
-    notification.className = 'progress-reset-notification';
-    notification.textContent = '✓ Curso reiniciado com sucesso!';
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      notification.classList.add('show');
-    }, 10);
-    
-    setTimeout(() => {
-      notification.classList.remove('show');
-      setTimeout(() => notification.remove(), 300);
-    }, 3000);
-  }
-  
-  // Função de Confete (Celebração)
-  function launchConfetti() {
-    var duration = 3 * 1000;
-    var animationEnd = Date.now() + duration;
-    var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 2001 };
-
-    var randomInRange = function(min, max) {
-      return Math.random() * (max - min) + min;
-    };
-
-    var interval = setInterval(function() {
-      var timeLeft = animationEnd - Date.now();
-
-      if (timeLeft <= 0) {
-        return clearInterval(interval);
-      }
-
-      var particleCount = 50 * (timeLeft / duration);
-      // disparar de ambos os lados
-      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-    }, 250);
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    updateProgressDisplay();
-  });
-
-  // Atualizar quando progresso muda
-  window.addEventListener('progressUpdated', updateProgressDisplay);
-</script>
+<!-- Script da Home -->
+<script src="{{ '/js/home.js' | url }}"></script>
