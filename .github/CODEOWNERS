@@ -1,0 +1,11 @@
+# Define code owners for this repository.
+# These owners will be automatically requested for review when a PR touches the specified files.
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global owner (uncomment and replace with your GitHub username or team)
+* @carlapvicente
+
+# Specific owners for different parts of the project (examples)
+# src/js/       @js-team
+# src/scss/     @design-team
+# .github/      @devops-team
