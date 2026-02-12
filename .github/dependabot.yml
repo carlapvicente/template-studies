@@ -1,0 +1,12 @@
+version: 2
+updates:
+  # Mantém as dependências do package.json atualizadas
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  # Mantém as Actions do GitHub atualizadas (ex: actions/checkout@v4)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
