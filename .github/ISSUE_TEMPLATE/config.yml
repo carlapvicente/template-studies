@@ -3,3 +3,6 @@ contact_links:
   - name: Dúvidas Gerais
     url: https://github.com/carlapvicente/template-studies/discussions
     about: Por favor, faça perguntas e tire dúvidas na aba Discussions.
+  - name: 🔐 Política de Segurança
+    url: https://github.com/carlapvicente/template-studies/blob/main/SECURITY.md
+    about: Consulte nossa política de segurança e saiba como reportar vulnerabilidades.
