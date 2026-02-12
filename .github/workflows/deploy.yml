@@ -7,52 +7,80 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # 1. Estágio de Validação e Segurança (Fail Fast)
+  validation:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: 'npm'
-      
+
       - name: Install dependencies
-        run: npm install
-      
+        run: npm ci
+
+      # DevSecOps: Verifica vulnerabilidades críticas antes de prosseguir
+      - name: Security Audit (NPM)
+        run: npm audit --audit-level=critical
+
       - name: Lint CSS
         run: npm run lint:css
-      
+
       - name: Validate Modules
         run: npm run validate:modules
-      
+
+  # 2. Estágio de Build (Construção do Artefato)
+  build:
+    needs: validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Build Eleventy site
         run: npm run build
         env:
           ELEVENTY_BASE_URL: /template-studies
           ELEVENTY_ENV: production
-      
+
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '_site'
-      
+
+  # 3. Estágio de Deploy (Publicação)
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         id: deployment
