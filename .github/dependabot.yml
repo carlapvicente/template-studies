@@ -5,8 +5,14 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    labels:
+      - "dependências"
+      - "javascript"
   # Mantém as Actions do GitHub atualizadas (ex: actions/checkout@v4)
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+    labels:
+      - "dependências"
+      - "github actions"
