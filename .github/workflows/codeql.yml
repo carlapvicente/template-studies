@@ -29,16 +29,16 @@ jobs:
 
     # Inicializa a engine CodeQL para a linguagem selecionada
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v4.37.6
+      uses: github/codeql-action/init@v4.37.7
       with:
         languages: ${{ matrix.language }}
         # Se desejar, você pode especificar queries adicionais aqui:
         # queries: security-extended,security-and-quality
 
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v4.37.6
+      uses: github/codeql-action/autobuild@v4.37.7
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v4.37.6
+      uses: github/codeql-action/analyze@v4.37.7
       with:
         category: "/language:${{matrix.language}}"
